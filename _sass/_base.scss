@@ -11,6 +11,16 @@ dl, dd, ol, ul, figure {
 
 
 /**
+ * Set all page elements to more-intuitive border-box sizing
+ */
+ 
+* {
+    box-sizing: border-box;
+}
+
+
+
+/**
  * Basic styling
  */
 body {
@@ -156,20 +166,28 @@ pre {
  * Wrapper
  */
 .wrapper {
-    max-width: -webkit-calc(#{$content-width} - (#{$spacing-unit} * 2));
-    max-width:         calc(#{$content-width} - (#{$spacing-unit} * 2));
-    margin-right: auto;
+    max-width: $content-width;
     margin-left: auto;
-    padding-right: $spacing-unit;
+    margin-right: auto;
     padding-left: $spacing-unit;
+    padding-right: $spacing-unit;
     @extend %clearfix;
 
-    @media screen and (max-width: $on-laptop) {
-        max-width: -webkit-calc(#{$content-width} - (#{$spacing-unit}));
-        max-width:         calc(#{$content-width} - (#{$spacing-unit}));
-        padding-right: $spacing-unit / 2;
+    @media screen and (max-width: $content-width) {
         padding-left: $spacing-unit / 2;
+        padding-right: $spacing-unit / 2;
     }
+}
+
+.unwrap {
+    margin-left: calc(50% - 50vw);
+    margin-right: calc(50% - 50vw);
+}
+
+.stretch {
+    padding-left: calc(50vw - 50%);
+    padding-right: calc(50vw - 50%);
+    @extend .unwrap;
 }
 
 
