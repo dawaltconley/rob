@@ -28,6 +28,23 @@ $content-width:    800px;
 $on-palm:          600px;
 $on-laptop:        800px;
 
+/*
+ * Mixins
+ */
+
+// default settings for centering a background image and fitting it to a div
+@mixin background-image ($image: none, $x: center, $y: center) {
+    @if $image != none {
+        background-image: $image;
+    }
+    background-position: $x $y;
+    background-repeat: no-repeat;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
 // Import partials from `sass_dir` (defaults to `_sass`)
 @import
         "base",
