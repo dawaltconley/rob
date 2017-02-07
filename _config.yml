@@ -14,5 +14,13 @@ url: "http://dawaltconley.github.io/" # the base hostname & protocol for your si
 twitter_username: jekyllrb
 github_username:  jekyll
 
+collections:
+    projects:
+        output: false
+
+exclude:
+    - "about.md"
+    - "blog.html"
+
 # Build settings
 markdown: kramdown

@@ -1,3 +1,10 @@
 ---
 layout: default
 ---
+
+{% assign projects_list = site.projects | sort: "date" | reverse %}
+{% for project in projects_list %}
+
+<a class="bg-img project-button" style="background-image: url({{ site.baseurl }}/media/project-images/{{ project.image }});"></a>
+
+{% endfor %}

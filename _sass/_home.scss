@@ -1,0 +1,7 @@
+.project-button {
+    display: inline-block;
+    font-size: 0;
+    margin: $button-margin;
+    width:  nth($button-size, 1);
+    height: nth($button-size, 2);
+}
