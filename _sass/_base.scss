@@ -114,7 +114,13 @@ a {
     }
 }
 
+/**
+ * Background Images
+ */
 
+.bg-img {
+    @include background-image;
+}
 
 /**
  * Blockquotes
