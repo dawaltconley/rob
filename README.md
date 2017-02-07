@@ -1,3 +1,3 @@
-# My Jekyll Site Starter
+# Robert Don
 
-A basic boilerplate for working on jekyll sites without using themes.
+An artist site for my artist bud.
