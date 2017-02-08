@@ -1,3 +1,21 @@
+#project-preview {
+    @extend %clearfix;
+}
+
+.preview-image {
+    float: left;
+    width: 60%;
+    height: auto;
+    padding-right: $spacing-unit;
+
+    @media screen and (max-width: $on-palm) {
+        float: none;
+        width: 100%;
+        padding-right: 0;
+        padding-bottom: $spacing-unit;
+    }
+}
+
 #projects-list {
     text-align: center;
     font-size: 0;
