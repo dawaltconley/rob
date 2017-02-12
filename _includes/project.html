@@ -1,0 +1,16 @@
+
+<div class="project">
+
+    <a name="{{ include.project.id }}"></a>
+
+    <img class="preview-image" src="{{ site.baseurl }}/media/project-images/{{ include.project.image }}" alt="{{ include.project.title }}">
+
+    <div class="project-description">
+
+        <h2 class="project-title">{{ include.project.title }}</h2>
+
+        {{ include.project.content | markdownify }}
+
+    </div>
+
+</div>

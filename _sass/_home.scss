@@ -2,6 +2,16 @@
     @extend %clearfix;
 }
 
+#all-projects {
+    margin-top: $spacing-unit;
+    padding-top: $spacing-unit;
+    border-top: $grey-color-dark solid 1px;
+}
+
+.project {
+    padding-bottom: $spacing-unit;
+}
+
 .preview-image {
     float: left;
     width: 60%;

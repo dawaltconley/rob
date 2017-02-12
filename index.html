@@ -3,19 +3,10 @@ layout: default
 ---
 
 {% assign projects_list = site.projects | sort: "date" | reverse %}
-{% assign latest_project = projects_list | first %}
 
 <div id="project-preview">
 
-    <img class="preview-image" src="{{ site.baseurl }}/media/project-images/{{ latest_project.image }}" alt="{{ latest_project.title }}">
-
-    <div class="project-description">
-
-        <h2 class="project-title">{{ latest_project.title }}</h2>
-
-        {{ latest_project.content | markdownify }}
-
-    </div>
+    {% include project.html project=projects_list.first %}
 
 </div>
 
