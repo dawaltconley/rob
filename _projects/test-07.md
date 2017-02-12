@@ -5,4 +5,4 @@ image: test.png
 ---
 
 {% capture filler %}{% include lorem-ipsum.md %}{% endcapture %}
-{{ filler | truncatewords: 200 | markdownify }}
+{{ filler | truncatewords: 100 | markdownify }}
