@@ -19,3 +19,17 @@ layout: default
     {% endfor %}
 
 </div>
+
+<div id="all-projects">
+
+    {% for project in projects_list %}
+
+        {% unless forloop.first %}
+
+            {% include project.html project=project %}
+
+        {% endunless %}
+
+    {% endfor %}
+
+</div>
