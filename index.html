@@ -14,7 +14,7 @@ layout: default
 
     {% for project in projects_list %}
 
-    <img class="project-button" src="{{ site.baseurl }}/media/project-images/{{ project.image }}" alt="{{ project.title }}">
+    <a href="#{{ project.id }}" class="bg-img project-button" style="background-image: url({{ site.baseurl }}/media/project-images/{{ project.image }});">{{ project.title }}</a>
 
     {% endfor %}
 
