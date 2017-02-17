@@ -5,7 +5,19 @@
 }
 
 .project {
-    padding-bottom: $spacing-unit;
+    padding-bottom: 0;
+    height: 0;
+    overflow: hidden;
+    transition: 1s ease-in-out;
+
+    &:target {
+        height: $project-height;
+        padding-bottom: $spacing-unit;
+    }
+}
+
+.hidden {
+    display: none;
 }
 
 .preview-image {
@@ -22,7 +34,7 @@
     }
 }
 
-#projects-list {
+#project-links {
     text-align: center;
     font-size: 0;
 }

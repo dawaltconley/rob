@@ -6,29 +6,19 @@ layout: default
 
 <div id="project-view">
 
-    {% include project.html project=projects_list.first %}
-
-</div>
-
-<div id="projects-list">
-
     {% for project in projects_list %}
 
-    <a href="#{{ project.slug }}" class="bg-img project-button" style="background-image: url({{ site.baseurl }}/media/project-images/{{ project.image }});">{{ project.title }}</a>
+        {% include project.html project=project %}
 
     {% endfor %}
 
 </div>
 
-<div id="all-projects">
+<div id="project-links">
 
     {% for project in projects_list %}
 
-        {% unless forloop.first %}
-
-            {% include project.html project=project %}
-
-        {% endunless %}
+    <a href="#{{ project.slug }}" class="bg-img project-button" style="background-image: url({{ site.baseurl }}/media/project-images/{{ project.image }});">{{ project.title }}</a>
 
     {% endfor %}
 
