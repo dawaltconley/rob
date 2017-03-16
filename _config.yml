@@ -21,6 +21,35 @@ collections:
 exclude:
     - "about.md"
     - "blog.html"
+    - "*/.help.md"
+
+prose:
+    rooturl: "_projects"
+    media: "media/project-images"
+    metadata:
+        _projects:
+            - name: "title"
+              field:
+                  element: "text"
+                  label: "Title"
+            - name: "date"
+              field:
+                  element: "text"
+                  label: "Date"
+                  value: "CURRENT_DATETIME"
+                  placeholder: "YYYY-MM-DD"
+            - name: "media"
+              field:
+                  element: "text"
+                  label: "Media"
+                  help: >
+                      Full url linking to the relevant vimeo or bandcamp page.
+            - name: "image"
+              field:
+                  element: "text"
+                  label: "Image"
+                  help: >
+                      The name and extenson of the image that will appear as the link to the project. You do not need to enter its filepath. You can upload the image while editing this file using the images icon in the toolbar. This will automatically insert a markdown link to the image in the text of your project description. In order for the image to format propperly, you should delete this link and enter the filename here.
 
 # Build settings
 markdown: kramdown
