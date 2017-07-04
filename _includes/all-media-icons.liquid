@@ -1,0 +1,21 @@
+{% capture blank %} 
+    {% assign return = nil %}
+    {% for contact in include.icon_set %}
+        {% if include.collection %}
+            {% assign icon_type = contact %}
+            {% assign icon_link = include.icon_set[contact] %}
+        {% else %}
+            {% assign icon_type = contact[0] %}
+            {% assign icon_link = contact[1] %}
+        {% endif %}
+        {% assign icon_style = include.style %}
+        {% if icon_link != nil %}
+            {% capture return %}<!--
+                -->{{ return }}<!--
+                {% if include.list %}--><li><!--{% endif %}
+                    -->{% include media-icon.liquid type=icon_type link=icon_link style=icon_style microdata=include.microdata %}<!--
+                {% if include.list %}--></li><!--{% endif %}
+         -->{% endcapture %}
+        {% endif %}
+    {% endfor %}
+{% endcapture %}{{ return | strip | strip_newlines }}
