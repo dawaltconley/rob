@@ -1,0 +1,163 @@
+---
+---
+
+// Google Fonts
+@import url('https://fonts.googleapis.com/css?family=Raleway:100,200,300,400,500,600,700,800,900');
+
+// Basic Variables
+
+$spacing-unit:          30px;
+
+$base-font-family:      "Raleway", sans-serif;
+$base-font-size:        1.25em;
+$base-font-weight:      200;
+$base-line-height:      1.4;
+
+$header-font-weight:    900;
+
+// Colors
+
+$text-color:            black;
+$background-color:      white;
+$brand-color:           gray;
+$shadow-color:          rgba(0, 0, 0, 0.6);
+
+$gray-color:            #828282;
+$gray-color-light:      lighten($gray-color, 40%);
+$gray-color-dark:       darken($gray-color, 25%);
+
+$fa-icons:          ({% for icon in site.data.icon-types %}
+                        {{ icon.type }}: {{ icon.color }},{% endfor %}
+                    );
+
+// Themes
+
+$themes: (
+    main: (
+        background-color: white,
+        text-color: black,
+        // font-smoothing: normal
+    ),
+    dark: (
+        background-color: black,
+        text-color: white,
+        // font-smoothing: dark
+    )
+);
+
+// Breakpoints
+
+$bp-laptop:             800px;
+$bp-mobile:             600px;
+
+// Mixins
+
+@mixin wrapper ($breakpoints, $min-margins: $spacing-unit) {
+    $bp-first: nth($breakpoints, 1);
+    $bp-last: nth($breakpoints, length($breakpoints));
+
+    @if length($breakpoints) < 2 {
+        @error "Invalid breakpoint list: must contain at least two values.";
+    } @else if $bp-first < $bp-last {
+        @error "Invalid breakpoint list: values should proceed from highest to lowest";
+    }
+
+    @extend .auto-horz, .clearfix;
+    max-width: $bp-first - ($min-margins * 2);
+
+    @for $i from 1 to length($breakpoints) {
+        $bp: nth($breakpoints, $i);
+        $bp-next: nth($breakpoints, $i + 1);
+        $query: null;
+        $invalid: null;
+
+        @if $bp < $bp-next {
+            @error "Invalid breakpoint list: order must be consistent.";
+        }
+
+        @media screen and (max-width: $bp) {
+            max-width: $bp-next - ($min-margins * 2);
+        }
+    }
+}
+
+@mixin fixed-ratio ($x, $y, $width: 100%) {
+    @extend %fixed-ratio; // found in _layout partial
+    width: $width;
+    padding-top: $y/$x * $width;
+}
+
+@mixin columns-reset ($break-point) {
+    //mobile reset
+    @media screen and (max-width: $break-point) {
+        .cell {
+            display: block;
+
+            .button {
+                position: static;
+                margin: 0 auto $spacing-unit;
+            }
+        }
+
+        &.button-columns .cell {
+            padding-bottom: 0;
+        }
+    }
+
+    //desktop only: remove bottom margin of all last elements
+    @media screen and (min-width: $break-point + 1px) {
+        .cell > :last-child {
+            margin-bottom: 0;
+        }
+    }
+}
+
+@mixin background-image ($image: none, $x: center, $y: center, $lighten: 0, $darken: 0) {
+
+    @if $image != none {
+        @if $lighten > 0 {
+            background: linear-gradient(rgba(255, 255, 255, $lighten), rgba(255, 255, 255, lighten)), $image;
+        } @else if $darken > 0 {
+            background: linear-gradient( rgba(0, 0, 0, $darken), rgba(0, 0, 0, $darken) ), $image;
+        } @else {
+            background-image: $image;
+        }
+    } @else {
+        @if $lighten > 0 {
+            position: relative;
+
+            &::after {
+                content: "";
+                position: absolute;
+                top: 0; left: 0; right: 0; bottom: 0;
+                background-color: rgba(255, 255, 255, $lighten);
+                z-index: -1;
+            }
+        } @else if $darken > 0 {
+            position: relative;
+
+            &::after {
+                content: "";
+                position: absolute;
+                top: 0; left: 0; right: 0; bottom: 0;
+                background-color: rgba(0, 0, 0, $lighten);
+                z-index: -1;
+            }
+        }
+    }
+
+    background-position: $x $y;
+    background-repeat: no-repeat;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+// Partials
+
+@import
+    "base",
+    "layout",
+    "modules"
+;

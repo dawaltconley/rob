@@ -1,0 +1,277 @@
+/*
+ * Basic
+ */
+
+.pos-relative {
+    position: relative;
+}
+
+.full-width {
+    width: 100%;
+}
+
+.full-height {
+    height: 100%;
+}
+
+.v-rhythm > * {
+    @extend %vertical-rhythm;
+}
+
+.content-padding-h {
+    padding-left: $spacing-unit;
+    padding-right: $spacing-unit;
+}
+
+.content-padding-v {
+    padding-top: $spacing-unit;
+    padding-bottom: $spacing-unit;
+}
+
+.content-padding {
+    @extend .content-padding-h, .content-padding-v;
+}
+
+$padding-sizes: (
+    "x-small":   10px,
+    "small":     15px
+);
+@each $name, $size in $padding-sizes {
+    .padding-#{$name}-h {
+        padding-left: $size;
+        padding-right: $size;
+    }
+
+    .padding-#{$name}-v {
+        padding-top: $size;
+        padding-bottom: $size;
+    }
+}
+
+.fullscreen {
+    min-height: 100vh;
+}
+
+.fullscreen-fixed {
+    height: 100vh;
+}
+
+.auto-top {
+    margin-top: auto;
+}
+
+.auto-left {
+    margin-left: auto;
+}
+
+.auto-right {
+    margin-right: auto;
+}
+
+.auto-bottom {
+    margin-bottom: auto;
+}
+
+.auto-horz {
+    @extend .auto-left, .auto-right;
+}
+
+.auto-vert {
+    @extend .auto-top, .auto-bottom;
+}
+
+.hidden {
+    display: none;
+}
+
+.clearfix {
+
+    &:after {
+        content: "";
+        display: table;
+        clear: both;
+        border-spacing: 0;
+    }
+}
+
+/*
+ * Wrappers
+ */
+
+.page-wrapper {
+    @include wrapper($bp-laptop $bp-mobile);
+}
+
+.unwrap {
+    width: 100vw;
+    margin-left: calc(50% - 50vw);
+    margin-right: calc(50% - 50vw);
+}
+
+.stretch {
+    @extend .unwrap;
+    padding-left: calc(50vw - 50%);
+    padding-right: calc(50vw - 50%);
+}
+
+/*
+ * Themes
+ */
+
+@each $name, $styles in $themes {
+    $text-color: map-get($styles, "text-color");
+    $background-color: map-get($styles, "background-color");
+
+    .#{$name} {
+        background-color: $background-color;
+        color: $text-color;
+        border-color: $text-color;
+
+        @if map-has-key($styles, "font-smoothing") {
+            $fs: map-get($styles, "font-smoothing");
+            @if $fs == "normal" {
+                @extend .font-smoothing-normal;
+            } @else if $fs == "dark" {
+                @extend .font-smoothing-dark;
+            } @else {
+                @error "Bad font-smoothing value in #{$name} theme."
+            }
+        }
+
+        & .text-light {
+            @if lightness($text-color) < lightness($background-color) {
+                color: lighten($text-color, 40%);
+            } @else {
+                color: darken($text-color, 40%);
+            }
+        }
+
+        & .border-light {
+            @if lightness($text-color) < lightness($background-color) {
+                border-color: darken($background-color, 10%);
+            } @else {
+                border-color: lighten($background-color, 10%);
+            }
+        }
+    }
+}
+
+/*
+ * Containers
+ */
+
+.container {
+    overflow: hidden;
+}
+
+.fill-parent {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.expand-child {
+    position: relative;
+
+    & > :only-child {
+        @extend .fill-parent;
+    }
+}
+
+%fixed-ratio { // extended by the fixed-ratio mixin
+    @extend .expand-child;
+    height: 0;
+}
+
+.aspect-16-9 {
+    @include fixed-ratio(16, 9);
+}
+
+/*
+ * Tables
+ */
+
+.table {
+    display: table;
+}
+
+.table-fixed {
+    @extend .table;
+    table-layout: fixed;
+}
+
+.column {
+    display: column;
+}
+
+.row {
+    display: table-row;
+}
+
+.cell {
+    display: table-cell;
+}
+
+.v-center {
+    vertical-align: middle;
+}
+
+%columns {
+    display: table;
+    width: calc(100% + (#{$spacing-unit} * 2));
+    margin: -$spacing-unit;
+    border-spacing: $spacing-unit;
+    table-layout: fixed;
+
+    &:last-child > :last-child {
+        margin-bottom: 0;
+    }
+}
+
+.mobile-columns {
+    @extend %columns;
+    @include columns-reset($bp-mobile);
+}
+
+/*
+ * Flexbox
+ */
+
+.flex-row {
+    display: flex;
+    flex-direction: row;
+}
+
+.flex-col {
+    display: flex;
+    flex-direction: column;
+}
+
+.flex-justify-center {
+    justify-content: center;
+}
+
+.flex-align-center {
+    align-items: center;
+}
+
+.flex-center {
+    @extend .flex-justify-center, .flex-align-center;
+}
+
+.fill-flex-parent {
+    flex: 1 1 auto;
+}
+
+.flex-even > * {
+    flex: 1 1 0;
+}
+
+.flex-space-between {
+    justify-content: space-between;
+}
+
+.flex-space-around {
+    justify-content: space-around;
+}
