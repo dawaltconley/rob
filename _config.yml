@@ -1,27 +1,28 @@
-# Welcome to Jekyll!
-#
-# This config file is meant for settings that affect your whole blog, values
-# which you are expected to set up once and rarely need to edit after that.
-# For technical reasons, this file is *NOT* reloaded automatically when you use
-# 'jekyll serve'. If you change this file, please restart the server process.
+# Global Variables
 
-# Site settings
 title: Robert Don
-email: your-email@domain.com
 description: "It's a me!"
-baseurl: "/rob" # the subpath of your site, e.g. /blog
-url: "http://dawaltconley.github.io/" # the base hostname & protocol for your site
-twitter_username: jekyllrb
-github_username:  jekyll
+baseurl: "/rob"
+url: "http://dawaltconley.github.io/"
+permalink: /:title/
+
+# Collections
 
 collections:
     projects:
         output: false
 
+# Build settings
+
+markdown: kramdown
 exclude:
-    - "about.md"
-    - "blog.html"
-    - "*/.help.md"
+  - "README.md"
+  - "Gemfile*"
+  - "node*"
+  - "package*.json"
+  - "gulpfile.js"
+
+# Prose
 
 prose:
     rooturl: "_projects"
@@ -50,6 +51,3 @@ prose:
                   label: "Image"
                   help: >
                       The name and extenson of the image that will appear as the link to the project. You do not need to enter its filepath. You can upload the image while editing this file using the images icon in the toolbar. This will automatically insert a markdown link to the image in the text of your project description. In order for the image to format propperly, you should delete this link and enter the filename here.
-
-# Build settings
-markdown: kramdown
