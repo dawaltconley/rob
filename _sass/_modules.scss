@@ -131,6 +131,20 @@ $all-sides: "top", "left", "right", "bottom";
 }
 
 /*
+ * Images
+ */
+
+.bg-img {
+    @include background-image;
+}
+
+@each $name, $image in $project-images {
+    .#{$name}-img {
+        @include background-image($image, $lighten: .6, $blur: 10px);
+    }
+}
+
+/*
  * Icons
  */
 

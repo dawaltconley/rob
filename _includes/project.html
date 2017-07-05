@@ -1,5 +1,6 @@
-<div id="{{ include.project.slug }}" class="stretch content-padding">
+{% assign bg_img = include.project.title | slugify | append: '-img' %}
 
+<div id="{{ include.project.slug }}" class="stretch content-padding {{ bg_img }}">
 
   <img src="{{ site.baseurl }}/{{ site.prose.media }}/{{ include.project.image }}" alt="{{ include.project.title }}">
 

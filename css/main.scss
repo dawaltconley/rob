@@ -26,9 +26,13 @@ $gray-color:            #828282;
 $gray-color-light:      lighten($gray-color, 40%);
 $gray-color-dark:       darken($gray-color, 25%);
 
-$fa-icons:          ({% for icon in site.data.icon-types %}
-                        {{ icon.type }}: {{ icon.color }},{% endfor %}
-                    );
+$fa-icons:              ({% for icon in site.data.icon-types %}
+                            {{ icon.type }}: {{ icon.color }},{% endfor %}
+                        );
+
+$project-images:        ({% for project in site.projects %}
+                            {{ project.title | slugify }}: url({{ site.baseurl }}/{{ site.prose.media}}/{{ project.image }}),{% endfor %}
+                        );
 
 // Themes
 
@@ -115,11 +119,11 @@ $bp-mobile:             600px;
 @mixin background-image ($image: none, $x: center, $y: center, $lighten: 0, $darken: 0, $blur: null) {
 
     @if $blur {
-        $blur-offset: -$blur * 2;
         position: relative;
         overflow: hidden;
 
         &::after {
+            $blur-offset: -$blur * 2;
             content: "";
             position: absolute;
             top: $blur-offset; left: $blur-offset; right: $blur-offset; bottom: $blur-offset;
