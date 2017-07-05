@@ -6,20 +6,16 @@ layout: default
 
 <div id="project-view">
 
-    {% for project in projects_list %}
-
-        {% include project.html project=project %}
-
-    {% endfor %}
+  {% for project in projects_list %}
+    {% include project.html project=project %}
+  {% endfor %}
 
 </div>
 
-<div id="project-links">
+<div id="project-links" class="content-padding-v">
 
-    {% for project in projects_list %}
-
+  {% for project in projects_list %}
     <a href="#{{ project.slug }}" class="bg-img project-button" style="background-image: url({{ site.baseurl }}/media/project-images/{{ project.image }});">{{ project.title }}</a>
-
-    {% endfor %}
+  {% endfor %}
 
 </div>

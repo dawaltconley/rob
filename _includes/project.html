@@ -1,13 +1,10 @@
-<div class="project" id="{{ include.project.slug }}">
+<div id="{{ include.project.slug }}" class="stretch content-padding">
 
-    <div class="project-content">
 
-    <img class="preview-image" src="{{ site.baseurl }}/media/project-images/{{ include.project.image }}" alt="{{ include.project.title }}">
+  <img src="{{ site.baseurl }}/{{ site.prose.media }}/{{ include.project.image }}" alt="{{ include.project.title }}">
 
-        <h2 class="project-title">{{ include.project.title }}</h2>
+  <h2>{{ include.project.title }}</h2>
 
-        {{ include.project.content | markdownify }}
-
-    </div>
+  {{ include.project.content | markdownify }}
 
 </div>
