@@ -112,9 +112,23 @@ $bp-mobile:             600px;
     }
 }
 
-@mixin background-image ($image: none, $x: center, $y: center, $lighten: 0, $darken: 0) {
+@mixin background-image ($image: none, $x: center, $y: center, $lighten: 0, $darken: 0, $blur: null) {
 
-    @if $image != none {
+    @if $blur {
+        $blur-offset: -$blur * 2;
+        position: relative;
+        overflow: hidden;
+
+        &::after {
+            content: "";
+            position: absolute;
+            top: $blur-offset; left: $blur-offset; right: $blur-offset; bottom: $blur-offset;
+            -webkit-filter: blur($blur);
+            filter: blur($blur);
+            @include background-image($image, $x, $y, $lighten, $darken);
+            z-index: -1;
+        }
+    } @else if $image != none {
         @if $lighten > 0 {
             background: linear-gradient(rgba(white, $lighten), rgba(white, $lighten)), $image;
         } @else if $darken > 0 {
