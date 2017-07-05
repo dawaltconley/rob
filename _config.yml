@@ -39,12 +39,25 @@ prose:
                   label: "Date"
                   value: "CURRENT_DATETIME"
                   placeholder: "YYYY-MM-DD"
-            - name: "media"
+            - name: "link"
               field:
                   element: "text"
-                  label: "Media"
+                  label: "Media Link"
                   help: >
                       Full url linking to the relevant vimeo or bandcamp page.
+            - name: "media"
+              field:
+                element: "select"
+                label: "Media Type"
+                options:
+                  - name: "Bandcamp"
+                    value: "bandcamp"
+                  - name: "Soundcloud"
+                    value: "soundcloud"
+                  - name: "YouTube"
+                    value: "youtube"
+                  - name: "Web Page"
+                    value: "page"
             - name: "image"
               field:
                   element: "text"
