@@ -1,11 +1,37 @@
+{% assign title = include.project.title %}
+{% assign link = include.project.link %}
+{% assign type = include.project.media %}
+{% assign description = include.project.content %}
+{% capture image %}{{ site.baseurl }}/{{ site.prose.media }}/{{ include.project.image }}{% endcapture %}
 {% assign bg_img = include.project.slug | append: '-img' %}
 
 <div id="{{ include.project.slug }}" class="stretch content-padding {{ bg_img }}">
 
-  <img src="{{ site.baseurl }}/{{ site.prose.media }}/{{ include.project.image }}" alt="{{ include.project.title }}">
+  {% case type %}
+    {% when 'bandcamp' %}
+      <div class="square">
+        {% assign link_array = link | split: '/' %}
+        <iframe class="full-width" src="https://bandcamp.com/EmbeddedPlayer/{{ link_array[3] }}={{ include.project.tralbum_id }}/size=large/bgcol=ffffff/linkcol=0687f5/minimal=true/transparent=true/" seamless>
+          <a href="{{ link }}">{{ title }}</a>
+        </iframe>
+      </div>
+    {% when 'soundcloud' %}
+      <div class="square">
+        <iframe class="full-width" src="https://w.soundcloud.com/player/?url={{ link }}&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false&amp;visual=true"></iframe>
+      </div>
+    {% when 'youtube' %}
+      {% assign link = link | replace: '/watch?v=', '/embed/' %}
+      <div class="square">
+        <iframe class="full-width" src="{{ link }}" allowfullscreen></iframe>
+      </div>
+    {% when 'page' %}
+      <a href="{{ link }}">
+        <img src="{{ image }}" alt="{{ title }}">
+      </a>
+  {% endcase %}
 
-  <h2>{{ include.project.title }}</h2>
+  <h2>{{ title }}</h2>
 
-  {{ include.project.content | markdownify }}
+  {{ description | markdownify }}
 
 </div>
