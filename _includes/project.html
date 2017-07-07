@@ -1,4 +1,4 @@
-{% assign bg_img = include.project.title | slugify | append: '-img' %}
+{% assign bg_img = include.project.slug | append: '-img' %}
 
 <div id="{{ include.project.slug }}" class="stretch content-padding {{ bg_img }}">
 

@@ -31,7 +31,7 @@ $fa-icons:              ({% for icon in site.data.icon-types %}
                         );
 
 $project-images:        ({% for project in site.projects %}
-                            {{ project.title | slugify }}: url({{ site.baseurl }}/{{ site.prose.media}}/{{ project.image }}),{% endfor %}
+                            {{ project.slug }}: url({{ site.baseurl }}/{{ site.prose.media}}/{{ project.image }}),{% endfor %}
                         );
 
 // Themes
