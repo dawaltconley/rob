@@ -50,14 +50,11 @@
     display: none;
 }
 
-.clearfix {
-
-    &:after {
-        content: "";
-        display: table;
-        clear: both;
-        border-spacing: 0;
-    }
+.clearfix:after {
+    content: "";
+    display: table;
+    clear: both;
+    border-spacing: 0;
 }
 
 /*
