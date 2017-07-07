@@ -184,6 +184,10 @@ $padding-sizes: (
     height: 0;
 }
 
+.square {
+    @include fixed-ratio(1, 1);
+}
+
 .aspect-16-9 {
     @include fixed-ratio(16, 9);
 }
