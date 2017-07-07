@@ -37,7 +37,7 @@ $project-images:        ({% for project in site.projects %}
 // Themes
 
 $themes: (
-    main: (
+    light: (
         background-color: white,
         text-color: black,
         // font-smoothing: normal
