@@ -43,21 +43,16 @@ $sides: (
     "right": "h"
 );
 
-$margin-sizes: (
-    //output:   .auto-margin, .auto-margin-h, .auto-margin-left {}
+$margin-sizes: ( // output: .auto-margin, .auto-margin-h, .auto-margin-left {}
     "auto":     auto,
-    "button":   15px,
+    "button":   10px,
 );
 
-$padding-sizes: (
-    //output:   .content-padding, .content-padding-h, .content-padding-left {}
+$padding-sizes: ( // output: .content-padding, .content-padding-h, .content-padding-left {}
     "content":  $spacing-unit,
-    "s":        15px,
-    "xs":       10px,
 );
 
-$border-styles: (
-    //output:   %border-basic, %border-basic-h, %border-basic-left {}
+$border-styles: ( // output: %border-basic, %border-basic-h, %border-basic-left {}
     "basic": (
         width: 1px,
         style: solid,
