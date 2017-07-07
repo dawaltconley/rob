@@ -76,21 +76,24 @@
  * Block Styles
  */
 
-$all-sides: "top", "left", "right", "bottom";
-@each $side in $all-sides {
-    %border-#{$side}-basic {
-        border-#{$side}-width: 1px;
-        border-#{$side}-style: solid;
-        border-#{$side}-color: inherit;
+@each $name, $styles in $border-styles {
+    %border-#{$name} {
+        @each $side, $orientation in $sides {
+            &, &-#{$orientation}, &-#{$side} {
+                @each $attribute, $value in $styles {
+                    border-#{$side}-#{$attribute}: $value;
+                }
+            }
+        }
     }
 }
 
 .border-basic {
-    @extend %border-top-basic, %border-left-basic, %border-right-basic, %border-bottom-basic;
+    @extend %border-basic;
 }
 
 .border-between {
-    @extend %border-bottom-basic;
+    @extend %border-basic-bottom;
 
     &:last-of-type {
         border-bottom: 0;
@@ -98,10 +101,10 @@ $all-sides: "top", "left", "right", "bottom";
 }
 
 .border-around {
-    @extend %border-bottom-basic;
+    @extend %border-basic-bottom;
 
     &:first-of-type {
-        @extend %border-top-basic;
+        @extend %border-basic-top;
     }
 }
 

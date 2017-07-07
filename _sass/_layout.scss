@@ -18,36 +18,6 @@
     @extend %vertical-rhythm;
 }
 
-.content-padding-h {
-    padding-left: $spacing-unit;
-    padding-right: $spacing-unit;
-}
-
-.content-padding-v {
-    padding-top: $spacing-unit;
-    padding-bottom: $spacing-unit;
-}
-
-.content-padding {
-    @extend .content-padding-h, .content-padding-v;
-}
-
-$padding-sizes: (
-    "x-small":   10px,
-    "small":     15px
-);
-@each $name, $size in $padding-sizes {
-    .padding-#{$name}-h {
-        padding-left: $size;
-        padding-right: $size;
-    }
-
-    .padding-#{$name}-v {
-        padding-top: $size;
-        padding-bottom: $size;
-    }
-}
-
 .fullscreen {
     min-height: 100vh;
 }
@@ -56,28 +26,24 @@ $padding-sizes: (
     height: 100vh;
 }
 
-.auto-top {
-    margin-top: auto;
+@each $name, $size in $margin-sizes {
+    .#{$name}-margin {
+        @each $side, $orientation in $sides {
+            &, &-#{$orientation}, &-#{$side} {
+                margin-#{$side}: $size;
+            }
+        }
+    }
 }
 
-.auto-left {
-    margin-left: auto;
-}
-
-.auto-right {
-    margin-right: auto;
-}
-
-.auto-bottom {
-    margin-bottom: auto;
-}
-
-.auto-horz {
-    @extend .auto-left, .auto-right;
-}
-
-.auto-vert {
-    @extend .auto-top, .auto-bottom;
+@each $name, $size in $padding-sizes {
+    .#{$name}-padding {
+        @each $side, $orientation in $sides {
+            &, &-#{$orientation}, &-#{$side} {
+                padding-#{$side}: $size;
+            }
+        }
+    }
 }
 
 .hidden {

@@ -34,6 +34,37 @@ $project-images:        ({% for project in site.projects %}
                             {{ project.slug }}: url({{ site.baseurl }}/{{ site.prose.media}}/{{ project.image }}),{% endfor %}
                         );
 
+// Layouts
+
+$sides: (
+    "top": "v",
+    "bottom": "v",
+    "left": "h",
+    "right": "h"
+);
+
+$margin-sizes: (
+    //output:   .auto-margin, .auto-margin-h, .auto-margin-left {}
+    "auto":     auto,
+    "button":   15px,
+);
+
+$padding-sizes: (
+    //output:   .content-padding, .content-padding-h, .content-padding-left {}
+    "content":  $spacing-unit,
+    "s":        15px,
+    "xs":       10px,
+);
+
+$border-styles: (
+    //output:   %border-basic, %border-basic-h, %border-basic-left {}
+    "basic": (
+        width: 1px,
+        style: solid,
+        color: inherit
+    ),
+);
+
 // Themes
 
 $themes: (
@@ -46,7 +77,7 @@ $themes: (
         background-color: black,
         text-color: white,
         // font-smoothing: dark
-    )
+    ),
 );
 
 // Breakpoints
@@ -66,7 +97,8 @@ $bp-mobile:             600px;
         @error "Invalid breakpoint list: values should proceed from highest to lowest";
     }
 
-    @extend .auto-horz, .clearfix;
+    @extend .clearfix;
+    margin: 0 auto;
     max-width: $bp-first - ($min-margins * 2);
 
     @for $i from 1 to length($breakpoints) {
