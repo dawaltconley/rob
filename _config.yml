@@ -39,12 +39,6 @@ prose:
                   label: "Date"
                   value: "CURRENT_DATETIME"
                   placeholder: "YYYY-MM-DD"
-            - name: "link"
-              field:
-                  element: "text"
-                  label: "Media Link"
-                  help: >
-                      Full url linking to the relevant vimeo or bandcamp page.
             - name: "media"
               field:
                 element: "select"
@@ -58,6 +52,20 @@ prose:
                     value: "youtube"
                   - name: "Web Page"
                     value: "page"
+            - name: "link"
+              field:
+                element: "text"
+                label: "Media Link"
+                help: >
+                  Full url linking to the relevant vimeo or bandcamp page.
+                placeholder: "http://www.example.com/page"
+            - name: "tralbum_id"
+              field:
+                element: "text"
+                label: "Tralbum ID"
+                help: >
+                  Bandcamp only. A number associated with the linked track or album.
+                placeholder: "0123456789"
             - name: "image"
               field:
                   element: "text"
