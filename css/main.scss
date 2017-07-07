@@ -43,6 +43,11 @@ $sides: (
     "right": "h"
 );
 
+$sizes: ( // output: .full-size, .full-width {} .full-size, .full-height {}
+    "full":     100%,
+    "button":   125px,
+);
+
 $margin-sizes: ( // output: .auto-margin, .auto-margin-h, .auto-margin-left {}
     "auto":     auto,
     "button":   10px,

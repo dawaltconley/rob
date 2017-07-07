@@ -6,14 +6,6 @@
     position: relative;
 }
 
-.full-width {
-    width: 100%;
-}
-
-.full-height {
-    height: 100%;
-}
-
 .v-rhythm > * {
     @extend %vertical-rhythm;
 }
@@ -24,6 +16,17 @@
 
 .fullscreen-fixed {
     height: 100vh;
+}
+
+@each $name, $size in $sizes {
+    .#{$name} {
+        &-size, &-width {
+            width: $size;
+        }
+        &-size, &-height {
+            height: $size;
+        }
+    }
 }
 
 @each $name, $size in $margin-sizes {
