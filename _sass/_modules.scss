@@ -80,9 +80,9 @@
     %border-#{$name} {
         @each $side, $orientation in $sides {
             &, &-#{$orientation}, &-#{$side} {
-                @each $attribute, $value in $styles {
-                    border-#{$side}-#{$attribute}: $value;
-                }
+                border-#{$side}-width: map-get($styles, width);
+                border-#{$side}-style: map-get($styles, style);
+                border-#{$side}-color: map-get($styles, color);
             }
         }
     }
