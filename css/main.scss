@@ -71,6 +71,13 @@ $themes: (
     ),
 );
 
+// Breakpoints
+
+$bp-laptop:             800px;
+$bp-mobile:             600px;
+
+// Mixins
+
 $sides: "top", "bottom", "left", "right";
 $side: null;
 
@@ -95,13 +102,6 @@ $side: null;
         }
     }
 }
-
-// Breakpoints
-
-$bp-laptop:             800px;
-$bp-mobile:             600px;
-
-// Mixins
 
 @mixin wrapper ($breakpoints, $min-margins: $spacing-unit) {
     $bp-first: nth($breakpoints, 1);
