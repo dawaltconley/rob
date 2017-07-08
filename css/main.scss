@@ -73,8 +73,12 @@ $themes: (
 
 // Breakpoints
 
-$bp-laptop:             800px;
-$bp-mobile:             600px;
+$bp: (
+    "laptop":   800px,
+    "mobile":   600px,
+);
+$bp-laptop: map-get($bp, "laptop");
+$bp-mobile: map-get($bp, "mobile");
 
 // Mixins
 

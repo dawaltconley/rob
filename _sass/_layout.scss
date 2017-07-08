@@ -203,9 +203,11 @@
     }
 }
 
-.mobile-columns {
-    @extend %columns;
-    @include columns-reset($bp-mobile);
+@each $name, $breakpoint in $bp {
+    .#{$name}-columns {
+        @extend %columns;
+        @include columns-reset($breakpoint);
+    }
 }
 
 /*
