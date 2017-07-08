@@ -59,6 +59,10 @@
     -moz-osx-font-smoothing: grayscale;
 }
 
+.font-0 {
+    font-size: 0;
+}
+
 .avoid-wrap {
     //text-wrap: avoid; //css3
     white-space: nowrap;
