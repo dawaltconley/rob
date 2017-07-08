@@ -41,13 +41,13 @@
     }
 }
 
-@each $name, $size in $margin-sizes {
+@each $name, $size in $margins {
     @include all-sides($name + "-margin") {
         margin-#{$side}: $size;
     }
 }
 
-@each $name, $size in $padding-sizes {
+@each $name, $size in $paddings {
     @include all-sides($name + "-padding") {
         padding-#{$side}: $size;
     }

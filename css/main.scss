@@ -41,16 +41,16 @@ $sizes: ( // output: .full-size, .full-width {} .full-size, .full-height {}
     "button":   125px,
 );
 
-$margin-sizes: ( // output: .auto-margin, .auto-margin-h, .auto-margin-left {}
+$margins: ( // output: .auto-margin, .auto-margin-h, .auto-margin-left {}
     "auto":     auto,
-    "button":   10px,
+    "s":   10px,
 );
 
-$padding-sizes: ( // output: .content-padding, .content-padding-h, .content-padding-left {}
+$paddings: ( // output: .content-padding, .content-padding-h, .content-padding-left {}
     "content":  $spacing-unit,
 );
 
-$border-styles: ( // output: %border-basic, %border-basic-h, %border-basic-left {}
+$borders: ( // output: %border-basic, %border-basic-h, %border-basic-left {}
     "basic": (
         width: 1px,
         style: solid,
