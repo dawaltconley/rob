@@ -36,13 +36,6 @@ $project-images:        ({% for project in site.projects %}
 
 // Layouts
 
-$sides: (
-    "top": "v",
-    "bottom": "v",
-    "left": "h",
-    "right": "h"
-);
-
 $sizes: ( // output: .full-size, .full-width {} .full-size, .full-height {}
     "full":     100%,
     "button":   125px,
@@ -79,6 +72,33 @@ $themes: (
         // font-smoothing: dark
     ),
 );
+
+$sides: "top", "bottom", "left", "right";
+$side: null;
+
+@function get-orientation($side) {
+    $orientation: null;
+    @if $side == "top" or $side == "bottom" {
+        $orientation: "vertical";
+    } @else if $side == "left" or $side == "right" {
+        $orientation: "horizontal";
+    } @else {
+        @error "Not a valid side."
+    }
+    @return $orientation;
+}
+
+@mixin all-sides($class-name) {
+    .#{$class-name} {
+        @each $name in $sides {
+            $side: $name !global;
+            $o: str-slice(get-orientation($side), 1, 1);
+            &, &-#{$o} &-#{$side} {
+                @content;
+            }
+        }
+    }
+}
 
 // Breakpoints
 

@@ -30,22 +30,14 @@
 }
 
 @each $name, $size in $margin-sizes {
-    .#{$name}-margin {
-        @each $side, $orientation in $sides {
-            &, &-#{$orientation}, &-#{$side} {
-                margin-#{$side}: $size;
-            }
-        }
+    @include all-sides($name + "-margin") {
+        margin-#{$side}: $size;
     }
 }
 
 @each $name, $size in $padding-sizes {
-    .#{$name}-padding {
-        @each $side, $orientation in $sides {
-            &, &-#{$orientation}, &-#{$side} {
-                padding-#{$side}: $size;
-            }
-        }
+    @include all-sides($name + "-padding") {
+        padding-#{$side}: $size;
     }
 }
 
