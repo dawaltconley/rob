@@ -58,15 +58,13 @@ $border-styles: ( // output: %border-basic, %border-basic-h, %border-basic-left 
     ),
 );
 
-// Themes
-
 $themes: (
-    light: (
+    "light": (
         background-color: white,
         text-color: black,
         // font-smoothing: normal
     ),
-    dark: (
+    "dark": (
         background-color: black,
         text-color: white,
         // font-smoothing: dark
@@ -77,15 +75,13 @@ $sides: "top", "bottom", "left", "right";
 $side: null;
 
 @function get-orientation($side) {
-    $orientation: null;
     @if $side == "top" or $side == "bottom" {
-        $orientation: "vertical";
+        @return "vertical";
     } @else if $side == "left" or $side == "right" {
-        $orientation: "horizontal";
+        @return "horizontal";
     } @else {
         @error "Not a valid side."
     }
-    @return $orientation;
 }
 
 @mixin all-sides($class-name) {
