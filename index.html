@@ -17,7 +17,7 @@ layout: default
   {% for project in projects_list %}
     <a href="#{{ project.slug }}" class="inline-col-4">
       <div class="square">
-        <img class="fill-parent" src="{{ site.baseurl }}/{{ site.prose.media }}/{{ project.image }}" alt="{{ project.title }}">
+        <img class="fill-parent img-cover" src="{{ site.baseurl }}/{{ site.prose.media }}/{{ project.image }}" alt="{{ project.title }}">
       </div>
     </a>
   {% endfor %}

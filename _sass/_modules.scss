@@ -129,6 +129,10 @@
     @include background-image;
 }
 
+.img-cover {
+    object-fit: cover;
+}
+
 @each $name, $image in $project-images {
     .#{$name}-img {
         @include background-image($image, $lighten: .6, $blur: 10px);
