@@ -175,6 +175,7 @@ $side: null;
     display: inline-block;
     width: calc(#{$width} - (#{$spacing} * (#{$columns} - 1) / #{$columns}));
     margin-right: $spacing;
+    margin-bottom: $spacing;
 
     &:nth-child(#{$row-end}), &:last-child {
         margin-right: 0;
