@@ -168,6 +168,19 @@ $side: null;
     }
 }
 
+@mixin inline-columns ($columns, $spacing: 0) {
+    @if not($columns > 1) { @error "inline-columns mixin must have more than one column." }
+    $width: 100% / $columns;
+    $row-end: $columns + "n";
+    display: inline-block;
+    width: calc(#{$width} - (#{$spacing} * (#{$columns} - 1) / #{$columns}));
+    margin-right: $spacing;
+
+    &:nth-child(#{$row-end}), &:last-child {
+        margin-right: 0;
+    }
+}
+
 @mixin background-image ($image: none, $x: center, $y: center, $lighten: 0, $darken: 0, $blur: null) {
 
     @if $blur {
