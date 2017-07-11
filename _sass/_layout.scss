@@ -219,6 +219,22 @@
 }
 
 /*
+ * Inline Layouts
+ */
+
+.font-0 {
+    font-size: 0;
+
+    > * {
+        font-size: $base-font-size;
+    }
+}
+
+.inline-col-4 {
+    @include inline-columns(4, 2%);
+}
+
+/*
  * Flexbox
  */
 
