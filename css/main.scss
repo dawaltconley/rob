@@ -36,21 +36,21 @@ $project-images:        ({% for project in site.projects %}
 
 // Layouts
 
-$sizes: ( // output: .full-size, .full-width {} .full-size, .full-height {}
+$sizes: (
     "full":     100%,
     "button":   125px,
 );
 
-$margins: ( // output: .auto-margin, .auto-margin-h, .auto-margin-left {}
+$margins: (
     "auto":     auto,
-    "s":   10px,
+    "xs":       5px,
 );
 
-$paddings: ( // output: .content-padding, .content-padding-h, .content-padding-left {}
+$paddings: (
     "content":  $spacing-unit,
 );
 
-$borders: ( // output: %border-basic, %border-basic-h, %border-basic-left {}
+$borders: (
     "basic": (
         width: 1px,
         style: solid,

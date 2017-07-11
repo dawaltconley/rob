@@ -84,14 +84,6 @@
  * Block Styles
  */
 
-@each $name, $styles in $borders {
-    @include all-sides("border-" + $name) {
-        border-#{$side}-width: map-get($styles, width);
-        border-#{$side}-style: map-get($styles, style);
-        border-#{$side}-color: map-get($styles, color);
-    }
-}
-
 .border-basic {
     @extend .border-basic;
 }

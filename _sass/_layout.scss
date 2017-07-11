@@ -1,34 +1,6 @@
 /*
- * Basic
+ * Generated
  */
-
-.block {
-    display: block;
-}
-
-.inline {
-    display: inline;
-}
-
-.inline-block {
-    display: inline-block;
-}
-
-.pos-relative {
-    position: relative;
-}
-
-.v-rhythm > * {
-    @extend %vertical-rhythm;
-}
-
-.fullscreen {
-    min-height: 100vh;
-}
-
-.fullscreen-fixed {
-    height: 100vh;
-}
 
 @each $name, $size in $sizes {
     .#{$name} {
@@ -53,40 +25,13 @@
     }
 }
 
-.hidden {
-    display: none;
+@each $name, $styles in $borders {
+    @include all-sides("border-" + $name) {
+        border-#{$side}-width: map-get($styles, width);
+        border-#{$side}-style: map-get($styles, style);
+        border-#{$side}-color: map-get($styles, color);
+    }
 }
-
-.clearfix:after {
-    content: "";
-    display: table;
-    clear: both;
-    border-spacing: 0;
-}
-
-/*
- * Wrappers
- */
-
-.page-wrapper {
-    @include wrapper($bp-laptop $bp-mobile);
-}
-
-.unwrap {
-    width: 100vw;
-    margin-left: calc(50% - 50vw);
-    margin-right: calc(50% - 50vw);
-}
-
-.stretch {
-    @extend .unwrap;
-    padding-left: calc(50vw - 50%);
-    padding-right: calc(50vw - 50%);
-}
-
-/*
- * Themes
- */
 
 @each $name, $styles in $themes {
     $text-color: map-get($styles, "text-color");
@@ -124,6 +69,69 @@
             }
         }
     }
+}
+
+/*
+ * Basic
+ */
+
+.block {
+    display: block;
+}
+
+.inline {
+    display: inline;
+}
+
+.inline-block {
+    display: inline-block;
+}
+
+.pos-relative {
+    position: relative;
+}
+
+.v-rhythm > * {
+    @extend %vertical-rhythm;
+}
+
+.fullscreen {
+    min-height: 100vh;
+}
+
+.fullscreen-fixed {
+    height: 100vh;
+}
+
+.hidden {
+    display: none;
+}
+
+.clearfix:after {
+    content: "";
+    display: table;
+    clear: both;
+    border-spacing: 0;
+}
+
+/*
+ * Wrappers
+ */
+
+.page-wrapper {
+    @include wrapper($bp-laptop $bp-mobile);
+}
+
+.unwrap {
+    width: 100vw;
+    margin-left: calc(50% - 50vw);
+    margin-right: calc(50% - 50vw);
+}
+
+.stretch {
+    @extend .unwrap;
+    padding-left: calc(50vw - 50%);
+    padding-right: calc(50vw - 50%);
 }
 
 /*
