@@ -7,7 +7,10 @@ layout: default
 <div id="project-view">
 
   {% for project in projects_list %}
-    {% include project.html project=project %}
+    {% unless forloop.first %}
+      {% assign hidden = true %}
+    {% endunless %}
+    {% include project.html project=project hidden=hidden %}
   {% endfor %}
 
 </div>
