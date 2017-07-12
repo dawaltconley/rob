@@ -18,6 +18,11 @@ layout: default
     <a href="#{{ project.slug }}" class="inline-col-4 container hover">
       <div class="square">
         <img class="img-cover hover-blur" src="{{ site.baseurl }}/{{ site.prose.media }}/{{ project.image }}" alt="{{ project.title }}">
+        <div class="overlay flex-col xs-padding hover-fade-in">
+          <span class="auto-margin">
+            {{ project.title }}
+          </span>
+        </div>
       </div>
     </a>
   {% endfor %}

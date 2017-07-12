@@ -43,11 +43,11 @@ $sizes: (
 
 $margins: (
     "auto":     auto,
-    "xs":       5px,
 );
 
 $paddings: (
     "content":  $spacing-unit,
+    "xs":       10px,
 );
 
 $borders: (
@@ -68,6 +68,10 @@ $themes: (
         background-color: black,
         text-color: white,
         // font-smoothing: dark
+    ),
+    "overlay": (
+        background-color: rgba(black, 0.75),
+        text-color: white,
     ),
 );
 
