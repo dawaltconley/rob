@@ -149,16 +149,16 @@
     height: 100%;
 }
 
-.expand-child {
+.expand-children {
     position: relative;
 
-    & > :only-child {
+    & > * {
         @extend .fill-parent;
     }
 }
 
 %fixed-ratio { // extended by the fixed-ratio mixin
-    @extend .expand-child;
+    @extend .expand-children;
     height: 0;
 }
 
