@@ -71,6 +71,8 @@ $themes: (
     ),
 );
 
+$trans-default: .3s;
+
 // Breakpoints
 
 $bp: (
@@ -240,6 +242,14 @@ $side: null;
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
+}
+
+// This mixin applies the effects its contents when a element
+// with class "hover" (either same element or a parent) is hovered
+@mixin hover($hover-class: "hover") {
+    &.#{$hover-class}:hover, .#{$hover-class}:hover & {
+        @content
+    }
 }
 
 // Partials

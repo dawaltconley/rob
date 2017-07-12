@@ -312,3 +312,26 @@ ul.media-icon-basic, ul.media-icon-button, ul.media-icon-circle {
 .media-icon-shadow .media-icon::before {
     box-shadow: 2px 1px 6px rgba(0, 0, 0, 0.4), 2px 1px 6px rgba(0, 0, 0, 0.4) inset;
 }
+
+/*
+ * Hover
+ */
+
+.hover-fade-in {
+    opacity: 0;
+    transition: opacity $trans-default;
+
+    @include hover {
+        opacity: 1;
+    }
+}
+
+.hover-blur {
+    @include blur(0);
+    -webkit-transition: -webkit-filter $trans-default;
+    transition: filter $trans-default;
+
+    @include hover {
+        @include blur(5px);
+    }
+}
