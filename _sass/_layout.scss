@@ -63,9 +63,9 @@
 
         & .border-light {
             @if lightness($text-color) < lightness($background-color) {
-                border-color: darken($background-color, 10%);
+                border-color: darken($background-color, 20%);
             } @else {
-                border-color: lighten($background-color, 10%);
+                border-color: lighten($background-color, 20%);
             }
         }
     }
