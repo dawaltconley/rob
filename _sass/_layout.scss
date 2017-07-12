@@ -230,8 +230,18 @@
     }
 }
 
-.inline-col-4 {
-    @include inline-columns(4, 2%);
+.inline-col-1 {
+    @media screen and (min-width: $bp-laptop) {
+        @include inline-columns(4, 10px);
+    }
+
+    @media screen and (max-width: $bp-laptop) and (min-width: 460px) {
+        @include inline-columns(3, 10px);
+    }
+
+    @media screen and (max-width: 460px) {
+        @include inline-columns(2, 10px);
+    }
 }
 
 /*
