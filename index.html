@@ -15,9 +15,9 @@ layout: default
 <div id="project-links" class="content-padding-v text-center font-0">
 
   {% for project in projects_list %}
-    <a href="#{{ project.slug }}" class="inline-col-4">
+    <a href="#{{ project.slug }}" class="inline-col-4 container hover">
       <div class="square">
-        <img class="fill-parent img-cover" src="{{ site.baseurl }}/{{ site.prose.media }}/{{ project.image }}" alt="{{ project.title }}">
+        <img class="img-cover hover-blur" src="{{ site.baseurl }}/{{ site.prose.media }}/{{ project.image }}" alt="{{ project.title }}">
       </div>
     </a>
   {% endfor %}
