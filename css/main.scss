@@ -182,6 +182,11 @@ $side: null;
     }
 }
 
+@mixin blur($blur) {
+    -webkit-filter: blur($blur);
+    filter: blur($blur);
+}
+
 @mixin background-image ($image: none, $x: center, $y: center, $lighten: 0, $darken: 0, $blur: null) {
 
     @if $blur {
@@ -193,8 +198,7 @@ $side: null;
             content: "";
             position: absolute;
             top: $blur-offset; left: $blur-offset; right: $blur-offset; bottom: $blur-offset;
-            -webkit-filter: blur($blur);
-            filter: blur($blur);
+            @include blur($blur);
             @include background-image($image, $x, $y, $lighten, $darken);
             z-index: -1;
         }
