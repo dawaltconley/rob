@@ -335,3 +335,15 @@ ul.media-icon-basic, ul.media-icon-button, ul.media-icon-circle {
         @include blur(5px);
     }
 }
+
+/*
+ * Target
+ */
+
+.target-display {
+    display: none;
+
+    &:target {
+        display: inherit;
+    }
+}
