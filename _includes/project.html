@@ -20,12 +20,12 @@
         </div>
       {% when 'soundcloud' %}
         <div class="square">
-          <iframe class="full-width" src="https://w.soundcloud.com/player/?url={{ link }}&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false&amp;visual=true"></iframe>
+          <iframe class="full-width" src="https://w.soundcloud.com/player/?url={{ link }}&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false&amp;visual=true" seamless></iframe>
         </div>
       {% when 'youtube' %}
         {% assign link = link | replace: '/watch?v=', '/embed/' %}
         <div class="square">
-          <iframe class="full-width" src="{{ link }}" allowfullscreen></iframe>
+          <iframe class="full-width" src="{{ link }}" allowfullscreen seamless></iframe>
         </div>
       {% when 'page' %}
         <a href="{{ link }}" target="_blank">
