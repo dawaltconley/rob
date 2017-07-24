@@ -5,7 +5,7 @@
 {% capture image %}{{ site.baseurl }}/{{ site.prose.media }}/{{ include.project.image }}{% endcapture %}
 {% assign bg_img = include.project.slug | append: '-img' %}
 
-<div id="{{ include.project.slug }}" class="stretch content-padding target-display {{ bg_img }} {% if include.hidden %}hidden{% endif %}">
+<div id="{{ include.project.slug }}" class="stretch l-padding-v target-display {{ bg_img }} {% if include.hidden %}hidden{% endif %}">
 
   <div class="laptop-columns v-rhythm">
 
