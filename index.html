@@ -2,6 +2,14 @@
 layout: default
 ---
 
+<div class="l-padding-v">
+
+  <h1 class="title no-margin">{{ site.title }}</h1>
+
+  <p class="subtitle fw-600">{{ site.description }}</p>
+
+</div>
+
 {% assign projects_list = site.projects | sort: "date" | reverse %}
 
 <div id="project-view">
