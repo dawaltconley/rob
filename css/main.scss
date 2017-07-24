@@ -41,18 +41,17 @@ $project-images:        ({% for project in site.projects %}
 
 $sizes: (
     "full":     100%,
-    "button":   125px,
 );
 
 $margins: (
     "auto":     auto,
-    "no":       0,
+    "none":     0,
     "l":        60px,
 );
 
 $paddings: (
-    "content":  $spacing-unit,
     "xs":       10px,
+    "m":        30px,
     "l":        60px,
 );
 

@@ -2,9 +2,9 @@
 layout: default
 ---
 
-<div class="l-margin-v">
+<div class="margin-l-v">
 
-  <h1 class="title no-margin">{{ site.title }}</h1>
+  <h1 class="title margin-none">{{ site.title }}</h1>
 
   <p class="subtitle fw-600">{{ site.description }}</p>
 
@@ -23,14 +23,14 @@ layout: default
 
 </div>
 
-<div id="project-links" class="l-margin-v text-center font-0">
+<div id="project-links" class="margin-l-v text-center font-0">
 
   {% for project in projects_list %}
     <a href="#{{ project.slug }}" class="subtle-icon inline-col-1 container hover">
       <div class="square">
         <img class="img-cover hover-blur" src="{{ site.baseurl }}/{{ site.prose.media }}/{{ project.image }}" alt="{{ project.title }}">
-        <div class="overlay flex-col xs-padding hover-fade-in">
-          <span class="auto-margin">
+        <div class="overlay flex-col padding-xs hover-fade-in">
+          <span class="margin-auto">
             {{ project.title }}
           </span>
         </div>
