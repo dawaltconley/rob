@@ -248,10 +248,10 @@
 
     addSmoothScrollListeners();
     addPopStateListener();
-    addOrientationChangeListener();
+    // addOrientationChangeListener();
 
     window.onload = function () {
-        forceFullscreenAll();
+        // forceFullscreenAll();
     }
 
 })();
