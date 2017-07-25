@@ -31,7 +31,7 @@
         {% assign link = link | remove: 'https://vimeo.com/' %}
         <div class="square">
           <iframe class="full-width" src="https://player.vimeo.com/video/{{ link }}?title=0&byline=0&portrait=0" allowfullscreen seamless></iframe>
-        <div>
+        </div>
       {% when 'page' %}
         <a href="{{ link }}" target="_blank">
           <img src="{{ image }}" alt="{{ title }}">
