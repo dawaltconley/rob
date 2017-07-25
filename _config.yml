@@ -50,6 +50,8 @@ prose:
               value: "soundcloud"
             - name: "YouTube"
               value: "youtube"
+            - name: "Vimeo"
+              value: "vimeo"
             - name: "Web Page"
               value: "page"
       - name: "link"
