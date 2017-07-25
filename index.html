@@ -27,7 +27,7 @@ layout: default
   {% for project_title in site.data.projects %}
     {% for project in site.projects %}
       {% if project_title == project.title %}
-        <a href="#{{ project.slug }}" class="subtle-icon inline-col-1 container hover">
+        <a href="#{{ project.slug }}" class="subtle-icon inline-col-1 container hover" data-script="project-button">
           <div class="square">
             <img class="img-cover hover-blur" src="{{ site.baseurl }}/{{ site.prose.media }}/{{ project.image }}" alt="{{ project.title }}">
             <div class="overlay flex-col padding-xs text-center hover-fade-in">

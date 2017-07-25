@@ -1,5 +1,3 @@
-"use strict";
-
 (function () {
 
     var page = document.querySelector(".parallax-page");
@@ -221,8 +219,48 @@
     };
 
 /*
+ * iFrames
+ */
+
+    var iFrames = toArray(document.getElementsByTagName("iframe"));
+
+    function unsetSrc(element) {
+        var source = element.getAttribute("src");
+        if (source) {
+            element.setAttribute("data-src", source);
+            element.setAttribute("src", "");
+        }
+    };
+
+    function unsetSrcAll(array) {
+        array.forEach(function (element) {
+            unsetSrc(element);
+        });
+    };
+
+    function resetSrc(element) {
+        var source = element.getAttribute("data-src");
+        element.setAttribute("src", source);
+    };
+
+
+/*
  * Event Listeners
  */
+
+    var projectButtons = toArray(document.querySelectorAll('[data-script="project-button"]'));
+
+    function addProjectButtonListeners() {
+        unsetSrcAll(iFrames);
+        projectButtons.forEach(function (button) {
+            var target = document.querySelector(button.hash);
+            button.addEventListener("click", function (event) {
+                // event.preventDefault();
+                unsetSrcAll(iFrames);
+                resetSrc(getChildBySelector(target, "iframe"));
+            });
+        });
+    };
 
     function addSmoothScrollListeners() {
         if (pageScrollBehavior == "smooth") {
@@ -260,6 +298,7 @@
         }
     };
 
+    addProjectButtonListeners();
     addSmoothScrollListeners();
     addPopStateListener();
     // addOrientationChangeListener();
