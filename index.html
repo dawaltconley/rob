@@ -10,32 +10,35 @@ layout: default
 
 </div>
 
-{% assign projects_list = site.projects | sort: "date" | reverse %}
-
 <div id="project-view">
 
-  {% for project in projects_list %}
-    {% unless forloop.first %}
-      {% assign hidden = true %}
-    {% endunless %}
-    {% include project.html project=project hidden=hidden %}
+  {% for project_title in site.data.projects %}
+    {% for project in site.projects %}
+      {% if project_title == project.title %}
+        {% include project.html project=project hidden=hidden %}
+      {% endif %}
+    {% endfor %}
   {% endfor %}
 
 </div>
 
 <div id="project-links" class="margin-l-v text-center font-0">
 
-  {% for project in projects_list %}
-    <a href="#{{ project.slug }}" class="subtle-icon inline-col-1 container hover">
-      <div class="square">
-        <img class="img-cover hover-blur" src="{{ site.baseurl }}/{{ site.prose.media }}/{{ project.image }}" alt="{{ project.title }}">
-        <div class="overlay flex-col padding-xs hover-fade-in">
-          <span class="margin-auto">
-            {{ project.title }}
-          </span>
-        </div>
-      </div>
-    </a>
+  {% for project_title in site.data.projects %}
+    {% for project in site.projects %}
+      {% if project_title == project.title %}
+        <a href="#{{ project.slug }}" class="subtle-icon inline-col-1 container hover">
+          <div class="square">
+            <img class="img-cover hover-blur" src="{{ site.baseurl }}/{{ site.prose.media }}/{{ project.image }}" alt="{{ project.title }}">
+            <div class="overlay flex-col padding-xs hover-fade-in">
+              <span class="margin-auto">
+                {{ project.title }}
+              </span>
+            </div>
+          </div>
+        </a>
+      {% endif %}
+    {% endfor %}
   {% endfor %}
 
 </div>
