@@ -12,10 +12,12 @@ layout: default
 
 <div id="project-view" class="container margin-m-v inline-row font-0">
 
+  {% assign project_count = 1 %}
   {% for project_title in site.data.projects %}
     {% for project in site.projects %}
       {% if project_title == project.title %}
-        {% include project.html project=project %}
+        {% include project.html project=project index=project_count %}
+        {% assign project_count = project_count | plus: 1 %}
       {% endif %}
     {% endfor %}
   {% endfor %}
