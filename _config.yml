@@ -2,8 +2,8 @@
 
 title: Robert Don
 description: "Producer. Musician. Audio engineer."
-baseurl: "/rob"
-url: "http://dawaltconley.github.io/"
+baseurl: ""
+url: "http://www.robertgdon.com/"
 permalink: /:title/
 
 # Collections
