@@ -325,11 +325,26 @@ ul.media-icon-basic, ul.media-icon-button, ul.media-icon-circle {
 }
 
 /*
+ * Transitions
+ */
+
+.t-default {
+    -webkit-transition: $trans-default;
+    transition: $trans-default;
+}
+
+.t-slow {
+    -webkit-transition: 1s;
+    transition: 1s;
+}
+
+/*
  * Hover
  */
 
 .hover-fade-in {
     opacity: 0;
+    -webkit-transition: opacity $trans-default;
     transition: opacity $trans-default;
 
     @include hover {
