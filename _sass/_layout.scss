@@ -239,6 +239,15 @@
     }
 }
 
+.inline-row {
+    white-space: nowrap;
+
+    > * {
+        display: inline-block;
+        white-space: normal;
+    }
+}
+
 .inline-col-1 {
     @media screen and (min-width: map-get($bp, large)) {
         @include inline-columns(5, 10px);
