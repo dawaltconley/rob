@@ -25,7 +25,32 @@ exclude:
 # Prose
 
 prose:
-  rooturl: "_projects"
+  ignore:
+    - "*.html"
+    - "*.svg"
+    - "*.xml"
+    - "*.liquid"
+    - "*.js"
+    - "*.json"
+    - "*.jsonp"
+    - "*.rb"
+    - "_layouts"
+    - "_includes"
+    - "_sass"
+    - "_site"
+    - "css"
+    - "js"
+    - "media"
+    - "_data/breakpoints.yml"
+    - "_data/icon-types.yml"
+    - "_data/redirects.yml"
+    - "_config*.yml"
+    - "buildspec.yml"
+    - "build-failure*"
+    - "README.md"
+    - ".babelrc"
+    - ".gitignore"
+    - "Gemfile*"
   media: "media/project-images"
   metadata:
     _projects:
