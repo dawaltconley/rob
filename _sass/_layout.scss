@@ -91,6 +91,14 @@
     position: relative;
 }
 
+.float-left {
+    float: left;
+}
+
+.float-right {
+    float: right;
+}
+
 .v-rhythm > * {
     @extend %vertical-rhythm;
 }
