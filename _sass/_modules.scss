@@ -149,7 +149,7 @@
 
 @each $name, $image in $project-images {
     .#{$name}-img {
-        @include background-image($image, $lighten: .6, $blur: 20px);
+        @include background-image($image, $lighten: .6, $blur: 50px);
     }
 }
 
