@@ -256,7 +256,7 @@
                     forceFullscreenAll();
                 }
                 initOrientation = newOrientation;
-            });
+            }, { passive: true });
         }
     };
 
