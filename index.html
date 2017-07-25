@@ -15,7 +15,7 @@ layout: default
   {% for project_title in site.data.projects %}
     {% for project in site.projects %}
       {% if project_title == project.title %}
-        {% include project.html project=project hidden=hidden %}
+        {% include project.html project=project %}
       {% endif %}
     {% endfor %}
   {% endfor %}
