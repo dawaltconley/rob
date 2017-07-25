@@ -2,7 +2,7 @@
 layout: default
 ---
 
-<div class="margin-l-b">
+<div class="page-wrapper padding-m-h margin-m-b">
 
   <h1 class="title margin-none">{{ site.title }}</h1>
 
@@ -10,7 +10,7 @@ layout: default
 
 </div>
 
-<div id="project-view" class="stretch container margin-l-b">
+<div id="project-view" class="container margin-m-v">
 
   {% for project_title in site.data.projects %}
     {% for project in site.projects %}
@@ -22,7 +22,7 @@ layout: default
 
 </div>
 
-<div id="project-links" class="font-0">
+<div id="project-links" class="page-wrapper padding-m-h margin-m-t font-0">
 
   {% for project_title in site.data.projects %}
     {% for project in site.projects %}
