@@ -10,9 +10,9 @@
         win = window;
     }
 
-    /*
-     * General-purpose functions
-     */
+/*
+ * General-purpose functions
+ */
 
     function toArray(collection) {
         return Array.prototype.slice.call(collection);
@@ -165,9 +165,9 @@
         }
     };
 
-    /*
-     * Scrolling
-     */
+/*
+ * Scrolling
+ */
 
     var pageScrollBehavior = window.getComputedStyle(page).getPropertyValue("scroll-behavior");
     var smoothLinks = toArray(document.querySelectorAll('[data-scroll="smooth"]'));
@@ -201,9 +201,9 @@
         smoothScrollTo(target);
     };
 
-    /*
-     * Fullscreen
-     */
+/*
+ * Fullscreen
+ */
 
     var fullscreenElements = toArray(document.querySelectorAll('[data-script="force-fullscreen"]'));
 
@@ -220,9 +220,9 @@
         });
     };
 
-    /*
-     * Event Listeners
-     */
+/*
+ * Event Listeners
+ */
 
     function addSmoothScrollListeners() {
         if (pageScrollBehavior == "smooth") {
