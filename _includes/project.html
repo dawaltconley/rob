@@ -39,8 +39,13 @@
             <iframe class="full-width" src="https://player.vimeo.com/video/{{ link }}?title=0&byline=0&portrait=0" allowfullscreen seamless></iframe>
           </div>
         {% when 'page' %}
-          <a class="margin-m-b" href="{{ link }}" target="_blank">
-            <img src="{{ image }}" alt="{{ title }}">
+          <a class="block pos-relative container margin-m-b hover" href="{{ link }}" target="_blank">
+            <img class="hover-blur" src="{{ image }}" alt="{{ title }}">
+            <div class="overlay fill-parent flex-col padding-m text-center hover-fade-in">
+              <span class="margin-auto">
+                Visit Site
+              </span>
+            </div>
           </a>
         {% endcase %}
 
