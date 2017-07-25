@@ -235,6 +235,7 @@
     @media screen and (min-width: map-get($bp, large)) {
         @include inline-columns(5, 10px);
     }
+
     @media screen and (max-width: map-get($bp, large)) and (min-width: $bp-laptop) {
         @include inline-columns(4, 10px);
     }
