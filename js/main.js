@@ -265,7 +265,7 @@
     var projects = toArray(document.querySelectorAll('[data-script="project"]'));
     var projectButtons = toArray(document.querySelectorAll('[data-script="project-button"]'));
 
-    projectView.classList.add("no-height", "margin-0", "expand-children");
+    projectView.classList.add("no-height", "expand-children");
     projects.forEach(function (project) {
         project.classList.remove("full-width", "target-display");
     });
@@ -284,6 +284,8 @@
         });
 
         projectView.style.height = targetHeight.toString() + "px";
+        projectView.classList.add("margin-l-v");
+        projectView.classList.remove("margin-m-v");
     };
 
 /*
