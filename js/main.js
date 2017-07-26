@@ -254,23 +254,54 @@
     };
 
 /*
- * Event Listeners
+ * Projects
  */
 
+    var projectView = document.getElementById("project-view");
     var projectButtons = toArray(document.querySelectorAll('[data-script="project-button"]'));
+    var projects = toArray(document.querySelectorAll('[data-script="project"]'));
+
+    projectView.style.height = "0";
+    projectView.style.margin = "0";
+
+    function openProject(target) {
+        var open = document.querySelector(".open-project");
+        var targetIndex = Number(target.getAttribute("data-index"));
+
+        if (open) {
+            var openIndex = Number(open.getAttribute("data-index"));
+
+            if (target === open) {
+                // collapseProjectView
+            } else if (targetIndex < openIndex) {
+                // slide left
+            } else if (targetIndex > openIndex) {
+                // slide right
+            }
+
+        } else {
+            // expandProjectView
+        }
+    };
+
+/*
+ * Event Listeners
+ */
 
     function addProjectButtonListeners() {
         unsetSrcAll(iFrames);
         if (window.location.hash) {
             var open = document.querySelector(window.location.hash);
             resetSrcOfProject(open);
+            openProject(open);
         }
         projectButtons.forEach(function (button) {
             button.addEventListener("click", function (event) {
-                // event.preventDefault();
                 var target = document.querySelector(button.hash);
+                event.preventDefault();
                 unsetSrcAll(iFrames);
                 resetSrcOfProject(target);
+                openProject(target);
             });
         });
     };
