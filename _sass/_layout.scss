@@ -87,8 +87,12 @@
     display: inline-block;
 }
 
-.pos-relative {
+.relative {
     position: relative;
+}
+
+.absolute {
+    position: absolute;
 }
 
 .float-left {
