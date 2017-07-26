@@ -208,8 +208,7 @@ $side: null;
 @mixin background-image ($image: none, $x: center, $y: center, $lighten: 0, $darken: 0, $blur: null) {
 
     @if $blur {
-        position: relative;
-        overflow: hidden;
+        @extend .relative, .container;
 
         &::after {
             $blur-offset: -$blur * 2;
@@ -230,7 +229,7 @@ $side: null;
         }
     } @else {
         @if $lighten > 0 {
-            position: relative;
+            @extend .relative;
 
             &::after {
                 content: "";
@@ -240,7 +239,7 @@ $side: null;
                 z-index: -1;
             }
         } @else if $darken > 0 {
-            position: relative;
+            @extend .relative;
 
             &::after {
                 content: "";

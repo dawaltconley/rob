@@ -92,7 +92,7 @@
 }
 
 .absolute {
-    position: absolute !important;
+    position: absolute;
 }
 
 .float-left {
@@ -157,7 +157,7 @@
 
 .fill-parent {
     @extend .full-size !optional;
-    position: absolute !important;
+    position: absolute;
     top: 0; left: 0;
 }
 
