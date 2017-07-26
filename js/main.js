@@ -123,14 +123,18 @@
         }
     };
 
-    function clearClass(string) {
-        var className = void 0;
+    function clearClass(string, elements) {
+        var className, allOfClass;
         if (string.charAt(0) === ".") {
             className = string.slice(1);
         } else {
             className = string;
         }
-        var allOfClass = toArray(document.querySelectorAll("." + className));
+        if (elements === undefined) {
+            allOfClass = toArray(document.querySelectorAll("." + className));
+        } else {
+            allOfClass = toArray(elements);
+        }
         allOfClass.forEach(function (element) {
             element.classList.remove(className);
         });
