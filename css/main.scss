@@ -42,11 +42,12 @@ $project-images:        ({% for project in site.projects %}
 
 $sizes: (
     "full":     100%,
+    "no":       0,
 );
 
 $margins: (
     "auto":     auto,
-    "none":     0,
+    "0":        0,
     "m":        30px,
     "l":        60px,
 );
