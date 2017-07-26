@@ -1,4 +1,9 @@
+---
+---
+
+{% unless jekyll.environment == "development" %}
 (function () {
+{% endunless %}
 
     var page = document.querySelector(".parallax-page");
     var win = page;
@@ -312,4 +317,7 @@
     window.onload = function () {
         // forceFullscreenAll();
     };
+
+{% unless jekyll.environment == "development" %}
 })();
+{% endunless %}
