@@ -248,11 +248,11 @@
         element.setAttribute("src", source);
     };
 
-    function resetSrcOfProject(hash) {
-        var target = document.querySelector(hash);
-        var targetFrame = getChildBySelector(target, "iframe");
-        resetSrc(targetFrame);
+    function resetSrcOfProject(project) {
+        var target = getChildBySelector(project, "iframe");
+        resetSrc(target);
     };
+
 /*
  * Event Listeners
  */
@@ -262,13 +262,15 @@
     function addProjectButtonListeners() {
         unsetSrcAll(iFrames);
         if (window.location.hash) {
-            resetSrcOfProject(window.location.hash);
+            var open = document.querySelector(window.location.hash);
+            resetSrcOfProject(open);
         }
         projectButtons.forEach(function (button) {
             button.addEventListener("click", function (event) {
                 // event.preventDefault();
+                var target = document.querySelector(button.hash);
                 unsetSrcAll(iFrames);
-                resetSrcOfProject(button.hash);
+                resetSrcOfProject(target);
             });
         });
     };
