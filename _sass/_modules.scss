@@ -334,8 +334,8 @@ ul.media-icon-basic, ul.media-icon-button, ul.media-icon-circle {
 }
 
 .t-slow {
-    -webkit-transition: 1s;
-    transition: 1s;
+    -webkit-transition: $trans-slow;
+    transition: $trans-slow;
 }
 
 /*
