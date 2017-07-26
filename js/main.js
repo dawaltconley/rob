@@ -262,30 +262,28 @@
  */
 
     var projectView = document.getElementById("project-view");
-    var projectButtons = toArray(document.querySelectorAll('[data-script="project-button"]'));
     var projects = toArray(document.querySelectorAll('[data-script="project"]'));
+    var projectButtons = toArray(document.querySelectorAll('[data-script="project-button"]'));
 
-    projectView.style.height = "0";
-    projectView.style.margin = "0";
+    projectView.classList.add("no-height", "margin-0", "expand-children");
+    projects.forEach(function (project) {
+        project.classList.remove("full-width", "target-display");
+    });
 
     function openProject(target) {
-        var open = document.querySelector(".open-project");
         var targetIndex = Number(target.getAttribute("data-index"));
+        var targetHeight = target.scrollHeight;
 
-        if (open) {
-            var openIndex = Number(open.getAttribute("data-index"));
+        target.classList.remove("no-height");
 
-            if (target === open) {
-                // collapseProjectView
-            } else if (targetIndex < openIndex) {
-                // slide left
-            } else if (targetIndex > openIndex) {
-                // slide right
+        projects.forEach(function (project) {
+            var projectIndex = Number(project.getAttribute("data-index"));
+            if (projectIndex != targetIndex) {
+                project.classList.add("no-height");
             }
+        });
 
-        } else {
-            // expandProjectView
-        }
+        projectView.style.height = targetHeight.toString() + "px";
     };
 
 /*
