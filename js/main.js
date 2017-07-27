@@ -268,18 +268,26 @@
     projectView.classList.add("no-height", "expand-children");
     projects.forEach(function (project) {
         project.classList.remove("full-width", "target-display");
+        project.classList.add("no-height");
     });
 
     function openProject(target) {
         var targetIndex = Number(target.getAttribute("data-index"));
         var targetHeight = target.scrollHeight;
 
-        target.classList.remove("no-height");
+        target.classList.add("t-open-project", "translate-x-none");
+        target.classList.remove("no-height", "translate-x-left", "translate-x-right");
 
         projects.forEach(function (project) {
             var projectIndex = Number(project.getAttribute("data-index"));
             if (projectIndex != targetIndex) {
                 project.classList.add("no-height");
+                if (projectIndex < targetIndex) {
+                    project.classList.add("translate-x-left");
+                } else {
+                    project.classList.add("translate-x-right");
+                }
+                project.classList.remove("t-open-project", "translate-x-none");
             }
         });
 
