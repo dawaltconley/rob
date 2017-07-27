@@ -338,6 +338,16 @@ ul.media-icon-basic, ul.media-icon-button, ul.media-icon-circle {
     transition: $trans-slow;
 }
 
+.t-project {
+    -webkit-transition: transform $trans-slow, height 0s $trans-slow;
+    transition: transform $trans-slow, height 0s $trans-slow;
+}
+
+.t-open-project {
+    -webkit-transition: transform $trans-slow;
+    transition: transform $trans-slow;
+}
+
 /*
  * Hover
  */
