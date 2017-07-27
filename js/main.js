@@ -361,17 +361,24 @@
             resetSrcOfProject(open);
             openProject(open);
         }
+
+        var justClicked = false;
         projectButtons.forEach(function (button) {
             button.addEventListener("click", function (event) {
                 var target = document.querySelector(button.hash);
                 event.preventDefault();
-                window.setTimeout(function () {
-                    unsetSrcAll(iFrames);
-                    resetSrcOfProject(target);
-                }, projectTransitionTime);
-                openProject(target);
+                if (!justClicked) {
+                    justClicked = true;
+                    window.setTimeout(function () {
+                        unsetSrcAll(iFrames);
+                        resetSrcOfProject(target);
+                        justClicked = false;
+                    }, projectTransitionTime);
+                    openProject(target);
+                }
             });
         });
+
         var initWidth = document.documentElement.clientWidth;
         var start = true, end;
         window.addEventListener("resize", function (event) {
