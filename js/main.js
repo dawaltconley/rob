@@ -379,6 +379,9 @@
             });
         });
 
+        window.addEventListener("popstate", function () {
+        });
+
         var initWidth = document.documentElement.clientWidth;
         var start = true, end;
         window.addEventListener("resize", function (event) {
@@ -398,7 +401,7 @@
                     start = true;
                 }, 200);
             }
-        });
+        }, { passive: true });
     };
 
     function addSmoothScrollListeners() {
