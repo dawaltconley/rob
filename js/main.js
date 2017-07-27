@@ -254,7 +254,9 @@
 
     function resetSrcOfProject(project) {
         var target = getChildBySelector(project, "iframe");
-        resetSrc(target);
+        if (target) {
+            resetSrc(target);
+        };
     };
 
 /*
