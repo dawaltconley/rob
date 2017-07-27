@@ -339,13 +339,13 @@ ul.media-icon-basic, ul.media-icon-button, ul.media-icon-circle {
 }
 
 .t-project {
-    -webkit-transition: transform $trans-slow, height 0s $trans-slow;
-    transition: transform $trans-slow, height 0s $trans-slow;
+    -webkit-transition: transform $trans-project, height 0s $trans-project;
+    transition: transform $trans-project, height 0s $trans-project;
 }
 
 .t-open-project {
-    -webkit-transition: transform $trans-slow;
-    transition: transform $trans-slow;
+    -webkit-transition: transform $trans-project;
+    transition: transform $trans-project;
 }
 
 /*
