@@ -268,9 +268,9 @@
  */
 
     var projectView = document.getElementById("project-view");
-    var projects = toArray(document.querySelectorAll('[data-script="project"]'));
+    var projects = toArray(document.querySelectorAll("[data-project]"));
     var projectButtons = toArray(document.querySelectorAll('[data-script="project-button"]'));
-    var projectTransitionTime = getTransitionTime(document.querySelector('[data-script="project"]'));
+    var projectTransitionTime = getTransitionTime(document.querySelector("[data-project]"));
 
     function primeProjects() {
         projectView.classList.add("no-height", "expand-children");
@@ -311,7 +311,7 @@
     function openProject(target) {
         var open = document.querySelector('[data-project-state="open"]');
         var targetIndex = Number(target.getAttribute("data-index"));
-        var targetHeight = target.scrollHeight;
+        var targetHeight = getChildBySelector(target, "[data-project-content]").scrollHeight;
 
         target.setAttribute("data-project-state", "open");
         target.classList.add("t-open-project", "translate-x-none");
