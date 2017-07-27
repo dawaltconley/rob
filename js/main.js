@@ -164,6 +164,10 @@
         return element.clientHeight + elementMargin;
     };
 
+    function pushState(hash) {
+        window.history.pushState({ hasFocus: hash}, hash.slice(1), hash);
+    };
+
     function parseBoolean(string) {
         if (string == "true") {
             return true;
@@ -204,7 +208,7 @@
     function smoothScrollToHref(link) {
         var hash = link.hash;
         var target = document.querySelector(hash);
-        window.history.pushState({ hasFocus: hash }, hash.slice(1), hash);
+        pushState(hash);
         smoothScrollTo(target);
     };
 
