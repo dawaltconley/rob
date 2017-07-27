@@ -348,6 +348,11 @@ ul.media-icon-basic, ul.media-icon-button, ul.media-icon-circle {
     transition: transform $trans-project;
 }
 
+.t-none {
+    -webkit-transition: 0s;
+    transition: 0s;
+}
+
 /*
  * Hover
  */

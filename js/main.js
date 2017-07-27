@@ -363,13 +363,23 @@
             });
         });
         var initWidth = document.documentElement.clientWidth;
+        var start = true, end;
         window.addEventListener("resize", function (event) {
             var newWidth = document.documentElement.clientWidth;
             var open = document.querySelector('[data-project-state="open"]');
             if (newWidth != initWidth && open) {
                 var openHeight = getChildBySelector(open, "[data-project-content]").scrollHeight;
+                if (start) {
+                    projectView.classList.add("t-none");
+                    start = false;
+                }
                 projectView.style.height = openHeight.toString() + "px";
                 initWidth = newWidth;
+                window.clearTimeout(end);
+                end = window.setTimeout(function () {
+                    projectView.classList.remove("t-none");
+                    start = true;
+                }, 200);
             }
         });
     };
