@@ -270,6 +270,25 @@
 }
 
 /*
+ * Transforms
+ */
+
+.translate-x-left {
+    -webkit-transform: translateX(-100%);
+    transform: translateX(-100%);
+}
+
+.translate-x-right {
+    -webkit-transform: translateX(100%);
+    transform: translateX(100%);
+}
+
+.translate-x-none {
+    -webkit-transform: translateX(0%);
+    transform: translateX(0%);
+}
+
+/*
  * Flexbox
  */
 
