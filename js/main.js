@@ -272,11 +272,41 @@
     var projectButtons = toArray(document.querySelectorAll('[data-script="project-button"]'));
     var projectTransitionTime = getTransitionTime(document.querySelector('[data-script="project"]'));
 
-    projectView.classList.add("no-height", "expand-children");
-    projects.forEach(function (project) {
-        project.classList.remove("full-width", "target-display");
+    function primeProjects() {
+        projectView.classList.add("no-height", "expand-children");
+        projects.forEach(function (project) {
+            project.classList.remove("full-width", "target-display");
+            project.classList.add("no-height");
+        });
+    };
+
+    function expandProjectView(height) {
+        projectView.classList.add("margin-l-v");
+        projectView.classList.remove("margin-m-v");
+        projectView.style.height = height.toString() + "px";
+    };
+
+    function closeProjectView() {
+        projectView.classList.add("margin-m-v");
+        projectView.classList.remove("margin-l-v");
+        projectView.style.height = "";
+    };
+
+    function closeProject(project) {
         project.classList.add("no-height");
-    });
+        project.classList.remove("t-open-project", "translate-x-none");
+        project.setAttribute("data-project-state", "closed");
+    };
+
+    function slideProjectLeft(project) {
+        project.classList.add("translate-x-left");
+        project.classList.remove("translate-x-right");
+    };
+
+    function slideProjectRight(project) {
+        project.classList.add("translate-x-right");
+        project.classList.remove("translate-x-left");
+    };
 
     function openProject(target) {
         var open = document.querySelector('[data-project-state="open"]');
@@ -290,36 +320,22 @@
         projects.forEach(function (project) {
             var projectIndex = Number(project.getAttribute("data-index"));
             if (projectIndex != targetIndex) {
-                project.classList.add("no-height");
                 if (projectIndex < targetIndex) {
-                    project.classList.add("translate-x-left");
-                    project.classList.remove("translate-x-right");
+                    slideProjectLeft(project);
                 } else {
-                    project.classList.add("translate-x-right");
-                    project.classList.remove("translate-x-left");
+                    slideProjectRight(project);
                 }
-                project.classList.remove("t-open-project", "translate-x-none");
-                project.setAttribute("data-project-state", "closed");
+                closeProject(project);
             }
         });
 
         if (target === open) {
-            target.setAttribute("data-project-state", "closed");
-            target.classList.remove("t-open-project", "translate-x-none");
-            target.classList.add("no-height");
-
+            closeProjectView();
+            closeProject(target);
             clearClass("translate-x-left", projects);
             clearClass("translate-x-right", projects);
-
-            projectView.style.height = "";
-            projectView.classList.add("margin-m-v");
-            projectView.classList.remove("margin-l-v");
         } else {
-            if (!open) {
-                projectView.classList.add("margin-l-v");
-                projectView.classList.remove("margin-m-v");
-            }
-            projectView.style.height = targetHeight.toString() + "px";
+            expandProjectView(targetHeight);
         }
     };
 
@@ -328,6 +344,7 @@
  */
 
     function addProjectButtonListeners() {
+        primeProjects();
         unsetSrcAll(iFrames);
         if (window.location.hash) {
             var open = document.querySelector(window.location.hash);
