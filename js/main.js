@@ -274,9 +274,11 @@
     });
 
     function openProject(target) {
+        var open = document.querySelector('[data-project-state="open"]');
         var targetIndex = Number(target.getAttribute("data-index"));
         var targetHeight = target.scrollHeight;
 
+        target.setAttribute("data-project-state", "open");
         target.classList.add("t-open-project", "translate-x-none");
         target.classList.remove("no-height", "translate-x-left", "translate-x-right");
 
@@ -292,12 +294,28 @@
                     project.classList.remove("translate-x-left");
                 }
                 project.classList.remove("t-open-project", "translate-x-none");
+                project.setAttribute("data-project-state", "closed");
             }
         });
 
-        projectView.style.height = targetHeight.toString() + "px";
-        projectView.classList.add("margin-l-v");
-        projectView.classList.remove("margin-m-v");
+        if (target === open) {
+            target.setAttribute("data-project-state", "closed");
+            target.classList.remove("t-open-project", "translate-x-none");
+            target.classList.add("no-height");
+
+            clearClass("translate-x-left", projects);
+            clearClass("translate-x-right", projects);
+
+            projectView.style.height = "";
+            projectView.classList.add("margin-m-v");
+            projectView.classList.remove("margin-l-v");
+        } else {
+            if (!open) {
+                projectView.classList.add("margin-l-v");
+                projectView.classList.remove("margin-m-v");
+            }
+            projectView.style.height = targetHeight.toString() + "px";
+        }
     };
 
 /*
