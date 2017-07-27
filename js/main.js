@@ -343,7 +343,7 @@
  * Event Listeners
  */
 
-    function addProjectButtonListeners() {
+    function addProjectListeners() {
         primeProjects();
         unsetSrcAll(iFrames);
         if (window.location.hash) {
@@ -361,6 +361,16 @@
                 }, projectTransitionTime);
                 openProject(target);
             });
+        });
+        var initWidth = document.documentElement.clientWidth;
+        window.addEventListener("resize", function (event) {
+            var newWidth = document.documentElement.clientWidth;
+            var open = document.querySelector('[data-project-state="open"]');
+            if (newWidth != initWidth && open) {
+                var openHeight = getChildBySelector(open, "[data-project-content]").scrollHeight;
+                projectView.style.height = openHeight.toString() + "px";
+                initWidth = newWidth;
+            }
         });
     };
 
@@ -400,7 +410,9 @@
         }
     };
 
-    addProjectButtonListeners();
+    if (projects.length > 0) {
+        addProjectListeners();
+    }
     addSmoothScrollListeners();
     addPopStateListener();
     // addOrientationChangeListener();
