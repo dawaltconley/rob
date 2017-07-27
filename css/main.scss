@@ -209,7 +209,7 @@ $side: null;
 @mixin background-image ($image: none, $x: center, $y: center, $lighten: 0, $darken: 0, $blur: null) {
 
     @if $blur {
-        @extend .relative, .container;
+        @extend .relative, .overflow-h;
 
         &::after {
             $blur-offset: -$blur * 2;

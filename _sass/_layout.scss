@@ -151,7 +151,11 @@
  * Containers
  */
 
-.container {
+.overflow-v {
+    overflow: visible;
+}
+
+.overflow-h {
     overflow: hidden;
 }
 
