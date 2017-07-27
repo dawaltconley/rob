@@ -284,8 +284,10 @@
                 project.classList.add("no-height");
                 if (projectIndex < targetIndex) {
                     project.classList.add("translate-x-left");
+                    project.classList.remove("translate-x-right");
                 } else {
                     project.classList.add("translate-x-right");
+                    project.classList.remove("translate-x-left");
                 }
                 project.classList.remove("t-open-project", "translate-x-none");
             }
