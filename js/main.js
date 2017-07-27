@@ -433,11 +433,13 @@
     if (smoothLinks.length > 0 && pageScrollBehavior != "smooth") {
         addSmoothScrollListeners();
     }
-    // addOrientationChangeListener();
 
-    window.onload = function () {
-        // forceFullscreenAll();
-    };
+    if (fullscreenElements.lenth > 0) {
+        addOrientationChangeListener();
+        window.onload = function () {
+            forceFullscreenAll();
+        };
+    }
 
 {% unless jekyll.environment == "development" %}
 })();
