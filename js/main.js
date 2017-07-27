@@ -270,6 +270,7 @@
     var projectView = document.getElementById("project-view");
     var projects = toArray(document.querySelectorAll('[data-script="project"]'));
     var projectButtons = toArray(document.querySelectorAll('[data-script="project-button"]'));
+    var projectTransitionTime = getTransitionTime(document.querySelector('[data-script="project"]'));
 
     projectView.classList.add("no-height", "expand-children");
     projects.forEach(function (project) {
@@ -327,7 +328,6 @@
  */
 
     function addProjectButtonListeners() {
-        var projectTransition = getTransitionTime(document.querySelector('[data-script="project"]'));
         unsetSrcAll(iFrames);
         if (window.location.hash) {
             var open = document.querySelector(window.location.hash);
@@ -341,7 +341,7 @@
                 window.setTimeout(function () {
                     unsetSrcAll(iFrames);
                     resetSrcOfProject(target);
-                }, projectTransition);
+                }, projectTransitionTime);
                 openProject(target);
             });
         });
