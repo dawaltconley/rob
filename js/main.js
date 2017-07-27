@@ -353,6 +353,18 @@
  * Event Listeners
  */
 
+    var passive = false;
+
+    try {
+        var options = Object.defineProperty({}, "passive", {
+            get: function() {
+                passive = { passive: true };
+            }
+        });
+
+        window.addEventListener("test", null, options);
+    } catch(err) {}
+
     function addProjectListeners() {
         primeProjects();
         unsetSrcAll(iFrames);
@@ -401,7 +413,7 @@
                     start = true;
                 }, 200);
             }
-        }, { passive: true });
+        }, passive);
     };
 
     function addSmoothScrollListeners() {
@@ -420,7 +432,7 @@
             } else {
                 pageScroller.toY(0);
             }
-        }, { passive: true });
+        }, passive);
     };
 
     function addOrientationChangeListener() {
@@ -432,7 +444,7 @@
                     forceFullscreenAll();
                 }
                 initOrientation = newOrientation;
-            }, { passive: true });
+            }, passive);
         }
     };
 
