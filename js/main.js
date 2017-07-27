@@ -181,7 +181,7 @@
  */
 
     var pageScrollBehavior = window.getComputedStyle(page).getPropertyValue("scroll-behavior");
-    var smoothLinks = toArray(document.querySelectorAll('[data-scroll="smooth"]'));
+    var smoothLinks = toArray(document.querySelectorAll("data-smooth-scroll"));
 
     var pageScroller = zenscroll.createScroller(page, 999, 0);
 
@@ -197,6 +197,16 @@
             return null;
         }
     };
+
+    function receivesSmoothScroll(element) {
+        smoothLinks.forEach(function (link) {
+            var linkTarget = document.querySelector(link.hash);
+            if (element === linkTarget) {
+                return true;
+            }
+        });
+        return false;
+    }
 
     function smoothScrollTo(element) {
         var dur = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : null;
@@ -385,22 +395,18 @@
     };
 
     function addSmoothScrollListeners() {
-        if (pageScrollBehavior == "smooth") {
-            return false;
-        };
         smoothLinks.forEach(function (link) {
             link.addEventListener("click", function (event) {
                 event.preventDefault();
                 smoothScrollToHref(link);
             });
         });
-    };
-
-    function addPopStateListener() {
         window.addEventListener("popstate", function () {
             if (event.state) {
                 var target = document.querySelector(event.state.hasFocus);
-                smoothScrollTo(target);
+                if (recievesSmoothScroll(target)) {
+                    smoothScrollTo(target);
+                }
             } else {
                 pageScroller.toY(0);
             }
@@ -423,8 +429,10 @@
     if (projects.length > 0) {
         addProjectListeners();
     }
-    addSmoothScrollListeners();
-    addPopStateListener();
+
+    if (smoothLinks.length > 0 && pageScrollBehavior != "smooth") {
+        addSmoothScrollListeners();
+    }
     // addOrientationChangeListener();
 
     window.onload = function () {
