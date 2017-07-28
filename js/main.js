@@ -329,6 +329,17 @@
         project.classList.remove("translate-x-left");
     };
 
+    function flipProjectButton(button) {
+        var buttonBody = getChildBySelector(button, "[data-project-button-body]");
+        if (buttonBody.classList.contains("flip-x")) {
+            buttonBody.classList.remove("flip-x");
+            button.removeAttribute("data-state");
+        } else {
+            buttonBody.classList.add("flip-x");
+            button.setAttribute("data-state", "flipped");
+        }
+    }
+
     var justClicked = false;
 
     function openProject(target) {
@@ -403,7 +414,12 @@
 
         projectButtons.forEach(function (button) {
             button.addEventListener("click", function (event) {
+                var openButton = document.querySelector('[data-state="flipped"]');
                 event.preventDefault();
+                flipProjectButton(button);
+                if (openButton && openButton !== button) {
+                    flipProjectButton(openButton);
+                }
                 openProject(document.querySelector(button.hash));
                 pushState(button.hash);
             });

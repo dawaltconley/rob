@@ -25,17 +25,22 @@ layout: default
 
 </div>
 
-<div id="project-links" class="page-wrapper padding-m-h margin-m-t font-0">
+<div id="project-links" class="page-wrapper padding-m-h margin-m-t font-0 contains-3d-deep">
 
   {% for project_title in site.data.projects %}
     {% for project in site.projects %}
       {% if project_title == project.title %}
         <a href="#{{ project.slug }}" class="subtle-icon inline-col-1 overflow-h hover" data-project-button>
-          <div class="square">
-            <img class="img-cover hover-blur" src="{{ site.baseurl }}/{{ site.prose.media }}/{{ project.image }}" alt="{{ project.title }}">
-            <div class="overlay flex-col padding-xs text-center hover-fade-in">
+          <div class="square t-default" data-project-button-body>
+            <img class="img-cover hover-blur no-backface" src="{{ site.baseurl }}/{{ site.prose.media }}/{{ project.image }}" alt="{{ project.title }}">
+            <div class="overlay flex-col padding-xs text-center hover-fade-in no-backface">
               <span class="margin-auto">
                 {{ project.title }}
+              </span>
+            </div>
+            <div class="gray flex-col padding-xs text-center flip-x no-backface hover-lighten t-default">
+              <span class="margin-auto">
+                X
               </span>
             </div>
           </div>
