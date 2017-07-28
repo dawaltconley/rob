@@ -415,6 +415,23 @@ ul.media-icon-basic, ul.media-icon-button, ul.media-icon-circle {
     }
 }
 
+.hover-lighten {
+    @extend .relative;
+
+    &::after {
+        @extend .fill-parent, .t-inherit;
+        content: "";
+        background-color: rgba(white, 0);
+    }
+
+    @include hover {
+        &::after {
+            background-color: rgba(white, 0.2);
+        }
+    }
+}
+
+
 /*
  * Target
  */
