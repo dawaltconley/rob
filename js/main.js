@@ -290,7 +290,7 @@
 
     var projectView = document.querySelector("[data-project-view]");
     var projects = toArray(document.querySelectorAll("[data-project]"));
-    var projectButtons = toArray(document.querySelectorAll('[data-script="project-button"]'));
+    var projectButtons = toArray(document.querySelectorAll("[data-project-button]"));
     var projectTransitionTime = getTransitionTime(document.querySelector("[data-project]"));
 
     function primeProjects() {
