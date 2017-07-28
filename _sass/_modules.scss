@@ -367,6 +367,11 @@ ul.media-icon-basic, ul.media-icon-button, ul.media-icon-circle {
     transition: $trans-slow;
 }
 
+.t-button-flip {
+    -webkit-transition: $trans-project/2 $trans-project/2;
+    transition: $trans-project/2 $trans-project/2;
+}
+
 .t-project {
     -webkit-transition: transform $trans-project, height 0s $trans-project;
     transition: transform $trans-project, height 0s $trans-project;
