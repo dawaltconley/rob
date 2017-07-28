@@ -426,7 +426,7 @@ ul.media-icon-basic, ul.media-icon-button, ul.media-icon-circle {
 
     @include hover {
         &::after {
-            background-color: rgba(white, 0.2);
+            background-color: rgba(white, 0.1);
         }
     }
 }
