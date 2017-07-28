@@ -245,15 +245,22 @@
  * iFrames
  */
 
-    var iFrames = toArray(document.getElementsByTagName("iframe"));
-
     function unsetSrc(element) {
         var source = element.getAttribute("src");
         if (source) {
-            element.setAttribute("data-src", source);
-            element.setAttribute("src", "");
+            var clone = element.cloneNode(false);
+            clone.setAttribute("data-src", source);
+            clone.setAttribute("src", "");
+            element.parentNode.replaceChild(clone, element);
         }
     };
+
+    function unsetSrcOfProject(project) {
+        var target = getChildBySelector(project, "iframe");
+        if (target) {
+            unsetSrc(target);
+        };
+    }
 
     function unsetSrcAll(array) {
         array.forEach(function (element) {
@@ -263,7 +270,11 @@
 
     function resetSrc(element) {
         var source = element.getAttribute("data-src");
-        element.setAttribute("src", source);
+        if (source) {
+            var clone = element.cloneNode(false);
+            clone.setAttribute("src", source);
+            element.parentNode.replaceChild(clone, element);
+        }
     };
 
     function resetSrcOfProject(project) {
@@ -318,7 +329,13 @@
         project.classList.remove("translate-x-left");
     };
 
+    var justClicked = false;
+
     function openProject(target) {
+        if (justClicked) {
+            return false;
+        }
+
         var open = document.querySelector('[data-project-state="open"]');
         var targetIndex = Number(target.getAttribute("data-index"));
         var targetHeight = getChildBySelector(target, "[data-project-content]").scrollHeight;
@@ -347,6 +364,16 @@
         } else {
             expandProjectView(targetHeight);
         }
+
+        justClicked = true;
+
+        window.setTimeout(function () {
+            resetSrcOfProject(target);
+            if (open) {
+                unsetSrcOfProject(open);
+            }
+            justClicked = false;
+        }, projectTransitionTime);
     };
 
 /*
@@ -367,32 +394,34 @@
 
     function addProjectListeners() {
         primeProjects();
-        unsetSrcAll(iFrames);
+        unsetSrcAll(toArray(document.getElementsByTagName("iframe")));
         if (window.location.hash) {
             var open = document.querySelector(window.location.hash);
             resetSrcOfProject(open);
             openProject(open);
         }
 
-        var justClicked = false;
         projectButtons.forEach(function (button) {
             button.addEventListener("click", function (event) {
-                var target = document.querySelector(button.hash);
                 event.preventDefault();
-                if (!justClicked) {
-                    justClicked = true;
-                    window.setTimeout(function () {
-                        unsetSrcAll(iFrames);
-                        resetSrcOfProject(target);
-                        justClicked = false;
-                    }, projectTransitionTime);
-                    openProject(target);
-                }
+                openProject(document.querySelector(button.hash));
+                pushState(button.hash);
             });
         });
 
-        window.addEventListener("popstate", function () {
-        });
+        window.addEventListener("popstate", function (event) {
+            if (event.state) {
+                var target = document.querySelector(event.state.hasFocus);
+                if (target.hasAttribute("data-project")) {
+                    openProject(target);
+                }
+            } else {
+                var open = document.querySelector('[data-project-state="open"]');
+                if (open) {
+                    openProject(open); // should make seperate function for closing all projects
+                }
+            }
+        }, passive);
 
         var initWidth = document.documentElement.clientWidth;
         var start = true, end;
@@ -423,7 +452,7 @@
                 smoothScrollToHref(link);
             });
         });
-        window.addEventListener("popstate", function () {
+        window.addEventListener("popstate", function (event) {
             if (event.state) {
                 var target = document.querySelector(event.state.hasFocus);
                 if (recievesSmoothScroll(target)) {
