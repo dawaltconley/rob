@@ -328,6 +328,11 @@ ul.media-icon-basic, ul.media-icon-button, ul.media-icon-circle {
  * Transforms
  */
 
+.hw-accel {
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+}
+
 .translate-x-left {
     -webkit-transform: translateX(-100%);
     transform: translateX(-100%);
