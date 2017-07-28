@@ -377,6 +377,15 @@ ul.media-icon-basic, ul.media-icon-button, ul.media-icon-circle {
     transition: transform $trans-project;
 }
 
+.t-inherit {
+    -webkit-transition: inherit;
+    transition: inherit;
+}
+
+.t-deep > * {
+    @extent .t-inherit;
+}
+
 .t-none {
     -webkit-transition: 0s;
     transition: 0s;
