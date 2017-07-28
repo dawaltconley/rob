@@ -5,6 +5,6 @@ title: Quiet Pleas
 link: 'https://jackandkatie.bandcamp.com/album/quiet-pleas'
 tralbum_id: 205930045
 media: bandcamp
-image: quietpleas.jpg
+image: quietpleas-small.jpg
 ---
 Debut release by singer-songwriter duo Jack and Katie (now Jakals). Credited as recording engineer and mastering engineer.

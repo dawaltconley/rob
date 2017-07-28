@@ -5,6 +5,6 @@ title: No Excuses Wednesdays
 link: 'https://since1902music.bandcamp.com/album/no-excuses-wednesdays'
 tralbum_id: 587439492
 media: bandcamp
-image: noexcuseswednesdays.jpg
+image: noexcuseswednesdays-small.jpg
 ---
 Debut release by St. Louis based band Since 1902. Provided writing, production, and guitar/vocal work.

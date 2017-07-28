@@ -5,6 +5,6 @@ title: Pretend We're Friends
 link: 'https://allcapsladd.bandcamp.com/track/pretend-were-friends'
 tralbum_id: 973001141
 media: bandcamp
-image: pretendwerefriends.jpg
+image: pretendwerefriends-small.jpg
 ---
 B-side from the all-caps LADD Voice Memos sessions. Credited as recording engineer and mastering engineer.
