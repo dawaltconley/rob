@@ -372,14 +372,18 @@ ul.media-icon-basic, ul.media-icon-button, ul.media-icon-circle {
     transition: $trans-project/2 $trans-project/2;
 }
 
+.t-project-view {
+    transition: $trans-project ease-out;
+}
+
 .t-project {
-    -webkit-transition: transform $trans-project, height 0s $trans-project;
-    transition: transform $trans-project, height 0s $trans-project;
+    -webkit-transition: transform $trans-project ease-in-out, height 0s $trans-project;
+    transition: transform $trans-project ease-in-out, height 0s $trans-project;
 }
 
 .t-open-project {
-    -webkit-transition: transform $trans-project;
-    transition: transform $trans-project;
+    -webkit-transition: transform $trans-project ease-in-out;
+    transition: transform $trans-project ease-in-out;
 }
 
 .t-inherit {
