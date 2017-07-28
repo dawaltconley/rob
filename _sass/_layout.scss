@@ -186,6 +186,16 @@
     @include fixed-ratio(16, 9);
 }
 
+.contains-3d {
+    -webkit-perspective: $perspective;
+    perspective: $perspective;
+
+    &-deep * {
+        -webkit-transform-style: preserve-3d;
+        transform-style: preserve-3d;
+    }
+}
+
 /*
  * Tables
  */

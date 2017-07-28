@@ -343,6 +343,16 @@ ul.media-icon-basic, ul.media-icon-button, ul.media-icon-circle {
     transform: translateX(0%);
 }
 
+.flip-h {
+    -webkit-transform: rotate3d(1, 0, 0, 180deg);
+    transform: rotate3d(1, 0, 0, 180deg);
+}
+
+.no-backface {
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+}
+
 /*
  * Transitions
  */
