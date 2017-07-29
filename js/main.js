@@ -242,62 +242,114 @@
     };
 
 /*
- * iFrames
- */
-
-    function unsetSrc(element) {
-        var source = element.getAttribute("src");
-        if (source) {
-            var clone = element.cloneNode(false);
-            clone.setAttribute("data-src", source);
-            clone.setAttribute("src", "");
-            element.parentNode.replaceChild(clone, element);
-        }
-    };
-
-    function unsetSrcOfProject(project) {
-        var target = getChildBySelector(project, "iframe");
-        if (target) {
-            unsetSrc(target);
-        };
-    }
-
-    function unsetSrcAll(array) {
-        array.forEach(function (element) {
-            unsetSrc(element);
-        });
-    };
-
-    function resetSrc(element) {
-        var source = element.getAttribute("data-src");
-        if (source) {
-            var clone = element.cloneNode(false);
-            clone.setAttribute("src", source);
-            element.parentNode.replaceChild(clone, element);
-        }
-    };
-
-    function resetSrcOfProject(project) {
-        var target = getChildBySelector(project, "iframe");
-        if (target) {
-            resetSrc(target);
-        };
-    };
-
-/*
  * Projects
  */
 
     var projectView = document.querySelector("[data-project-view]");
-    var projects = toArray(document.querySelectorAll("[data-project]"));
-    var projectButtons = toArray(document.querySelectorAll("[data-project-button]"));
-    var projectTransitionTime = getTransitionTime(document.querySelector("[data-project]"));
+    var buttonElements = toArray(document.querySelectorAll("[data-project-button]"));
+    var projects = Array(buttonElements.length);
+    var projectButtons = Array(buttonElements.length);
+
+    buttonElements.forEach(function (button, index) {
+        var newProject = new Project(document.querySelector(button.hash));
+        var newProjectButton = new ProjectButton(button);
+        newProject.button = newProjectButton;
+        newProjectButton.project = newProject;
+        projects[index] = newProject;
+        projectButtons[index] = newProjectButton;
+    });
+
+    function Project(element) {
+        this.id = element.id;
+        this.index = Number(element.getAttribute("data-index")); // could set when created
+        this.body = element;
+        this.content = getChildBySelector(element, "[data-project-content]");
+        this.frame = getChildBySelector(element, "iframe");
+        this.dummyFrame = document.createElement("div");
+        this.transitionTime = getTransitionTime(element);
+    };
+
+    function ProjectButton(button) {
+        this.hash = button.hash;
+        this.body = button;
+        this.content = getChildBySelector(button, "[data-project-button-content]");
+        this.state = "normal";
+    };
+
+    Project.prototype.prime = function () {
+        this.body.classList.remove("full-width", "target-display");
+        this.unsetFrame();
+        this.close();
+    };
+
+    Project.prototype.open = function () {
+        this.body.classList.add("t-open-project", "translate-x-none");
+        this.body.classList.remove("no-height", "translate-x-left", "translate-x-right");
+        this.state = "open";
+    };
+
+    Project.prototype.close = function () {
+        this.body.classList.add("no-height");
+        this.body.classList.remove("t-open-project", "translate-x-none");
+        this.state = "closed";
+    };
+
+    Project.prototype.slideLeft = function() {
+        this.body.classList.add("translate-x-left");
+        this.body.classList.remove("translate-x-right");
+    };
+
+    Project.prototype.slideRight = function () {
+        this.body.classList.add("translate-x-right");
+        this.body.classList.remove("translate-x-left");
+    };
+
+    Project.prototype.unsetFrame = function () {
+        if (this.frame && this.body.contains(this.frame)) {
+            this.frame.parentNode.replaceChild(this.dummyFrame, this.frame);
+        }
+    };
+
+    Project.prototype.resetFrame = function () {
+        if (this.frame && this.body.contains(this.dummyFrame)) {
+            this.dummyFrame.parentNode.replaceChild(this.frame, this.dummyFrame);
+        }
+    };
+
+    ProjectButton.prototype.flip = function () {
+        if (this.state == "flipped") {
+            this.content.classList.remove("flip-x");
+            this.state = "normal";
+        } else {
+            this.content.classList.add("flip-x");
+            this.state = "flipped";
+        }
+    };
+
+    function getProject(property, value) {
+        for (var i=0; i < projects.length; i++) {
+            var project = projects[i];
+            if (project[property] == value) {
+                return project;
+            }
+        }
+        return null;
+    }
+
+    function getProjectButton(property, value) {
+        for (var i=0; i < projectButtons.length; i++) {
+            var button = projectButtons[i];
+            if (button[property] == value) {
+                return button;
+            }
+        }
+        return null;
+    }
 
     function primeProjects() {
         projectView.classList.add("no-height", "expand-children");
         projects.forEach(function (project) {
-            project.classList.remove("full-width", "target-display");
-            project.classList.add("no-height");
+            project.prime();
         });
     };
 
@@ -313,33 +365,6 @@
         projectView.style.height = "";
     };
 
-    function closeProject(project) {
-        project.classList.add("no-height");
-        project.classList.remove("t-open-project", "translate-x-none");
-        project.setAttribute("data-project-state", "closed");
-    };
-
-    function slideProjectLeft(project) {
-        project.classList.add("translate-x-left");
-        project.classList.remove("translate-x-right");
-    };
-
-    function slideProjectRight(project) {
-        project.classList.add("translate-x-right");
-        project.classList.remove("translate-x-left");
-    };
-
-    function flipProjectButton(button) {
-        var buttonBody = getChildBySelector(button, "[data-project-button-body]");
-        if (buttonBody.classList.contains("flip-x")) {
-            buttonBody.classList.remove("flip-x");
-            button.removeAttribute("data-state");
-        } else {
-            buttonBody.classList.add("flip-x");
-            button.setAttribute("data-state", "flipped");
-        }
-    }
-
     var justClicked = false;
 
     function openProject(target) {
@@ -347,29 +372,25 @@
             return false;
         }
 
-        var open = document.querySelector('[data-project-state="open"]');
-        var targetIndex = Number(target.getAttribute("data-index"));
-        var targetHeight = getChildBySelector(target, "[data-project-content]").scrollHeight;
+        var open = getProject("state", "open");
+        var targetHeight = target.content.scrollHeight;
 
-        target.setAttribute("data-project-state", "open");
-        target.classList.add("t-open-project", "translate-x-none");
-        target.classList.remove("no-height", "translate-x-left", "translate-x-right");
+        target.open();
 
         projects.forEach(function (project) {
-            var projectIndex = Number(project.getAttribute("data-index"));
-            if (projectIndex != targetIndex) {
-                if (projectIndex < targetIndex) {
-                    slideProjectLeft(project);
+            if (project.index != target.index) {
+                if (project.index < target.index) {
+                    project.slideLeft();
                 } else {
-                    slideProjectRight(project);
+                    project.slideRight();
                 }
-                closeProject(project);
+                project.close();
             }
         });
 
         if (target === open) {
             closeProjectView();
-            closeProject(target);
+            target.close();
             clearClass("translate-x-left", projects);
             clearClass("translate-x-right", projects);
         } else {
@@ -379,12 +400,12 @@
         justClicked = true;
 
         window.setTimeout(function () {
-            resetSrcOfProject(target);
+            target.resetFrame();
             if (open) {
-                unsetSrcOfProject(open);
+                open.unsetFrame();
             }
             justClicked = false;
-        }, projectTransitionTime);
+        }, target.transitionTime);
     };
 
 /*
@@ -405,34 +426,35 @@
 
     function addProjectListeners() {
         primeProjects();
-        unsetSrcAll(toArray(document.getElementsByTagName("iframe")));
         if (window.location.hash) {
-            var open = document.querySelector(window.location.hash);
-            resetSrcOfProject(open);
-            openProject(open);
+            var currentProject = getProject("id", window.location.hash);
+            if (currentProject) {
+                currentProject.resetFrame;
+                currentProject.open();
+            }
         }
 
         projectButtons.forEach(function (button) {
-            button.addEventListener("click", function (event) {
-                var openButton = document.querySelector('[data-state="flipped"]');
+            button.body.addEventListener("click", function (event) {
+                var openButton = getProjectButton("state", "flipped");
                 event.preventDefault();
-                flipProjectButton(button);
+                button.flip();
                 if (openButton && openButton !== button) {
-                    flipProjectButton(openButton);
+                    openButton.flip();
                 }
-                openProject(document.querySelector(button.hash));
+                openProject(button.project);
                 pushState(button.hash);
             });
         });
 
         window.addEventListener("popstate", function (event) {
             if (event.state) {
-                var target = document.querySelector(event.state.hasFocus);
-                if (target.hasAttribute("data-project")) {
+                var target = getProject("id", event.state.hasFocus);
+                if (target) {
                     openProject(target);
                 }
             } else {
-                var open = document.querySelector('[data-project-state="open"]');
+                var open = getProject("state", "open");
                 if (open) {
                     openProject(open); // should make seperate function for closing all projects
                 }

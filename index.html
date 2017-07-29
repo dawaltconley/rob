@@ -31,7 +31,7 @@ layout: default
     {% for project in site.projects %}
       {% if project_title == project.title %}
         <a href="#{{ project.slug }}" class="subtle-icon inline-col-1 overflow-h hover" data-project-button>
-          <div class="square t-button-flip" data-project-button-body>
+          <div class="square t-button-flip" data-project-button-content>
             <img class="img-cover hover-blur no-backface" src="{{ site.baseurl }}/{{ site.prose.media }}/{{ project.image }}" alt="{{ project.title }}">
             <div class="overlay flex-col padding-xs text-center hover-fade-in no-backface">
               <span class="margin-auto">
