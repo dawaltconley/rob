@@ -95,6 +95,16 @@
     position: absolute;
 }
 
+.z-1 {
+    @extend .relative;
+    z-index: 1;
+}
+
+.z-2 {
+    @extend .relative;
+    z-index: 2;
+}
+
 .float-left {
     float: left;
 }
