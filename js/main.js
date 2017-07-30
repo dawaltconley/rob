@@ -397,8 +397,10 @@
                     var open = getProject("state", "open");
                     if (open === project) {
                         closeProjects();
+                        pushState("");
                     } else {
                         focusProject(project);
+                        pushState(project.button.hash);
                     }
                     window.setTimeout(function() {
                         project.resetFrame();
@@ -412,18 +414,27 @@
         });
 
         if (window.location.hash) {
-            var currentProject = getProject("id", window.location.hash);
+            var currentProject = getProject("id", window.location.hash.slice(1));
             if (currentProject) {
-                currentProject.resetFrame;
-                currentProject.open();
+                focusProject(currentProject);
+                window.setTimeout(function() {
+                    currentProject.resetFrame();
+                }, currentProject.transitionTime);
             }
         }
 
         window.addEventListener("popstate", function (event) {
             if (event.state) {
-                var target = getProject("id", event.state.hasFocus);
+                var target = getProject("id", event.state.hasFocus.slice(1));
+                var open = getProject("state", "open");
                 if (target) {
                     focusProject(target);
+                    window.setTimeout(function() {
+                        target.resetFrame();
+                        if (open) {
+                            open.unsetFrame();
+                        }
+                    }, target.transitionTime);
                 }
             } else {
                 closeProjects();
