@@ -263,6 +263,7 @@
         this.index = Number(element.getAttribute("data-index")); // could set when created
         this.body = element;
         this.content = getChildBySelector(element, "[data-project-content]");
+        this.canvas = getChildBySelector(element, "[data-project-background]");
         this.frame = getChildBySelector(element, "iframe");
         this.dummyFrame = document.createElement("div");
         this.transitionTime = getTransitionTime(element);
@@ -272,13 +273,28 @@
         this.hash = button.hash;
         this.body = button;
         this.content = getChildBySelector(button, "[data-project-button-content]");
-        this.state = "normal";
     };
 
+    Project.prototype.drawBg = function () {
+        var canvas = this.canvas;
+        var ctx = canvas.getContext("2d");
+        var w = this.body.clientWidth;
+        var h = this.content.scrollHeight;
+        canvas.width = w;
+        canvas.height = h;
+        ctx.drawImage(this.image, 0, 0, w, h);
+        ctx.fillStyle = "rgba(255, 255, 255, 0.6)";
+        ctx.fillRect(0, 0, w, h);
+        stackBlurCanvasRGBA(canvas, 0, 0, w, h, 100); // requires modified function; takes canvas object, not canvas id
+    }
+
     Project.prototype.prime = function () {
-        this.body.classList.remove("full-width", "target-display");
+        this.body.classList.remove("full-width", "target-display", this.id + "-img");
         this.unsetFrame();
         this.close();
+        this.image = new Image();
+        this.image.onload = this.drawBg.bind(this);
+        this.image.src = this.canvas.getAttribute("data-image");
     };
 
     Project.prototype.open = function () {
