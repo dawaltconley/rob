@@ -445,14 +445,13 @@
         var start = true, end;
         window.addEventListener("resize", function (event) {
             var newWidth = document.documentElement.clientWidth;
-            var open = document.querySelector('[data-project-state="open"]');
+            var open = getProject("state", "open");
             if (newWidth != initWidth && open) {
-                var openHeight = getChildBySelector(open, "[data-project-content]").scrollHeight;
                 if (start) {
                     projectView.classList.add("t-none");
                     start = false;
                 }
-                projectView.style.height = openHeight.toString() + "px";
+                projectView.style.height = open.content.scrollHeight.toString() + "px";
                 initWidth = newWidth;
                 window.clearTimeout(end);
                 end = window.setTimeout(function () {
