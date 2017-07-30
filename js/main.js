@@ -181,7 +181,7 @@
  */
 
     var pageScrollBehavior = window.getComputedStyle(page).getPropertyValue("scroll-behavior");
-    var smoothLinks = toArray(document.querySelectorAll("data-smooth-scroll"));
+    var smoothLinks = toArray(document.querySelectorAll("[data-smooth-scroll]"));
 
     var pageScroller = zenscroll.createScroller(page, 999, 0);
 
