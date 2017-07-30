@@ -472,7 +472,7 @@
         window.addEventListener("popstate", function (event) {
             if (event.state) {
                 var target = document.querySelector(event.state.hasFocus);
-                if (recievesSmoothScroll(target)) {
+                if (receivesSmoothScroll(target)) {
                     smoothScrollTo(target);
                 }
             } else {
