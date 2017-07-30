@@ -286,6 +286,7 @@
         this.body.classList.remove("no-height", "translate-x-left", "translate-x-right");
         this.button.content.classList.add("flip-x");
         this.state = "open";
+        expandProjectView(this.content.scrollHeight);
     };
 
     Project.prototype.close = function () {
@@ -359,7 +360,6 @@
                 project.close();
             }
         });
-        expandProjectView(target.content.scrollHeight);
     };
 
     function closeProjects() {
