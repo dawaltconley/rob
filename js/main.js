@@ -472,11 +472,15 @@
                     start = false;
                 }
                 projectView.style.height = open.content.scrollHeight.toString() + "px";
+                open.drawBg();
                 initWidth = newWidth;
                 window.clearTimeout(end);
                 end = window.setTimeout(function () {
                     projectView.classList.remove("t-none");
                     start = true;
+                    projects.forEach(function (project) {
+                        project.drawBg();
+                    });
                 }, 200);
             }
         }, passive);
