@@ -248,7 +248,7 @@
     var projectView = document.querySelector("[data-project-view]");
     var buttonElements = toArray(document.querySelectorAll("[data-project-button]"));
     var projects = Array(buttonElements.length);
-    var projectButtons = Array(buttonElements.length);
+    var justClicked = false;
 
     buttonElements.forEach(function (button, index) {
         var newProject = new Project(document.querySelector(button.hash));
@@ -256,7 +256,6 @@
         newProject.button = newProjectButton;
         newProjectButton.project = newProject;
         projects[index] = newProject;
-        projectButtons[index] = newProjectButton;
     });
 
     function Project(element) {
@@ -285,12 +284,14 @@
     Project.prototype.open = function () {
         this.body.classList.add("t-open-project", "translate-x-none");
         this.body.classList.remove("no-height", "translate-x-left", "translate-x-right");
+        this.button.content.classList.add("flip-x");
         this.state = "open";
     };
 
     Project.prototype.close = function () {
         this.body.classList.add("no-height");
         this.body.classList.remove("t-open-project", "translate-x-none");
+        this.button.content.classList.remove("flip-x");
         this.state = "closed";
     };
 
@@ -302,6 +303,10 @@
     Project.prototype.slideRight = function () {
         this.body.classList.add("translate-x-right");
         this.body.classList.remove("translate-x-left");
+    };
+
+    Project.prototype.center = function () {
+        this.body.classList.remove("translate-x-left", "translate-x-right");
     };
 
     Project.prototype.unsetFrame = function () {
@@ -316,16 +321,6 @@
         }
     };
 
-    ProjectButton.prototype.flip = function () {
-        if (this.state == "flipped") {
-            this.content.classList.remove("flip-x");
-            this.state = "normal";
-        } else {
-            this.content.classList.add("flip-x");
-            this.state = "flipped";
-        }
-    };
-
     function getProject(property, value) {
         for (var i=0; i < projects.length; i++) {
             var project = projects[i];
@@ -336,21 +331,8 @@
         return null;
     }
 
-    function getProjectButton(property, value) {
-        for (var i=0; i < projectButtons.length; i++) {
-            var button = projectButtons[i];
-            if (button[property] == value) {
-                return button;
-            }
-        }
-        return null;
-    }
-
-    function primeProjects() {
+    function primeProjectView() {
         projectView.classList.add("no-height", "expand-children");
-        projects.forEach(function (project) {
-            project.prime();
-        });
     };
 
     function expandProjectView(height) {
@@ -365,18 +347,8 @@
         projectView.style.height = "";
     };
 
-    var justClicked = false;
-
-    function openProject(target) {
-        if (justClicked) {
-            return false;
-        }
-
-        var open = getProject("state", "open");
-        var targetHeight = target.content.scrollHeight;
-
+    function focusProject(target) {
         target.open();
-
         projects.forEach(function (project) {
             if (project.index != target.index) {
                 if (project.index < target.index) {
@@ -387,25 +359,15 @@
                 project.close();
             }
         });
+        expandProjectView(target.content.scrollHeight);
+    };
 
-        if (target === open) {
-            closeProjectView();
-            target.close();
-            clearClass("translate-x-left", projects);
-            clearClass("translate-x-right", projects);
-        } else {
-            expandProjectView(targetHeight);
-        }
-
-        justClicked = true;
-
-        window.setTimeout(function () {
-            target.resetFrame();
-            if (open) {
-                open.unsetFrame();
-            }
-            justClicked = false;
-        }, target.transitionTime);
+    function closeProjects() {
+        projects.forEach(function (project) {
+            project.close();
+            project.center();
+        });
+        closeProjectView();
     };
 
 /*
@@ -425,7 +387,30 @@
     } catch(err) {}
 
     function addProjectListeners() {
-        primeProjects();
+        primeProjectView();
+        projects.forEach(function (project) {
+            project.prime();
+            project.button.body.addEventListener("click", function (event) {
+                event.preventDefault();
+                if (!justClicked) {
+                    justClicked = true;
+                    var open = getProject("state", "open");
+                    if (open === project) {
+                        closeProjects();
+                    } else {
+                        focusProject(project);
+                    }
+                    window.setTimeout(function() {
+                        project.resetFrame();
+                        if (open) {
+                            open.unsetFrame();
+                        }
+                        justClicked = false;
+                    }, project.transitionTime);
+                }
+            });
+        });
+
         if (window.location.hash) {
             var currentProject = getProject("id", window.location.hash);
             if (currentProject) {
@@ -434,30 +419,14 @@
             }
         }
 
-        projectButtons.forEach(function (button) {
-            button.body.addEventListener("click", function (event) {
-                var openButton = getProjectButton("state", "flipped");
-                event.preventDefault();
-                button.flip();
-                if (openButton && openButton !== button) {
-                    openButton.flip();
-                }
-                openProject(button.project);
-                pushState(button.hash);
-            });
-        });
-
         window.addEventListener("popstate", function (event) {
             if (event.state) {
                 var target = getProject("id", event.state.hasFocus);
                 if (target) {
-                    openProject(target);
+                    focusProject(target);
                 }
             } else {
-                var open = getProject("state", "open");
-                if (open) {
-                    openProject(open); // should make seperate function for closing all projects
-                }
+                closeProjects();
             }
         }, passive);
 
