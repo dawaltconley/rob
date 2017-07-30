@@ -9,7 +9,7 @@
 {% capture image %}{{ site.baseurl }}/{{ site.prose.media }}/{{ include.project.image }}{% endcapture %}
 {% assign bg_img = include.project.slug | append: '-img' %}
 
-<div id="{{ include.project.slug }}" class="full-width target-display t-project {{ bg_img }}" data-project data-index="{{ include.index }}">
+<div id="{{ include.project.slug }}" class="full-width target-display t-project overflow-h no-backface {{ bg_img }}" data-project data-index="{{ include.index }}">
 
   <div class="page-wrapper padding-l-v padding-m-h" data-project-content>
 
