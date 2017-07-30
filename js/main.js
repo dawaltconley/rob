@@ -298,11 +298,13 @@
     };
 
     Project.prototype.open = function () {
+        var contentHeight = this.content.scrollHeight;
         this.body.classList.add("t-open-project", "translate-x-none");
         this.body.classList.remove("no-height", "translate-x-left", "translate-x-right");
         this.button.content.classList.add("flip-x");
+        this.body.style.minHeight = contentHeight.toString() + "px";
         this.state = "open";
-        expandProjectView(this.content.scrollHeight);
+        expandProjectView(contentHeight);
     };
 
     Project.prototype.close = function () {
@@ -422,6 +424,7 @@
                         project.resetFrame();
                         if (open) {
                             open.unsetFrame();
+                            open.body.style.minHeight = null;
                         }
                         justClicked = false;
                     }, project.transitionTime);
@@ -449,6 +452,7 @@
                         target.resetFrame();
                         if (open) {
                             open.unsetFrame();
+                            open.body.style.minHeight = null;
                         }
                     }, target.transitionTime);
                 }
