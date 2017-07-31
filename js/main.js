@@ -255,7 +255,7 @@
 
     var projectView = document.querySelector("[data-project-view]");
     var buttonElements = toArray(document.querySelectorAll("[data-project-button]"));
-    var projects = Array(buttonElements.length);
+    var projects = [];
     var projectQueue = [];
     var justClicked = false;
 
@@ -264,7 +264,7 @@
         var newProjectButton = new ProjectButton(button);
         newProject.button = newProjectButton;
         newProjectButton.project = newProject;
-        projects[index] = newProject;
+        projects.push(newProject);
     });
 
     function Project(element) {
