@@ -259,6 +259,7 @@
     var projectQueue = [];
     var justClicked = false;
     var projectTransitionTime = Number("{{ site.project_transition_time }}".slice(1)) * 1000;
+    var projectScroller = zenscroll.createScroller(page, projectTransitionTime, 0);
 
     if (!projectTransitionTime) {
         projectTransitionTime = 1000;
@@ -398,6 +399,7 @@
                 project.close();
             }
         });
+        projectScroller.to(projectView, projectTransitionTime);
         executeQueue(projectQueue, projectTransitionTime);
     };
 
@@ -465,6 +467,7 @@
                 }
             } else {
                 closeProjects();
+                projectScroller.toY(0, projectTransitionTime);
             }
         }, passive);
 
