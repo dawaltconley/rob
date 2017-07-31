@@ -6,6 +6,8 @@ baseurl: ""
 url: "http://www.robertgdon.com/"
 permalink: /:title/
 
+project_transition_time: 1s
+
 # Collections
 
 collections:

@@ -258,7 +258,7 @@
     var projects = [];
     var projectQueue = [];
     var justClicked = false;
-    var projectTransitionTime = getTransitionTime(document.querySelector("[data-project]"));
+    var projectTransitionTime = Number("{{ site.project_transition_time }}".slice(1)) * 1000;
 
     if (!projectTransitionTime) {
         projectTransitionTime = 1000;

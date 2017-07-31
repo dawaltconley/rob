@@ -91,7 +91,7 @@ $themes: (
 
 $trans-default: .3s;
 $trans-slow:    1s;
-$trans-project: 1s;
+$trans-project: {{ site.project_transition_time }};
 
 // Breakpoints
 
