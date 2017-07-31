@@ -397,7 +397,7 @@ ul.media-icon-basic, ul.media-icon-button, ul.media-icon-circle {
 }
 
 .t-deep > * {
-    @extent .t-inherit;
+    @extend .t-inherit;
 }
 
 .t-none {
