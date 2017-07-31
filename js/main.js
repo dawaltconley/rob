@@ -388,6 +388,10 @@
     };
 
     function focusProject(target) {
+        var projectViewTop = pagePos(projectView).top;
+        if (projectView.clientHeight == 0) {
+            projectViewTop += 30;
+        }
         target.open();
         projects.forEach(function (project) {
             if (project.index != target.index) {
@@ -399,7 +403,7 @@
                 project.close();
             }
         });
-        projectScroller.to(projectView, projectTransitionTime);
+        projectScroller.toY(projectViewTop, projectTransitionTime);
         executeQueue(projectQueue, projectTransitionTime);
     };
 
