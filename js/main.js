@@ -458,7 +458,9 @@
         if (window.location.hash) {
             var currentProject = getProject("id", window.location.hash.slice(1));
             if (currentProject) {
-                focusProject(currentProject);
+                window.addEventListener("load", function () {
+                    focusProject(currentProject);
+                });
             }
         }
 
