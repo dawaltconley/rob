@@ -258,6 +258,11 @@
     var projects = [];
     var projectQueue = [];
     var justClicked = false;
+    var projectTransitionTime = getTransitionTime(document.querySelector("[data-project]"));
+
+    if (!projectTransitionTime) {
+        projectTransitionTime = 1000;
+    }
 
     buttonElements.forEach(function (button, index) {
         var newProject = new Project(document.querySelector(button.hash));
@@ -275,7 +280,6 @@
         this.canvas = getChildBySelector(element, "[data-project-background]");
         this.frame = getChildBySelector(element, "iframe");
         this.dummyFrame = document.createElement("div");
-        this.transitionTime = getTransitionTime(element);
     };
 
     function ProjectButton(button) {
@@ -394,7 +398,7 @@
                 project.close();
             }
         });
-        executeQueue(projectQueue, target.transitionTime);
+        executeQueue(projectQueue, projectTransitionTime);
     };
 
     function closeProjects() {
@@ -403,7 +407,7 @@
             project.center();
         });
         closeProjectView();
-        executeQueue(projectQueue, projects[0].transitionTime);
+        executeQueue(projectQueue, projectTransitionTime);
     };
 
 /*
