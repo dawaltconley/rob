@@ -168,6 +168,14 @@
         window.history.pushState({ hasFocus: hash}, hash.slice(1), hash);
     };
 
+    function executeQueue(array, time) {
+        window.setTimeout(function () {
+            while (array.length > 0) {
+                array.shift().call();
+            }
+        }, time);
+    }
+
     function parseBoolean(string) {
         if (string == "true") {
             return true;
@@ -248,6 +256,7 @@
     var projectView = document.querySelector("[data-project-view]");
     var buttonElements = toArray(document.querySelectorAll("[data-project-button]"));
     var projects = Array(buttonElements.length);
+    var projectQueue = [];
     var justClicked = false;
 
     buttonElements.forEach(function (button, index) {
@@ -304,14 +313,21 @@
         this.button.content.classList.add("flip-x");
         this.body.style.minHeight = contentHeight.toString() + "px";
         this.state = "open";
+        projectQueue.push(this.resetFrame.bind(this));
         expandProjectView(contentHeight);
     };
 
     Project.prototype.close = function () {
-        this.body.classList.add("no-height");
-        this.body.classList.remove("t-open-project", "translate-x-none");
-        this.button.content.classList.remove("flip-x");
-        this.state = "closed";
+        if (this.state != "closed") {
+            this.body.classList.add("no-height");
+            this.body.classList.remove("t-open-project", "translate-x-none");
+            this.button.content.classList.remove("flip-x");
+            this.state = "closed";
+            projectQueue.push(function () {
+                this.unsetFrame();
+                this.body.style.minHeight = null;
+            }.bind(this));
+        }
     };
 
     Project.prototype.slideLeft = function() {
@@ -378,6 +394,7 @@
                 project.close();
             }
         });
+        executeQueue(projectQueue, target.transitionTime);
     };
 
     function closeProjects() {
@@ -386,6 +403,7 @@
             project.center();
         });
         closeProjectView();
+        executeQueue(projectQueue, projects[0].transitionTime);
     };
 
 /*
@@ -412,6 +430,9 @@
                 event.preventDefault();
                 if (!justClicked) {
                     justClicked = true;
+                    projectQueue.push(function () {
+                        justClicked = false;
+                    });
                     var open = getProject("state", "open");
                     if (open === project) {
                         closeProjects();
@@ -420,14 +441,6 @@
                         focusProject(project);
                         pushState(project.button.hash);
                     }
-                    window.setTimeout(function() {
-                        project.resetFrame();
-                        if (open) {
-                            open.unsetFrame();
-                            open.body.style.minHeight = null;
-                        }
-                        justClicked = false;
-                    }, project.transitionTime);
                 }
             });
         });
@@ -436,9 +449,6 @@
             var currentProject = getProject("id", window.location.hash.slice(1));
             if (currentProject) {
                 focusProject(currentProject);
-                window.setTimeout(function() {
-                    currentProject.resetFrame();
-                }, currentProject.transitionTime);
             }
         }
 
@@ -448,13 +458,6 @@
                 var open = getProject("state", "open");
                 if (target) {
                     focusProject(target);
-                    window.setTimeout(function() {
-                        target.resetFrame();
-                        if (open) {
-                            open.unsetFrame();
-                            open.body.style.minHeight = null;
-                        }
-                    }, target.transitionTime);
                 }
             } else {
                 closeProjects();
