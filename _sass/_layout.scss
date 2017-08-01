@@ -114,7 +114,8 @@
 }
 
 .v-rhythm > * {
-    @extend %vertical-rhythm;
+    // @extend %vertical-rhythm;
+    margin-bottom: $spacing-unit;
 }
 
 .fullscreen {
