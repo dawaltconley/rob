@@ -147,7 +147,9 @@
 }
 
 .text-wrapper {
-    max-width: $base-line-length;
+    @each $length in $base-line-length {
+        max-width: $length;
+    }
 }
 
 .unwrap {
