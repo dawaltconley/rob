@@ -34,40 +34,8 @@
 }
 
 @each $name, $styles in $themes {
-    $text-color: map-get($styles, "text-color");
-    $background-color: map-get($styles, "background-color");
-
     .#{$name} {
-        background-color: $background-color;
-        color: $text-color;
-        border-color: $text-color;
-
-        @if map-has-key($styles, "font-smoothing") {
-            $fs: map-get($styles, "font-smoothing");
-            @if $fs == "normal" {
-                @extend .font-smoothing-normal;
-            } @else if $fs == "dark" {
-                @extend .font-smoothing-dark;
-            } @else {
-                @error "Bad font-smoothing value in #{$name} theme."
-            }
-        }
-
-        & .text-light {
-            @if lightness($text-color) < lightness($background-color) {
-                color: lighten($text-color, 40%);
-            } @else {
-                color: darken($text-color, 40%);
-            }
-        }
-
-        & .border-light {
-            @if lightness($text-color) < lightness($background-color) {
-                border-color: darken($background-color, 20%);
-            } @else {
-                border-color: lighten($background-color, 20%);
-            }
-        }
+        @include theme-styles($styles);
     }
 }
 

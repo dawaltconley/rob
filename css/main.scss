@@ -73,6 +73,10 @@ $themes: (
     "light": (
         background-color: white,
         text-color: #272727,
+        font-size: 1.35em,
+        mobile: (
+            font-size: 1.2em,
+        ),
     ),
     "dark": (
         background-color: #151515,
@@ -124,6 +128,66 @@ $side: null;
             }
         }
     }
+}
+
+@mixin theme-styles($styles, $background-color: null, $text-color: null) {
+    @if map-has-key($styles, "background-color") or map-has-key($styles, "text-color") {
+        @if map-has-key($styles, "background-color") {
+            $background-color: map-get($styles, "background-color");
+        }
+        @if map-has-key($styles, "text-color") {
+            $text-color: map-get($styles, "text-color");
+        }
+        $light-theme: lightness($text-color) < lightness($background-color);
+        $styles: map-remove($styles, "background-color", "text-color");
+
+        background-color: $background-color;
+        color: $text-color;
+        border-color: $text-color;
+
+        @if $light-theme {
+            @extend .font-smoothing-normal !optional;
+        } @else {
+            @extend .font-smoothing-dark !optional;
+        }
+
+        & .text-light {
+            @if $light-theme {
+                color: lighten($text-color, 40%);
+            } @else {
+                color: darken($text-color, 40%);
+            }
+        }
+
+        & .border-light {
+            @if $light-theme {
+                border-color: darken($background-color, 20%);
+            } @else {
+                border-color: lighten($background-color, 20%);
+            }
+        }
+    }
+
+    @each $property, $value in $styles {
+        @if type-of($value) == "map" {
+            @if $property == "headings" or $property == "h" {
+                & h1, h2, h3, h4, h5, h6 {
+                    @include theme-styles($value, $background-color, $text-color);
+                }
+            } @else {
+                @each $bp-name, $bp-value in $bp {
+                    @if $property == $bp-name {
+                        @media screen and (max-width: $bp-value) {
+                            @include theme-styles($value, $background-color, $text-color);
+                        }
+                    }
+                }
+            }
+        } @else {
+            #{$property}: $value;
+        }
+    }
+
 }
 
 @mixin wrapper ($breakpoints, $min-margins: $spacing-unit) {
