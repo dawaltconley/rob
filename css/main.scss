@@ -146,9 +146,11 @@ $side: null;
         border-color: $text-color;
 
         @if $light-theme {
-            @extend .font-smoothing-normal !optional;
+            -webkit-font-smoothing: subpixel-antialiased;
+            -moz-osx-font-smoothing: auto;
         } @else {
-            @extend .font-smoothing-dark !optional;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
         }
 
         & .text-light {
