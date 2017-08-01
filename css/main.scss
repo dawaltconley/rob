@@ -24,7 +24,7 @@ $perspective:           1000px;
 
 // Colors
 
-$text-color:            black;
+$text-color:            #1d1d1d;
 $background-color:      white;
 $brand-color:           firebrick; // #981212 better if want applied to page title as well
 $shadow-color:          rgba(0, 0, 0, 0.6);
@@ -72,16 +72,10 @@ $borders: (
 $themes: (
     "light": (
         background-color: white,
-        text-color: black,
-        // font-smoothing: normal
+        text-color: #1d1d1d,
     ),
     "dark": (
-        background-color: black,
-        text-color: white,
-        // font-smoothing: dark
-    ),
-    "gray": (
-        background-color: #151515,
+        background-color: #1d1d1d,
         text-color: white,
     ),
     "overlay": (
