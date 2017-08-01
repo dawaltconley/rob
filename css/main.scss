@@ -24,8 +24,6 @@ $perspective:           1000px;
 
 // Colors
 
-$text-color:            #272727;
-$background-color:      white;
 $brand-color:           firebrick; // #981212 better if want applied to page title as well
 $shadow-color:          rgba(0, 0, 0, 0.6);
 
@@ -70,7 +68,7 @@ $borders: (
 );
 
 $themes: (
-    "light": (
+    light: (
         background-color: white,
         text-color: #272727,
         font-size: 1.35rem,
@@ -78,15 +76,17 @@ $themes: (
             font-size: 1.2rem,
         ),
     ),
-    "dark": (
+    dark: (
         background-color: #151515,
         text-color: white,
     ),
-    "overlay": (
+    overlay: (
         background-color: rgba(black, 0.75),
         text-color: white,
     ),
 );
+
+$base-theme: light;
 
 $trans-default: .3s;
 $trans-slow:    1s;
