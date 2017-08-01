@@ -5,6 +5,9 @@
 (function () {
 {% endunless %}
 
+    {% include StackBlur.js %}
+    {% include drawImageProp.js %}
+
     var page = document.querySelector(".parallax-page");
     var win = page;
 
