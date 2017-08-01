@@ -146,6 +146,10 @@
     min-width: 50%;
 }
 
+.text-wrapper {
+    max-width: $base-line-length;
+}
+
 .unwrap {
     width: 100vw;
     margin-left: calc(50% - 50vw);
