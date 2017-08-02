@@ -320,12 +320,14 @@ $side: null;
         }
     }
 
-    background-position: $x $y;
-    background-repeat: no-repeat;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
+    @if not($blur) {
+        background-position: $x $y;
+        background-repeat: no-repeat;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+    }
 }
 
 // This mixin applies the effects its contents when a element
