@@ -1,6 +1,7 @@
 var gulp = require("gulp");
 var concat = require("gulp-concat");
 var uglify = require("gulp-uglify");
+var clean = require("gulp-clean");
 var pump = require("pump");
 var child = require("child_process");
 var runSequence = require("run-sequence");
@@ -25,6 +26,16 @@ gulp.task("js", ["build"], function (cb) {
         concat("all.js"),
         uglify(),
         gulp.dest("./_site/js")
+    ], cb);
+});
+
+gulp.task("clean-js", ["js"], function (cb) {
+    pump([
+        gulp.src([
+            "./_site/js/*",
+            "!./_site/js/all.js"
+        ], { read: false }),
+        clean()
     ], cb);
 });
 
