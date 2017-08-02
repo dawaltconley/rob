@@ -9,10 +9,10 @@ var child = require("child_process");
 
 function jekyllBuild(env = "development") {
     var cmd = "JEKYLL_ENV=" + env + " jekyll build";
-    child.execSync.bind(child, cmd, { stdio: "inherit" });
+    child.execSync(cmd, { stdio: "inherit" });
 }
 
-gulp.task("build", jekyllBuild("netlify"));
+gulp.task("build", jekyllBuild.bind(null, "netlify"));
 
 gulp.task("css", ["build"], function (cb) {
     pump([
