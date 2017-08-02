@@ -4,7 +4,7 @@
   "description": "An artist site for my artist friend.",
   "main": "index.js",
   "scripts": {
-    "build": "npm install ; gulp"
+    "build": "gulp"
   },
   "repository": {
     "type": "git",
