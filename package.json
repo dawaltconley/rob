@@ -17,10 +17,12 @@
   },
   "homepage": "https://github.com/dawaltconley/rob#readme",
   "dependencies": {
+    "autoprefixer": "^7.1.2",
     "child_process": "^1.0.2",
     "gulp": "^3.9.1",
     "gulp-clean": "^0.3.2",
     "gulp-concat": "^2.6.1",
+    "gulp-postcss": "^7.0.0",
     "gulp-uglify": "^3.0.0",
     "pump": "^1.0.2",
     "run-sequence": "^2.1.0"

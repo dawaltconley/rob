@@ -2,6 +2,8 @@ var gulp = require("gulp");
 var concat = require("gulp-concat");
 var uglify = require("gulp-uglify");
 var clean = require("gulp-clean");
+var postcss = require("gulp-postcss");
+var autoprefixer = require("autoprefixer");
 var pump = require("pump");
 var child = require("child_process");
 var runSequence = require("run-sequence");
@@ -12,6 +14,16 @@ function jekyllBuild(env = "development") {
 }
 
 gulp.task("build", jekyllBuild("netlify"));
+
+gulp.task("css", ["build"], function (cb) {
+    pump([
+        gulp.src("./_site/css/main.css"),
+        postcss([
+            autoprefixer()
+        ]),
+        gulp.dest("./_site/css")
+    ], cb);
+});
 
 gulp.task("js", ["build"], function (cb) {
     pump([
@@ -39,4 +51,4 @@ gulp.task("clean-js", ["js"], function (cb) {
     ], cb);
 });
 
-gulp.task("default", ["js", "clean-js"]);
+gulp.task("default", ["css", "js", "clean-js"]);
