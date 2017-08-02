@@ -9,8 +9,8 @@ var child = require("child_process");
 var runSequence = require("run-sequence");
 
 function jekyllBuild(env = "development") {
-    env = "JEKYLL_ENV=" + env + " ";
-    child.execSync(env + "jekyll build", { stdio: "inherit" });
+    var cmd = "JEKYLL_ENV=" + env + " jekyll build";
+    child.execSync.bind(child, cmd, { stdio: "inherit" });
 }
 
 gulp.task("build", jekyllBuild("netlify"));
