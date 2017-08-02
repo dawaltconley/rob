@@ -6,7 +6,6 @@ var postcss = require("gulp-postcss");
 var autoprefixer = require("autoprefixer");
 var pump = require("pump");
 var child = require("child_process");
-var runSequence = require("run-sequence");
 
 function jekyllBuild(env = "development") {
     var cmd = "JEKYLL_ENV=" + env + " jekyll build";
