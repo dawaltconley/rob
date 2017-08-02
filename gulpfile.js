@@ -1,7 +1,7 @@
 var gulp = require("gulp");
 var concat = require("gulp-concat");
 var uglify = require("gulp-uglify");
-var pump = require("pump")
+var pump = require("pump");
 var child = require("child_process");
 var runSequence = require("run-sequence");
 
@@ -10,7 +10,9 @@ function jekyllBuild(env = "development") {
     child.execSync(env + "jekyll build", { stdio: "inherit" });
 }
 
-gulp.task("js", function (cb) {
+gulp.task("build", jekyllBuild("netlify"));
+
+gulp.task("js", ["build"], function (cb) {
     pump([
         gulp.src([
             "./_site/js/polyfills/rAF.js", // needed for another polyfill
@@ -26,7 +28,4 @@ gulp.task("js", function (cb) {
     ], cb);
 });
 
-gulp.task("deploy", function () {
-    jekyllBuild("production");
-    runSequence("js");
-});
+gulp.task("default", ["js", "clean-js"]);
