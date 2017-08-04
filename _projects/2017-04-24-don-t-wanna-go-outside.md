@@ -4,6 +4,6 @@ published: false
 title: Don't Wanna Go Outside
 link: 'https://soundcloud.com/jwelljake/jwell-dont-wanna-go-outside-ft-robert-don'
 media: soundcloud
-image: dontwannagooutside-small.jpg
+image: dontwannagooutside.jpg
 ---
 Single for NYC based rapper JWELL. Producer, writer, and vocalist. 

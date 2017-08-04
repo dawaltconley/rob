@@ -4,6 +4,6 @@ published: false
 title: The Once and Future Nerd Book 2
 link: 'https://www.facebook.com/toafn/'
 media: page
-image: onceandfuturenerd-small.jpg
+image: onceandfuturenerd.jpg
 ---
 Recording engineer for the original fantasy/comedy audio series.

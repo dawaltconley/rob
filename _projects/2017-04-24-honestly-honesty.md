@@ -5,6 +5,6 @@ title: Honestly Honesty
 link: 'https://robertdon.bandcamp.com/album/honestly-honesty'
 tralbum_id: 931181500
 media: bandcamp
-image: honestlyhonesty-small.jpg
+image: honestlyhonesty.jpg
 ---
 Solo release.

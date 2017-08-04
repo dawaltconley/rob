@@ -4,6 +4,6 @@ published: false
 title: Push It Back
 link: 'https://soundcloud.com/realdjpaige/sets/push-it-back-armada'
 media: soundcloud
-image: pushitback-small.jpg
+image: pushitback.jpg
 ---
 Co-wrote with Pipo Fernandez and produced by Tony Bella and DJ Paige.

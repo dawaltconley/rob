@@ -5,6 +5,6 @@ title: Voice Memos
 link: 'https://allcapsladd.bandcamp.com/album/voice-memos'
 tralbum_id: 3607547334
 media: bandcamp
-image: voicememos-small.jpg
+image: voicememos.jpg
 ---
 Debut release by rock quartet all-caps LADD. Credited as engineer, mixer, and mastering engineer.

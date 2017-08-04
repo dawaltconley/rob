@@ -1,10 +1,13 @@
 var gulp = require("gulp");
 var concat = require("gulp-concat");
 var uglify = require("gulp-uglify");
+var rename = require("gulp-rename");
 var clean = require("gulp-clean");
+var imageResize = require("gulp-image-resize");
 var postcss = require("gulp-postcss");
 var autoprefixer = require("autoprefixer");
 var pump = require("pump");
+var merge = require("merge-stream");
 var child = require("child_process");
 
 function jekyllBuild(env = "development") {
@@ -50,4 +53,32 @@ gulp.task("clean-js", ["js"], function (cb) {
     ], cb);
 });
 
-gulp.task("default", ["css", "js", "clean-js"]);
+gulp.task("images", ["build"], function () {
+    var src = "./_site/media/project-images/*";
+    var dest = "./_site/media/project-images";
+    var thumbnails = gulp.src(src)
+        .pipe(
+            imageResize({
+                width: 268,
+                height: 268,
+                crop: true,
+                upscale: false
+            })
+        )
+        .pipe(rename({ suffix: "-thumb" }))
+        .pipe(gulp.dest(dest));
+    var displays = gulp.src(src)
+        .pipe(
+            imageResize({
+                width: 675,
+                height: 675,
+                crop: true,
+                upscale: false
+            })
+        )
+        .pipe(rename({ suffix: "-display" }))
+        .pipe(gulp.dest(dest));
+    return merge(thumbnails, displays);
+});
+
+gulp.task("default", ["build", "css", "js", "clean-js", "images"]);
