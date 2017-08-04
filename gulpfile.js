@@ -4,6 +4,7 @@ var uglify = require("gulp-uglify");
 var rename = require("gulp-rename");
 var clean = require("gulp-clean");
 var imageResize = require("gulp-image-resize");
+var imageMin = require("gulp-imagemin");
 var postcss = require("gulp-postcss");
 var autoprefixer = require("autoprefixer");
 var pump = require("pump");
@@ -66,6 +67,7 @@ gulp.task("images", ["build"], function () {
             })
         )
         .pipe(rename({ suffix: "-thumb" }))
+        .pipe(imageMin())
         .pipe(gulp.dest(dest));
     var displays = gulp.src(src)
         .pipe(
@@ -77,6 +79,7 @@ gulp.task("images", ["build"], function () {
             })
         )
         .pipe(rename({ suffix: "-display" }))
+        .pipe(imageMin())
         .pipe(gulp.dest(dest));
     return merge(thumbnails, displays);
 });
