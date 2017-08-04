@@ -1,7 +1,5 @@
 # Global Variables
 
-title: Robert Don
-description: "Producer. Musician. Audio engineer."
 baseurl: ""
 url: "http://www.robertgdon.com/"
 permalink: /:title/
