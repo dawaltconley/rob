@@ -81,4 +81,15 @@ gulp.task("images", ["build"], function () {
     return merge(thumbnails, displays);
 });
 
-gulp.task("default", ["build", "css", "js", "clean-js", "images"]);
+gulp.task("clean-images", ["images"], function (cb) {
+    pump([
+        gulp.src([
+            "./_site/media/project-images/*",
+            "!./_site/media/project-images/*-thumb*",
+            "!./_site/media/project-images/*-display*"
+        ], { read: false }),
+        clean()
+    ], cb);
+});
+
+gulp.task("default", ["build", "css", "js", "clean-js", "images", "clean-images"]);
