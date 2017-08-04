@@ -4,6 +4,6 @@ media: vimeo
 published: false
 title: Coppertone Pool
 link: 'https://vimeo.com/214580255'
-image: media/project-images/CoppertonePool.jpg
+image: CoppertonePool.jpg
 ---
 My submission for a Coppertone ad spot.
