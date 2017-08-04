@@ -6,4 +6,4 @@ link: 'https://www.facebook.com/toafn/'
 media: page
 image: onceandfuturenerd.jpg
 ---
-Recording engineer for the original fantasy/comedy audio series.
+Recording engineer for the second season of the original fantasy/comedy audio series. Check out episodes at their website [http://onceandfuturenerd.com/](http://onceandfuturenerd.com/)!
