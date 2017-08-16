@@ -14,11 +14,13 @@ layout: default
       <p class="caps">{{ site.data.config.description }}</p>
     </a>
 
+    <a href="#project-links" class="fa fa-chevron-down subtle-icon scroll-arrow" data-smooth-scroll data-hide-on-scroll></a>
+
   </div>
 
 </div>
 
-<div id="project-view" class="overflow-h margin-m-v t-project-view hw-accel no-backface" data-project-view>
+<div id="project-view" class="overflow-h t-project-view hw-accel no-backface" data-project-view>
 
   {% assign project_count = 1 %}
   {% for project_title in site.data.projects %}
@@ -32,7 +34,7 @@ layout: default
 
 </div>
 
-<div id="project-links" class="page-wrapper padding-m-h margin-m-t margin-l-b font-0 contains-3d-deep">
+<div id="project-links" class="page-wrapper padding-m-h padding-l-v font-0 contains-3d-deep">
 
   {% for project_title in site.data.projects %}
     {% for project in site.projects %}

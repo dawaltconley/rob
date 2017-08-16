@@ -193,8 +193,9 @@
 
     var pageScrollBehavior = window.getComputedStyle(page).getPropertyValue("scroll-behavior");
     var smoothLinks = toArray(document.querySelectorAll("[data-smooth-scroll]"));
+    // make objects
 
-    var pageScroller = zenscroll.createScroller(page, 999, 0);
+    var pageScroller = zenscroll.createScroller(page, 1000, 0);
 
     function getHash(element) {
         //should remove, not using
@@ -379,22 +380,22 @@
     };
 
     function expandProjectView(height) {
-        projectView.classList.add("margin-l-v");
-        projectView.classList.remove("margin-m-v");
+        // projectView.classList.add("margin-l-v");
+        // projectView.classList.remove("margin-m-v");
         projectView.style.height = height.toString() + "px";
     };
 
     function closeProjectView() {
-        projectView.classList.add("margin-m-v");
-        projectView.classList.remove("margin-l-v");
+        // projectView.classList.add("margin-m-v");
+        // projectView.classList.remove("margin-l-v");
         projectView.style.height = "";
     };
 
     function focusProject(target) {
-        var projectViewTop = pagePos(projectView).top;
-        if (projectView.clientHeight == 0) {
-            projectViewTop += 30;
-        }
+        // var projectViewTop = pagePos(projectView).top;
+        // if (projectView.clientHeight == 0) {
+        //     projectViewTop += 30;
+        // }
         target.open();
         projects.forEach(function (project) {
             if (project.index != target.index) {
@@ -406,7 +407,8 @@
                 project.close();
             }
         });
-        projectScroller.toY(projectViewTop, projectTransitionTime);
+        // projectScroller.toY(projectViewTop, projectTransitionTime);
+        projectScroller.toY(pagePos(projectView).top, projectTransitionTime);
         executeQueue(projectQueue, projectTransitionTime);
     };
 
