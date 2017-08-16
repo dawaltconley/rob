@@ -293,6 +293,10 @@
     @extend .flex-justify-center, .flex-align-center;
 }
 
+.flex-align-bottom {
+    align-items: flex-end;
+}
+
 .fill-flex-parent {
     flex: 1 1 auto;
 }

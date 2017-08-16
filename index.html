@@ -2,17 +2,18 @@
 layout: default
 ---
 
+{% assign email = site.data.contact.email %}
 {% capture bio %}{% include bio.md %}{% endcapture %}
 
-<div class="page-wrapper padding-m-h margin-m-b">
+<div class="dark fullscreen-fixed splash-img">
 
-  <a href="{{ site.baseurl }}/" class="inline-block subtle-icon margin-m-b">
-    <h1 class="title margin-0">{{ site.data.config.title }}</h1>
-    <p class="subtitle fw-600">{{ site.data.config.description }}</p>
-  </a>
+  <div class="flex-col flex-align-center full-height page-wrapper padding-m">
 
-  <div class="text-wrapper">
-    {{ bio | markdownify }}
+    <a href="{{ site.baseurl }}/" class="subtle-icon margin-auto text-center full-shadow">
+      <h1 class="title margin-0 border-thick-b">{{ site.data.config.title }}</h1>
+      <p class="caps">{{ site.data.config.description }}</p>
+    </a>
+
   </div>
 
 </div>
@@ -31,7 +32,7 @@ layout: default
 
 </div>
 
-<div id="project-links" class="page-wrapper padding-m-h margin-m-t font-0 contains-3d-deep">
+<div id="project-links" class="page-wrapper padding-m-h margin-m-t margin-l-b font-0 contains-3d-deep">
 
   {% for project_title in site.data.projects %}
     {% for project in site.projects %}

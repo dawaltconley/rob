@@ -42,12 +42,24 @@
 }
 
 .title {
-    font-family: $title-font-family;
-    font-size: 8.36vmin;
+    //font-family: $title-font-family;
+    //font-size: 8.36vmin;
+    font-family: Raleway;
+    font-weight: 200;
+    letter-spacing: 2px;
+    font-size: 4.4em;
 }
 
 .subtitle {
-    font-size: 2.88vmin;
+    //font-size: 2.88vmin;
+    font-size: smaller;
+}
+
+.caps {
+    font-family: $caps-font-family;
+    font-weight: 700;
+    font-size: 2em;
+    text-transform: uppercase;
 }
 
 @media screen and (max-width: $bp-mobile) {
@@ -61,6 +73,10 @@
 
 .shadow {
     text-shadow: 2px 1px 6px $shadow-color;
+}
+
+.full-shadow {
+    text-shadow: 0 0 0.24em black;
 }
 
 .font-smoothing-normal {
@@ -89,10 +105,6 @@
 /*
  * Block Styles
  */
-
-.border-basic {
-    @extend .border-basic;
-}
 
 .border-between {
     @extend .border-basic-b;
@@ -145,6 +157,10 @@
 
 .img-cover {
     object-fit: cover;
+}
+
+.splash-img {
+    @include background-image($splash-image, $darken: .6);
 }
 
 @each $name, $image in $project-images {

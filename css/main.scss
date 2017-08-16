@@ -5,7 +5,8 @@
 @import url('https://fonts.googleapis.com/css?family=Raleway:400,400i,600,600i|Chonburi');
 // @import url('https://fonts.googleapis.com/css?family=Courgette|Lobster|Niconne|Pacifico|Poiret+One|Reenie+Beanie');
 // @import url('https://fonts.googleapis.com/css?family=Abril+Fatface|Chonburi|Gruppo|Prosto+One');
-// @import url('https://fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i|Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i|Raleway:100,200,300,400,500,600,700,800,900|Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i|Chonburi');
+@import url('https://fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i|Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i|Raleway:100,200,300,400,500,600,700,800,900|Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i|Chonburi');
+@import url('https://fonts.googleapis.com/css?family=Anton|News+Cycle:700|Open+Sans+Condensed:700|Oswald|Teko:600');
 
 // Basic Variables
 
@@ -20,6 +21,7 @@ $base-line-length:      36em;
 $header-font-weight:    600;
 
 $title-font-family:     "Chonburi", serif;
+$caps-font-family:      "Oswald", sans-serif;
 
 $perspective:           1000px;
 
@@ -35,6 +37,10 @@ $gray-color-dark:       darken($gray-color, 25%);
 $fa-icons:              ({% for icon in site.data.icon-types %}
                             {{ icon.type }}: {{ icon.color }},{% endfor %}
                         );
+
+// Images
+
+$splash-image:          url({{ site.baseurl | append: '/media/backgrounds/bg-1.jpg' }});
 
 $project-images:        ({% for project in site.projects %}
                             {{ project.slug }}: url({{ site.baseurl }}/{{ site.prose.media}}/{{ project.image }}),{% endfor %}
@@ -56,6 +62,7 @@ $margins: (
 
 $paddings: (
     "xs":       10px,
+    "s":        15px,
     "m":        30px,
     "l":        60px,
 );
@@ -63,6 +70,11 @@ $paddings: (
 $borders: (
     "basic": (
         width: 1px,
+        style: solid,
+        color: inherit
+    ),
+    "thick": (
+        width: 2px,
         style: solid,
         color: inherit
     ),
