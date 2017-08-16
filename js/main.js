@@ -537,6 +537,24 @@
         }
     };
 
+    var elementsToHideOnScroll = toArray(document.querySelectorAll("[data-hide-on-scroll]"));
+
+    function addHideOnScrollListener() {
+        win.addEventListener("scroll", function hideOnScroll() {
+            var stop = this.removeEventListener.bind(this, "scroll", hideOnScroll, false);
+            if (elementsToHideOnScroll.length == 0) {
+                stop();
+            } else {
+                elementsToHideOnScroll.forEach(function (element, i) {
+                    if (element.getBoundingClientRect().bottom < 0) {
+                        element.style.display = "none";
+                        elementsToHideOnScroll.splice(i, 1);
+                    }
+                });
+            }
+        }, passive);
+    }
+
     if (projects.length > 0) {
         addProjectListeners();
     }
@@ -550,6 +568,10 @@
         window.onload = function () {
             forceFullscreenAll();
         };
+    }
+
+    if (elementsToHideOnScroll.length > 0) {
+        addHideOnScrollListener();
     }
 
 {% unless jekyll.environment == "development" %}
