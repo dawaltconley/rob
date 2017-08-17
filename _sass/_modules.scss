@@ -134,28 +134,29 @@
  * Links
  */
 
-.subtle-link {
-    color: inherit !important;
-    text-decoration: none !important;
+a.subtle-link {
+    color: inherit;
+    text-decoration: none;
 
     &:visited {
-        color: inherit !important;
+        color: inherit;
     }
 
     &:hover {
-        color: inherit !important;
+        color: inherit;
+        text-decoration: underline;
     }
 }
 
-.subtle-icon {
+a.subtle-icon {
     @extend .subtle-link;
 
     &:hover {
-        text-decoration: none !important;
+        text-decoration: none;
     }
 }
 
-.button {
+a.button {
     @extend .inline-block, .subtle-icon;
     padding: 0.8rem 1rem 1rem;
     line-height: 1;
