@@ -200,9 +200,17 @@ $side: null;
 
         .border-light, &.border-light {
             @if $light-theme {
-                border-color: darken($background-color, 20%);
+                border-color: darken($background-color, 10%);
             } @else {
-                border-color: lighten($background-color, 20%);
+                border-color: lighten($background-color, 10%);
+            }
+        }
+
+        .bordera-x-light, &.border-x-light {
+            @if $light-theme {
+                border-color: darken($background-color, 5%);
+            } @else {
+                border-color: lighten($background-color, 5%);
             }
         }
     }
