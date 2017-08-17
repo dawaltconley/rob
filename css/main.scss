@@ -190,7 +190,7 @@ $side: null;
             }
         }
 
-        & .text-light {
+        .text-light  &.text-light {
             @if $light-theme {
                 color: lighten($text-color, 40%);
             } @else {
@@ -198,7 +198,7 @@ $side: null;
             }
         }
 
-        & .border-light {
+        .border-light, &.border-light {
             @if $light-theme {
                 border-color: darken($background-color, 20%);
             } @else {
