@@ -62,14 +62,14 @@
     text-transform: uppercase;
 }
 
-@media screen and (max-width: $bp-mobile) {
-    .title {
-        font-size: 12.48vmin;
-    }
-    .subtitle {
-        font-size: 4.32vmin;
-    }
-}
+// @media screen and (max-width: $bp-mobile) {
+//     .title {
+//         font-size: 12.48vmin;
+//     }
+//     .subtitle {
+//         font-size: 4.32vmin;
+//     }
+// }
 
 .shadow {
     text-shadow: 2px 1px 6px $shadow-color;
