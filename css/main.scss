@@ -166,6 +166,27 @@ $side: null;
             -moz-osx-font-smoothing: grayscale;
         }
 
+
+        a {
+            @if $light-theme {
+                &:visited {
+                    color: darken($brand-color, 25%);
+                }
+
+                &:hover {
+                    color: darken($brand-color, 15%);
+                }
+            } @else {
+                &:visited {
+                    color: lighten($brand-color, 25%);
+                }
+
+                &:hover {
+                    color: lighten($brand-color, 15%);
+                }
+            }
+        }
+
         & .text-light {
             @if $light-theme {
                 color: lighten($text-color, 40%);
