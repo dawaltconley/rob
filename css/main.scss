@@ -41,6 +41,7 @@ $fa-icons:              ({% for icon in site.data.icon-types %}
 // Images
 
 $splash-image:          url({{ site.baseurl | append: '/media/backgrounds/bg-1.jpg' }});
+$cta-image:             url({{ site.baseurl | append: '/media/backgrounds/bg-3.jpg' }});
 
 $project-images:        ({% for project in site.projects %}
                             {{ project.slug }}: url({{ site.baseurl }}/{{ site.prose.media}}/{{ project.image }}),{% endfor %}
