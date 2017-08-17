@@ -270,22 +270,22 @@
 .media-icon {
     display: inline-block;
     position: relative;
+    line-height: inherit;
+    transition: .3s;
     z-index: 1;
 
     &::before {
         @extend .no-select;
         position: relative;
         user-select: none;
-        transition: .3s;
         z-index: 3;
     }
 
     &::after {
         content: "";
         position: absolute;
-        top: 0; bottom: 0;
-        left: 50%; right: 50%;
-        transition: .3s;
+        top: 0; left: 0; right: 0; bottom: 0;
+        transition: inherit;
         z-index: 2;
     }
 }
@@ -304,14 +304,26 @@
 // square buttons. white icons with brand-color background. hovering animates to white background with icons in their brand color.
 .media-icon-button .media-icon {
     @extend .media-icon-bloat;
+    color: white;
+
+    &:hover::after {
+        background-color: rgba(white, 0.2);
+    }
+}
+
+.media-icon-shutter .media-icon {
+    @extend .media-icon-bloat;
 
     &:not(:hover) {
         color: white;
     }
 
+    &::after {
+        left: 50%; right: 50%;
+    }
+
     &:hover::after {
         left: 0; right: 0;
-        background-color: rgba(255, 255, 255, 0.8);
         background-color: white;
     }
 }
@@ -344,10 +356,10 @@ ul.media-icon-basic, ul.media-icon-button, ul.media-icon-circle {
 
     &.media-icon-circle .media-icon {
         flex: 0 1 auto;
-        margin: 0 .25em
+        margin: 0 .25em;
     }
 
-    &:not(.flex-row):not(.flex-col) {
+    &:not(.flex-row):not(.flex-col):not(.media-icon-circle) .media-icon {
         min-width: 2em;
     }
 
