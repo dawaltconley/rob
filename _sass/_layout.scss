@@ -3,12 +3,37 @@
  */
 
 @each $name, $size in $sizes {
+    $width: null;
+    $height: null;
+
+    @if length($size) == 1 {
+        $width: $size;
+        $height: $size;
+    } @else if length($size) == 2 {
+        $width: nth($size, 1);
+        $height: nth($size, 2);
+    } @else {
+        @error "Wrong number of values in #{$name} size.";
+    }
+
     .#{$name} {
         &-size, &-width {
-            width: $size;
+            width: $width;
         }
         &-size, &-height {
-            height: $size;
+            height: $height;
+        }
+        &-size-min, &-width-min {
+            min-width: $width;
+        }
+        &-size-min, &-height-min {
+            min-height: $height;
+        }
+        &-size-max, &-width-max {
+            max-width: $width;
+        }
+        &-size-max, &-height-max {
+            max-height: $height;
         }
     }
 }
@@ -83,18 +108,6 @@
 
 .v-rhythm > * {
     @extend %vertical-rhythm;
-}
-
-.fullscreen {
-    min-height: 100vh;
-}
-
-.fullscreen-fixed {
-    height: 100vh;
-}
-
-.half-screen {
-    min-height: 50vh;
 }
 
 .hidden {

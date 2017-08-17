@@ -215,13 +215,13 @@
     padding: .2em;
 }
 
-@media screen and (max-height: $bp-mobile) and (min-width: 450px) {
-    .fullscreen-fixed .scroll-arrow {
-        position: absolute;
-        bottom: $spacing-unit;
-        right: $spacing-unit;
-    }
-}
+// @media screen and (max-height: $bp-mobile) and (min-width: 450px) {
+//     .scroll-arrow {
+//         position: absolute;
+//         bottom: $spacing-unit;
+//         right: $spacing-unit;
+//     }
+// }
 
 .fa-icon-circle {
     $circle-size: 1.5;

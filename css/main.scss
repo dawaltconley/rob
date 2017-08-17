@@ -50,8 +50,10 @@ $project-images:        ({% for project in site.projects %}
 // Layouts
 
 $sizes: (
-    "full":     100%,
-    "no":       0,
+    "full":             100%,
+    "screen":           100vw 100vh,
+    "half-screen":      50vw 50vh,
+    "no":               0,
 );
 
 $margins: (
