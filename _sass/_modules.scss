@@ -134,7 +134,7 @@
  * Links
  */
 
-a.subtle-link {
+.subtle-link {
     color: inherit;
     text-decoration: none;
 
@@ -148,7 +148,7 @@ a.subtle-link {
     }
 }
 
-a.subtle-icon {
+.subtle-icon {
     @extend .subtle-link;
 
     &:hover {
@@ -156,7 +156,7 @@ a.subtle-icon {
     }
 }
 
-a.button {
+.button {
     @extend .inline-block, .subtle-icon;
     padding: 0.8rem 1rem 1rem;
     line-height: 1;
