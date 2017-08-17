@@ -329,3 +329,25 @@
 .flex-space-around {
     justify-content: space-around;
 }
+
+/*
+ * Media Queries
+ */
+
+.footer {
+    @media screen and (max-width: $bp-laptop) {
+        .table {
+            display: block;
+        }
+
+        .cell {
+            display: block;
+            padding: 0;
+            border: 0;
+        }
+    }
+
+    @media screen and (max-width: $bp-mobile) {
+        font-size: 1.2em;
+    }
+}
