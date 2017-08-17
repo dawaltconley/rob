@@ -59,6 +59,7 @@ $sizes: (
 $margins: (
     "auto":     auto,
     "0":        0,
+    "s":        15px,
     "m":        30px,
     "l":        60px,
 );
@@ -102,6 +103,7 @@ $themes: (
     ),
     small: (
         font-size: 14px,
+        line-height: 1.5,
     )
 );
 

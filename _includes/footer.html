@@ -2,10 +2,14 @@
 
   <div class="page-wrapper padding-m text-center">
 
-    <span class="small">
+    <div class="margin-s-b media-icon-basic media-icon-list">
+      {% include all-media-icons.liquid icon_set=site.data.contact %}
+    </div>
+
+    <div class="small">
       Copyright &copy; {{ 'now' | date: '%Y' }} Dylan Awalt-Conley | 
       Site design by <a href="https://github.com/dawaltconley" class="subtle-link" target="_blank"><i class="fa fa-github">&nbsp;</i>Dylan Awalt-Conley</a>
-    </span>
+    </div>
 
   </div
 
