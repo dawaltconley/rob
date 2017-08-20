@@ -6,4 +6,4 @@ image: truthserum.jpg
 link: 'https://soundcloud.com/scram-jones/scram-truth-serum-unmastered'
 media: soundcloud
 ---
-Vocal production for Scram Jones’ single.
+I contributed vocal editing and production for Scram Jones’ single.
