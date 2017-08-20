@@ -502,13 +502,11 @@ ul.media-icon-basic, ul.media-icon-button, ul.media-icon-circle {
     }
 }
 
-.hover-blur {
-    @include blur(0);
-    -webkit-transition: -webkit-filter $trans-default;
-    transition: filter $trans-default;
+.hover-scale {
+    transform: scale(1) translateZ(0);
 
     @include hover {
-        @include blur(5px);
+        transform: scale(1.05) translateZ(0);
     }
 }
 
@@ -528,11 +526,13 @@ ul.media-icon-basic, ul.media-icon-button, ul.media-icon-circle {
     }
 }
 
-.hover-scale {
-    transform: scale(1) translateZ(0);
+.hover-blur {
+    @include blur(0);
+    -webkit-transition: -webkit-filter $trans-default;
+    transition: filter $trans-default;
 
     @include hover {
-        transform: scale(1.1) translateZ(0);
+        @include blur(5px);
     }
 }
 
