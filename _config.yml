@@ -1,8 +1,11 @@
 # Global Variables
 
+title: Robert Don
+description: "Producer. Mixer. Musician."
 baseurl: ""
 url: "http://www.robertgdon.com/"
 permalink: /:title/
+google_analytics:
 
 project_transition_time: 1s
 
