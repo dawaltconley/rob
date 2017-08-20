@@ -14,7 +14,7 @@ layout: default
       <p class="subtitle caps">{{ site.description }}</p>
     </a>
 
-    <a href="#projects" class="fa fa-chevron-down subtle-icon scroll-arrow" data-smooth-scroll data-hide-on-scroll></a>
+    <a href="#portfolio" class="fa fa-chevron-down subtle-icon scroll-arrow" data-smooth-scroll data-hide-on-scroll></a>
 
   </div>
 
@@ -36,35 +36,45 @@ layout: default
 
 </div>
 
-<div id="projects" class="page-wrapper padding-m-h padding-l-v font-0 contains-3d-deep">
+<div id="portfolio" class="page-wrapper padding-m-h padding-l-v">
 
-  {% for project_title_1 in site.data.projects %}
-    {% assign project_title_1 = project_title_1 | replace: '&nbsp;', ' ' %}
-    {% for project in site.projects %}
-      {% assign project_title_2 = project.title | replace: '&nbsp;', ' ' %}
-      {% if project_title_1 == project_title_2 %}
-        {% capture image %}{{ site.baseurl }}/{{ site.prose.media }}/{{ project.image }}{% endcapture %}
-        {% if jekyll.environment == 'netlify' %}
-          {% capture image %}{% include file-suffix.liquid file_name=image suffix='-thumb' %}{% endcapture %}
+  <h2 class="caps">Portfolio</h2>
+
+  <div class="margin-l-b font-0 contains-3d-deep">
+    {% for project_title_1 in site.data.projects %}
+      {% assign project_title_1 = project_title_1 | replace: '&nbsp;', ' ' %}
+      {% for project in site.projects %}
+        {% assign project_title_2 = project.title | replace: '&nbsp;', ' ' %}
+        {% if project_title_1 == project_title_2 %}
+          {% capture image %}{{ site.baseurl }}/{{ site.prose.media }}/{{ project.image }}{% endcapture %}
+          {% if jekyll.environment == 'netlify' %}
+            {% capture image %}{% include file-suffix.liquid file_name=image suffix='-thumb' %}{% endcapture %}
+          {% endif %}
+          <a href="#{{ project.slug }}" class="subtle-icon inline-col-1 overflow-h hover" data-project-button>
+            <div class="square t-button-flip" data-project-button-content>
+              <img class="img-cover hover-blur no-backface" src="{{ image }}" alt="{{ project.title }}">
+              <div class="overlay flex-col padding-xs text-center hover-fade-in no-backface">
+                <span class="margin-auto">
+                  {{ project.title }}
+                </span>
+              </div>
+              <div class="dark flex-col padding-xs text-center flip-x no-backface hover-lighten t-default">
+                <span class="margin-auto">
+                  Close
+                </span>
+              </div>
+            </div>
+          </a>
         {% endif %}
-        <a href="#{{ project.slug }}" class="subtle-icon inline-col-1 overflow-h hover" data-project-button>
-          <div class="square t-button-flip" data-project-button-content>
-            <img class="img-cover hover-blur no-backface" src="{{ image }}" alt="{{ project.title }}">
-            <div class="overlay flex-col padding-xs text-center hover-fade-in no-backface">
-              <span class="margin-auto">
-                {{ project.title }}
-              </span>
-            </div>
-            <div class="dark flex-col padding-xs text-center flip-x no-backface hover-lighten t-default">
-              <span class="margin-auto">
-                Close
-              </span>
-            </div>
-          </div>
-        </a>
-      {% endif %}
+      {% endfor %}
     {% endfor %}
-  {% endfor %}
+  </div>
+
+  <h2 class="caps">About Me</h2>
+
+  <div class="text-wrapper">
+    {{ bio | markdownify }}
+  </div>
 
 </div>
 
