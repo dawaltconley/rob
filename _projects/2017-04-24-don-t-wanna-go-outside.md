@@ -6,4 +6,4 @@ link: 'https://soundcloud.com/jwelljake/jwell-dont-wanna-go-outside-ft-robert-do
 media: soundcloud
 image: dontwannagooutside.jpg
 ---
-Single for NYC based rapper JWELL. Producer, writer, and vocalist. 
+Producer, writer, and vocalist for this single by NYC based rapper JWELL.
