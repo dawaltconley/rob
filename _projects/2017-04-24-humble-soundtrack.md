@@ -7,4 +7,4 @@ tralbum_id: '2061589868'
 media: bandcamp
 image: humble.jpg
 ---
-Composer and sound designer for Humble, an indie 2D platforming video game (and my college senior thesis project). Additionally contributed as game designer and programmer.
+Composer and sound designer for Humble, an indie 2D platforming video game (and my undergraduate thesis project). Additionally contributed as game designer and programmer.
