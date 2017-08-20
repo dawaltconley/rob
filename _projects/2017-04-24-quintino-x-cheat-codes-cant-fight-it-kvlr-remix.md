@@ -7,4 +7,4 @@ link: >-
 media: soundcloud
 image: cantfightit.jpg
 ---
-Mastering engineer for KVLR’s debut remix for the Spinning’ Records contest.
+Mastering engineer for KVLR’s debut remix for a contest held by Spinnin’ Records.
