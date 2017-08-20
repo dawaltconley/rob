@@ -7,4 +7,4 @@ link: >-
 media: soundcloud
 image: inktheoctopus.jpg
 ---
-Mixing engineer for Ink the Octopus’ single.
+Mixer for folk duo Ink the Octopus’ track on their debut EP.
