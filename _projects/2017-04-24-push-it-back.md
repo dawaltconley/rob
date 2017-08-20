@@ -6,4 +6,4 @@ link: 'https://soundcloud.com/realdjpaige/sets/push-it-back-armada'
 media: soundcloud
 image: pushitback.jpg
 ---
-Single co-written with Pipo Fernandez and produced by Tony Bella and DJ Paige. Released in April of 2017 by Armada Deep.
+Co-writer for DJ Paige's single. Released in April of 2017 by Armada Deep.
