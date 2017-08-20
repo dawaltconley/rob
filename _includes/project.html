@@ -28,9 +28,7 @@
           {% case type %}
           {% when 'bandcamp' %}
             <div class="square margin-m-b">
-              <div class="overlay flex-col flex-center">
-                <i class="fa fa-spinner fa-pulse fa-3x"></i>
-              </div>
+              {% include loading.html %}
               {% assign link_array = link | split: '/' %}
               <iframe class="full-width" src="https://bandcamp.com/EmbeddedPlayer/{{ link_array[3] }}={{ include.project.tralbum_id }}/size=large/bgcol=ffffff/linkcol=0687f5/minimal=true/transparent=true/" seamless>
                 <a href="{{ link }}">{{ title }}</a>
@@ -38,25 +36,19 @@
             </div>
           {% when 'soundcloud' %}
             <div class="square margin-m-b">
-              <div class="overlay flex-col flex-center">
-                <i class="fa fa-spinner fa-pulse fa-3x"></i>
-              </div>
+              {% include loading.html %}
               <iframe class="full-width" src="https://w.soundcloud.com/player/?url={{ link }}&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false&amp;visual=true" seamless></iframe>
             </div>
           {% when 'youtube' %}
             {% assign link = link | replace: '/watch?v=', '/embed/' %}
             <div class="aspect-16-9 margin-m-b">
-              <div class="overlay flex-col flex-center">
-                <i class="fa fa-spinner fa-pulse fa-3x"></i>
-              </div>
+              {% include loading.html %}
               <iframe class="full-width" src="{{ link }}" allowfullscreen seamless></iframe>
             </div>
           {% when 'vimeo' %}
             {% assign link = link | remove: 'https://vimeo.com/' %}
             <div class="aspect-16-9 margin-m-b">
-              <div class="overlay flex-col flex-center">
-                <i class="fa fa-spinner fa-pulse fa-3x"></i>
-              </div>
+              {% include loading.html %}
               <iframe class="full-width" src="https://player.vimeo.com/video/{{ link }}?title=0&byline=0&portrait=0" allowfullscreen seamless></iframe>
             </div>
           {% when 'page' %}
