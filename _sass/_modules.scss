@@ -168,19 +168,19 @@
     background-color: $brand-color;
     @if lightness($brand-color) > 50% {
         @extend .light;
-        &:hover {
-            background-color: darken($brand-color, 15%);
-        }
         &:visited {
             background-color: darken($brand-color, 10%);
         }
+        &:hover {
+            background-color: darken($brand-color, 15%);
+        }
     } @else {
         @extend .dark;
-        &:hover {
-            background-color: lighten($brand-color, 15%);
-        }
         &:visited {
             background-color: lighten($brand-color, 10%);
+        }
+        &:hover {
+            background-color: lighten($brand-color, 15%);
         }
     }
 }
