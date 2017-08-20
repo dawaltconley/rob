@@ -34,13 +34,6 @@
     }
 }
 
-@for $i from 1 through 9 {
-    $weight: $i * 100;
-    .fw-#{$weight} {
-        font-weight: $weight;
-    }
-}
-
 .caps {
     font-family: $caps-font-family;
     font-weight: normal;
@@ -57,6 +50,7 @@
 
 .subtitle {
     font-size: 42px;
+    font-weight: 400;
 }
 
 @media screen and (max-width: $bp-mobile) {
@@ -75,7 +69,14 @@
     }
     .subtitle {
         font-size: 7.25vmin;
-        font-weight: normal;
+        font-weight: 300;
+    }
+}
+
+@for $i from 1 through 9 {
+    $weight: $i * 100;
+    .fw-#{$weight} {
+        font-weight: $weight;
     }
 }
 
