@@ -531,6 +531,13 @@ ul.media-icon-basic, ul.media-icon-button, ul.media-icon-circle {
     }
 }
 
+.hover-scale {
+    transform: scale(1) translateZ(0);
+
+    @include hover {
+        transform: scale(1.1) translateZ(0);
+    }
+}
 
 /*
  * Target
