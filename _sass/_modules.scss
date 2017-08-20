@@ -54,22 +54,17 @@
 }
 
 @media screen and (max-width: $bp-mobile) {
-    $title-font-size: 24vmin;
+    $title-font-size: 14.45vmin;
+
     .title {
         margin-bottom: 0.8vmin;
         padding-bottom: 1vmin;
-        font-size: $title-font-size;
-        line-height: 0.8;
-        border-bottom-width: 0.6vmin;
+        font-size: 14.45vmin;
+        border-bottom-width: 0.4vmin;
     }
-    .title-enlarge {
-        display: block;
-        font-size: $title-font-size * 1.75;
-        font-weight: 100;
-    }
+
     .subtitle {
-        font-size: 7.25vmin;
-        font-weight: 300;
+        font-size: $title-font-size * 42 / 88;
     }
 }
 
