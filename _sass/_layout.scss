@@ -88,14 +88,11 @@
     position: absolute;
 }
 
-.z-1 {
-    @extend .relative;
-    z-index: 1;
-}
-
-.z-2 {
-    @extend .relative;
-    z-index: 2;
+@for $i from 0 through 9 {
+    .z-#{$i} {
+        @extend .relative;
+        z-index: $i;
+    }
 }
 
 .float-left {
