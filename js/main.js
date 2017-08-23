@@ -319,7 +319,7 @@
         var contentHeight = this.content.scrollHeight;
         this.body.classList.add("t-open-project", "translate-x-none");
         this.body.classList.remove("no-height", "translate-x-left", "translate-x-right");
-        this.button.content.classList.add("flip-x");
+        this.button.body.classList.add("flip-x");
         this.body.style.minHeight = contentHeight.toString() + "px";
         this.state = "open";
         projectQueue.push(this.resetFrame.bind(this));
@@ -330,7 +330,7 @@
         if (this.state != "closed") {
             this.body.classList.add("no-height");
             this.body.classList.remove("t-open-project", "translate-x-none");
-            this.button.content.classList.remove("flip-x");
+            this.button.body.classList.remove("flip-x");
             this.state = "closed";
             projectQueue.push(function () {
                 this.unsetFrame();
@@ -380,22 +380,14 @@
     };
 
     function expandProjectView(height) {
-        // projectView.classList.add("margin-l-v");
-        // projectView.classList.remove("margin-m-v");
         projectView.style.height = height.toString() + "px";
     };
 
     function closeProjectView() {
-        // projectView.classList.add("margin-m-v");
-        // projectView.classList.remove("margin-l-v");
         projectView.style.height = "";
     };
 
     function focusProject(target) {
-        // var projectViewTop = pagePos(projectView).top;
-        // if (projectView.clientHeight == 0) {
-        //     projectViewTop += 30;
-        // }
         target.open();
         projects.forEach(function (project) {
             if (project.index != target.index) {
@@ -407,7 +399,6 @@
                 project.close();
             }
         });
-        // projectScroller.toY(projectViewTop, projectTransitionTime);
         projectScroller.toY(pagePos(projectView).top, projectTransitionTime);
         executeQueue(projectQueue, projectTransitionTime);
     };

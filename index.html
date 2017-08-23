@@ -50,9 +50,11 @@ layout: default
           {% if jekyll.environment == 'netlify' %}
             {% capture image %}{% include file-suffix.liquid file_name=image suffix='-thumb' %}{% endcapture %}
           {% endif %}
-          <a href="#{{ project.slug }}" class="subtle-icon inline-col-1 overflow-h hover" data-project-button>
-            <div class="square t-button-flip" data-project-button-content>
-              <img class="img-cover hover-blur no-backface" src="{{ image }}" alt="{{ project.title }}">
+          <a href="#{{ project.slug }}" class="subtle-icon inline-col-1 hover t-button-flip" data-project-button>
+            <div class="square" data-project-button-content>
+              <div class="overflow-h">
+                <img class="full-size img-cover hover-blur no-backface overflow-h" src="{{ image }}" alt="{{ project.title }}">
+              </div>
               <div class="overlay flex-col padding-xs text-center hover-fade-in no-backface">
                 <span class="margin-auto">
                   {{ project.title }}
