@@ -7,14 +7,7 @@ layout: default
 
 <div id="splash" class="dark screen-height splash-img">
 
-  <div class="top-left z-2" data-background-select data-background-element="splash">
-    <select>
-      {% for image in site.splash_options %}
-        <option value="{{ image.path }}">{{ image.name }}</option>
-      {% endfor %}
-    </select>
-    <input type="range" value="0">
-  </div>
+  {% include bg-control.html element='splash' images=site.splash_options %}
 
   <div class="flex-col flex-align-center full-height page-wrapper padding-m">
 
@@ -91,16 +84,9 @@ layout: default
 
 <div id="cta" class="dark cta-img">
 
-  <div class="top-left z-2" data-background-select data-background-element="cta">
-    <select>
-      {% for image in site.cta_options %}
-        <option value="{{ image.path }}" {% if image.position %} data-position="{{ image.position }}" {% endif %}>{{ image.name }}</option>
-      {% endfor %}
-    </select>
-    <input type="range" value="0">
-  </div>
+  {% include bg-control.html element='cta' images=site.cta_options %}
 
-  <div class="half-screen-height-min flex-col flex-center page-wrapper padding-m-h padding-l-v text-center z-1">
+  <div class="half-screen-height-min flex-col flex-center page-wrapper padding-m-h padding-l-v text-center">
 
     <h2 class="caps margin-m-b">Have a project?</h2>
 
