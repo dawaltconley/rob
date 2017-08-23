@@ -605,6 +605,10 @@
         addHideOnScrollListener();
     }
 
+    window.onload = function () {
+        window.alert("Disclaimer: this is a draft for a new build of the site. All assets are temporary and do not fall under our copyright. If you are looking for the main site, please go to www.robertgdon.com.");
+    };
+
 {% unless jekyll.environment == "development" %}
 })();
 {% endunless %}
