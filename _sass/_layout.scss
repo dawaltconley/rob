@@ -189,6 +189,7 @@
     perspective: $perspective;
 
     &-deep * {
+        @extend .contains-3d;
         -webkit-transform-style: preserve-3d;
         transform-style: preserve-3d;
     }
