@@ -6,4 +6,4 @@ title: Coppertone Tennis
 link: 'https://vimeo.com/214580061'
 image: CoppertoneTennis.jpg
 ---
-My submission for Coppertone's ad.
+This is an original music composition I submitted for a Coppertone sunscreen ad campaign.

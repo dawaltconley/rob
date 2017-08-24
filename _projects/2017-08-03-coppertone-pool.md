@@ -6,4 +6,4 @@ title: Coppertone Pool
 link: 'https://vimeo.com/214580255'
 image: CoppertonePool.jpg
 ---
-My submission for a Coppertone ad spot.
+This is an original music composition I submitted for a Coppertone sunscreen ad campaign.
