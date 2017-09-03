@@ -1,12 +1,13 @@
 # This file contains contact and social media information. Most values should be urls, with some exceptions. `email` takes an email address and `phone` takes a phone number (with country code). `twitter` can take a twitter handle.
-# This information may be displayed throughout the site, but the main place you will find it is in the footer. Adding new information will create a new corresponding icon. Currently, only the media shown here is supported. Contact me if you need support for different sites or kinds of media.
+# This information may be displayed throughout the site, but the main place you will find it is in the footer. Adding new information will create a new corresponding icon. You can also reorder the key-value pairings to change the order in which the icons display.
+# Currently, only the media shown here is supported. Contact me if you need support for different sites or kinds of media.
 
 email: robertgdon@gmail.com
 phone: 314-761-8067
+linkedin: https://www.linkedin.com/in/robert-don-440b0167/
+facebook: https://www.facebook.com/robert.don.5
+instagram: https://www.instagram.com/robdonrobdon/
 twitter:
 google-plus:
-facebook: https://www.facebook.com/robert.don.5
 youtube:
-linkedin: https://www.linkedin.com/in/robert-don-440b0167/
 vimeo:
-instagram: https://www.instagram.com/robdonrobdon/
