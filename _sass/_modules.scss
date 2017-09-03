@@ -222,11 +222,12 @@
 }
 
 .splash-img {
-    @include background-image($splash-image, $darken: .6);
+    @include background-image($splash-image, $darken: .4);
 }
 
 .cta-img {
-    @include background-image($cta-image, $darken: .6);
+    @include background-image($y: bottom);
+    background-image: linear-gradient(rgba(black, 0.7), rgba(black, 0.5)), $cta-image;
 }
 
 @each $name, $image in $project-images {

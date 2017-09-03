@@ -9,61 +9,6 @@ google_analytics:
 
 project_transition_time: 1s
 
-splash_options:
-  - name: "original"
-    path: "/media/backgrounds/bg-1.jpg"
-  - name: "board 1"
-    path: "/media/backgrounds/splash-1.jpg"
-  - name: "board 2"
-    path: "/media/backgrounds/splash-2.jpg"
-  - name: "board 2 cropped"
-    path: "/media/backgrounds/splash-3.jpg"
-  - name: "board 4"
-    path: "/media/backgrounds/bg-9.jpg"
-  - name: "board 5"
-    path: "/media/backgrounds/bg-4-04.jpg"
-  - name: "board 6"
-    path: "/media/backgrounds/bg-5-01.jpg"
-  - name: "board 7"
-    path: "/media/backgrounds/bg-7-01.jpg"
-  - name: "board 8"
-    path: "/media/backgrounds/bg-8.jpg"
-  - name: "board 8 b&amp;w"
-    path: "/media/backgrounds/bg-8-01.jpg"
-  - name: "mic-1"
-    path: "/media/backgrounds/mic-1.jpg"
-  - name: "mic-2"
-    path: "/media/backgrounds/mic-2.jpg"
-
-cta_options:
-  - name: "original"
-    path: "media/backgrounds/cta-1.jpg"
-    position: "center bottom"
-  - name: "original cropped"
-    path: "/media/backgrounds/splash-3.jpg"
-  - name: "board 1"
-    path: "media/backgrounds/cta-2.jpg"
-    position: "center bottom"
-  - name: "board 3"
-    path: "/media/backgrounds/bg-1.jpg"
-  - name: "board 4"
-    path: "/media/backgrounds/bg-9.jpg"
-  - name: "board 5"
-    path: "/media/backgrounds/bg-4-04.jpg"
-  - name: "board 6"
-    path: "/media/backgrounds/bg-5-01.jpg"
-  - name: "board 7"
-    path: "/media/backgrounds/bg-7-01.jpg"
-  - name: "board 8"
-    path: "/media/backgrounds/bg-8.jpg"
-  - name: "board 8 b&amp;w"
-    path: "/media/backgrounds/bg-8-01.jpg"
-  - name: "mic-1"
-    path: "/media/backgrounds/mic-1.jpg"
-  - name: "mic-2"
-    path: "/media/backgrounds/mic-2.jpg"
-
-
 # Collections
 
 collections:

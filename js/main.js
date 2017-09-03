@@ -254,12 +254,6 @@
     };
 
 /*
- * Background Image Testing
- */
-
-    {% include bg-testing.js %}
-
-/*
  * Projects
  */
 
