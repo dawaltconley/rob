@@ -238,7 +238,7 @@
  * Fullscreen
  */
 
-    var fullscreenElements = toArray(document.querySelectorAll('[data-script="force-fullscreen"]'));
+    var fullscreenElements = toArray(document.querySelectorAll("[data-force-fullscreen]"));
 
     function forceFullscreen(element) {
         var viewHeight = window.innerHeight;
