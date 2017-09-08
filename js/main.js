@@ -261,6 +261,7 @@
     var buttonElements = toArray(document.querySelectorAll("[data-project-button]"));
     var projects = [];
     var projectQueue = [];
+    var projectsDrawn = 0;
     var justClicked = false;
     var projectTransitionTime = Number("{{ site.project_transition_time }}".slice(1)) * 1000;
     var projectScroller = zenscroll.createScroller(page, projectTransitionTime, 0);
@@ -304,6 +305,10 @@
         ctx.fillStyle = "rgba(255, 255, 255, 0.6)";
         ctx.fillRect(0, 0, w, h);
         stackBlurCanvasRGBA(canvas, 0, 0, w, h, 100); // requires modified function; takes canvas object, not canvas id
+        projectsDrawn += 1;
+        if (projectsDrawn == projects.length) {
+            primeProjectView();
+        }
     }
 
     Project.prototype.prime = function () {
@@ -316,6 +321,7 @@
     };
 
     Project.prototype.open = function () {
+        projectView.classList.remove("hidden");
         var contentHeight = this.content.scrollHeight;
         this.body.classList.add("t-open-project", "translate-x-none");
         this.body.classList.remove("no-height", "translate-x-left", "translate-x-right");
@@ -376,15 +382,20 @@
     }
 
     function primeProjectView() {
-        projectView.classList.add("no-height", "expand-children");
+        projectView.classList.add("hidden", "no-height", "expand-children");
     };
 
     function expandProjectView(height) {
-        projectView.style.height = height.toString() + "px";
+        window.setTimeout(function () {
+            projectView.style.height = height.toString() + "px";
+        }, 0);
     };
 
     function closeProjectView() {
         projectView.style.height = "";
+        projectQueue.push(function () {
+            projectView.classList.add("hidden");
+        });
     };
 
     function focusProject(target) {
@@ -429,7 +440,6 @@
     } catch(err) {}
 
     function addProjectListeners() {
-        primeProjectView();
         projects.forEach(function (project) {
             project.prime();
             project.button.body.addEventListener("click", function (event) {
