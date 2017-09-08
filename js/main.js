@@ -452,7 +452,7 @@
                     var open = getProject("state", "open");
                     if (open === project) {
                         closeProjects();
-                        pushState("");
+                        pushState("/");
                     } else {
                         focusProject(project);
                         pushState(project.button.hash);
