@@ -12,7 +12,11 @@
     var win = page;
 
     if (!page || window.getComputedStyle(page).getPropertyValue("perspective") == "none") {
-        page = document.body;
+        if (document.documentElement.clientHeight == document.documentElement.scrollHeight && document.body.clientHeight < document.body.scrollHeight) {
+            page = document.body;
+        } else {
+            page = document.documentElement;
+        }
         win = window;
     }
 
