@@ -334,6 +334,45 @@ $side: null;
     filter: blur($blur);
 }
 
+@mixin responsive-image ($image, $breakpoints: $image-bp) {
+    @if str-slice($image, 1, 4) == "url(" {
+        $image: str-slice($image, 5, -2);
+    }
+
+    // first
+    $first: nth($breakpoints, 1);
+    $x: #{map-get($first, x)};
+    $y: #{map-get($first, y)};
+    @media screen and (min-width: #{$x}px), screen and (min-height: #{$y}px) {
+        background-image: url(#{$image});
+    }
+
+    // array values
+    @for $i from 1 to length($breakpoints) {
+        $current: nth($breakpoints, $i);
+        $x: #{map-get($current, x)};
+        $y: #{map-get($current, y)};
+        $next: nth($breakpoints, $i + 1);
+        $nx: #{map-get($next, x)};
+        $ny: #{map-get($next, y)};
+        @media screen and (max-width: #{$x}px) and (max-height: #{$y}px) and (min-width: #{$nx}px),
+          screen and (max-width: #{$x}px) and (max-height: #{$y}px) and (min-height: #{$ny}px) {
+            $suffix: "-#{$x}x#{$y}";
+            background-image: url(file-suffix($image, $suffix));
+        }
+    }
+
+    //last
+    $last: nth($breakpoints, -1);
+    $x: #{map-get($last, x)};
+    $y: #{map-get($last, y)};
+    @media screen and (max-width: #{$x}px) and (max-height: #{$y}px) {
+        $suffix: "-#{$x}x#{$y}";
+        background-image: url(file-suffix($image, $suffix));
+    }
+
+}
+
 @mixin background-image ($image: none, $x: center, $y: center, $lighten: 0, $darken: 0, $blur: null) {
 
     @if $blur {
