@@ -10,6 +10,8 @@ var autoprefixer = require("autoprefixer");
 var pump = require("pump");
 var merge = require("merge-stream");
 var child = require("child_process");
+var YAML = require("js-yaml");
+var fs = require("fs");
 
 function jekyllBuild(env = "development") {
     var cmd = "JEKYLL_ENV=" + env + " jekyll build";
@@ -54,7 +56,7 @@ gulp.task("clean-js", ["js"], function (cb) {
     ], cb);
 });
 
-gulp.task("images", ["build"], function () {
+gulp.task("project-images", ["build"], function () {
     var src = "./_site/media/project-images/*";
     var dest = "./_site/media/project-images";
     var thumbnails = gulp.src(src)
@@ -84,7 +86,7 @@ gulp.task("images", ["build"], function () {
     return merge(thumbnails, displays);
 });
 
-gulp.task("clean-images", ["images"], function (cb) {
+gulp.task("clean-project-images", ["project-images"], function (cb) {
     pump([
         gulp.src([
             "./_site/media/project-images/*",
@@ -95,4 +97,27 @@ gulp.task("clean-images", ["images"], function (cb) {
     ], cb);
 });
 
-gulp.task("default", ["build", "css", "js", "clean-js", "images", "clean-images"]);
+gulp.task("bg-images", ["build"], function () {
+    var imageBreakpoints = YAML.safeLoad(fs.readFileSync("_config.yml", "utf8"))["image_bp"];
+    var src = "./_site/media/backgrounds/*";
+    var dest = "./_site/media/backgrounds";
+    var merged = merge();
+    imageBreakpoints.forEach(function (bp) {
+        var stream = gulp.src(src)
+            .pipe(
+                imageResize({
+                    width: bp.x,
+                    height: bp.y,
+                    cover: true,
+                    upscale: false
+                })
+            )
+            .pipe(rename({ suffix: "-" + bp.x + "x" + bp.y }))
+            .pipe(imageMin())
+            .pipe(gulp.dest(dest));
+        merged.add(stream);
+    });
+    return merged.isEmpty() ? null : merged;
+});
+
+gulp.task("default", ["build", "css", "js", "clean-js", "bg-images", "project-images", "clean-project-images"]);
