@@ -12,11 +12,7 @@
     var win = page;
 
     if (!page || window.getComputedStyle(page).getPropertyValue("perspective") == "none") {
-        if (document.documentElement.clientHeight == document.documentElement.scrollHeight && document.body.clientHeight < document.body.scrollHeight) {
-            page = document.body;
-        } else {
-            page = document.documentElement;
-        }
+        page = getScrollableChild();
         win = window;
     }
 
@@ -128,6 +124,20 @@
         } else {
             return null;
         }
+    };
+
+    function getScrollableChild(element = document.documentElement, maxDepth = 2, currentDepth = 0) {
+        if (element.scrollHeight > element.clientHeight) {
+            return element;
+        }
+        for (var i = 0; i < element.children.length && maxDepth > currentDepth; i++) {
+            var child = element.children[i];
+            var childMatch = getScrollableChild(child, currentDepth += currentDepth);
+            if (childMatch) {
+                return childMatch;
+            }
+        }
+        return null;
     };
 
     function clearClass(string, elements) {
