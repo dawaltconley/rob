@@ -42,6 +42,12 @@ $project-images:        ({% for project in site.projects %}
                             {{ project.slug }}: url({{ site.baseurl }}/{{ site.prose.media}}/{{ project.image }}),{% endfor %}
                         );
 
+$image-bp:              ({% for size in site.image_bp %}
+                            ({% for dimension in size %}
+                                {{ dimension[0] }}: {{ dimension[1] }},
+                            {% endfor %}),
+                        {% endfor %});
+
 // Layouts
 
 $sizes: (
