@@ -206,7 +206,7 @@ $side: null;
             }
         }
 
-        .bordera-x-light, &.border-x-light {
+        .border-x-light, &.border-x-light {
             @if $light-theme {
                 border-color: darken($background-color, 5%);
             } @else {
