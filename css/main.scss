@@ -146,6 +146,16 @@ $side: null;
     }
 }
 
+@function file-suffix ($file-name, $suffix) {
+    $ext-index: str-index($file-name, ".");
+    @if $ext-index {
+        @return unquote(str-insert($file-name, $suffix, $ext-index));
+    } @else {
+        @warn "No extension found in file: #{$file-name}";
+        @return unquote(#{$file-name}#{$suffix});
+    }
+}
+
 @mixin theme-styles($styles, $background-color: null, $text-color: null) {
     @if map-has-key($styles, "background-color") or map-has-key($styles, "text-color") {
         @if map-has-key($styles, "background-color") {
