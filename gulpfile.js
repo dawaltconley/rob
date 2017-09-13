@@ -65,7 +65,8 @@ gulp.task("project-images", ["build"], function () {
                 width: 268,
                 height: 268,
                 crop: true,
-                upscale: false
+                upscale: false,
+                filter: "Catrom"
             })
         )
         .pipe(rename({ suffix: "-thumb" }))
@@ -77,7 +78,8 @@ gulp.task("project-images", ["build"], function () {
                 width: 675,
                 height: 675,
                 crop: true,
-                upscale: false
+                upscale: false,
+                filter: "Catrom"
             })
         )
         .pipe(rename({ suffix: "-display" }))
@@ -109,7 +111,8 @@ gulp.task("bg-images", ["build"], function () {
                     width: bp.x,
                     height: bp.y,
                     cover: true,
-                    upscale: false
+                    upscale: false,
+                    filter: "Catrom"
                 })
             )
             .pipe(rename({ suffix: "-" + bp.x + "x" + bp.y }))
