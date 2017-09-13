@@ -12,7 +12,7 @@
     var win = page;
 
     if (!page || window.getComputedStyle(page).getPropertyValue("perspective") == "none") {
-        page = getScrollableChild();
+        page = getScrollableChild(document.documentElement);
         win = window;
     }
 
@@ -126,13 +126,16 @@
         }
     };
 
-    function getScrollableChild(element = document.documentElement, maxDepth = 2, currentDepth = 0) {
+    function getScrollableChild(element) {
+        var maxDepth = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 2;
+        var currentDepth = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 0;
+
         if (element.scrollHeight > element.clientHeight) {
             return element;
         }
         for (var i = 0; i < element.children.length && maxDepth > currentDepth; i++) {
             var child = element.children[i];
-            var childMatch = getScrollableChild(child, currentDepth += currentDepth);
+            var childMatch = getScrollableChild(child, maxDepth, currentDepth += currentDepth);
             if (childMatch) {
                 return childMatch;
             }
