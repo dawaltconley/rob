@@ -152,14 +152,26 @@ $side: null;
     }
 }
 
-@function file-suffix ($file-name, $suffix) {
-    $ext-index: str-index($file-name, ".");
-    @if $ext-index {
-        @return unquote(str-insert($file-name, $suffix, $ext-index));
-    } @else {
-        @warn "No extension found in file: #{$file-name}";
-        @return unquote(#{$file-name}#{$suffix});
+@function file-suffix ($file-name, $suffix, $extension: ".") {
+    $return: ();
+    @each $name in $file-name {
+        $ext-index: null;
+        $i: 1;
+        @while ($i <= length($extension)) and not($ext-index) {
+            $ext: nth($extension, $i);
+            @if str-slice($ext, 1, 1) != "." {
+                $ext: ".#{$ext}";
+            }
+            $ext-index: str-index($name, $ext);
+            $i: $i + 1;
+        }
+        @if $ext-index {
+            $return: append($return, unquote(str-insert($name, $suffix, $ext-index)));
+        } @else {
+            $return: append($return, unquote($name));
+        }
     }
+    @return $return;
 }
 
 @mixin theme-styles($styles, $background-color: null, $text-color: null) {
