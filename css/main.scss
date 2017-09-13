@@ -161,7 +161,7 @@ $side: null;
         @while ($i <= length($extension)) and not($ext-index) {
             $ext: nth($extension, $i);
             @if str-slice($ext, 1, 1) != "." { $ext: ".#{$ext}"; }
-            $ext-index: str-index($name, $ext);
+            $ext-index: str-index(to-lower-case($name), to-lower-case($ext));
             $i: $i + 1;
         }
         @if $ext-index {
