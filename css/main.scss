@@ -346,8 +346,23 @@ $side: null;
 }
 
 @mixin responsive-image ($image, $breakpoints: $image-bp) {
-    @if str-slice($image, 1, 4) == "url(" {
-        $image: str-slice($image, 5, -2);
+    $file-types: jpg, jpeg, png, gif, svg, webp;
+
+    // wrap image files in url if they are not yet
+    @each $bg in $image {
+        $i: index($image, $bg);
+        $is-img: null;
+        $n: 1;
+        @while ($n <= length($file-types)) and not($is-img) {
+            $ext: nth($file-types, $n);
+            @if str-slice($ext, 1, 1) != "." { $ext: ".#{$ext}"; }
+            $ns-img: str-index(to-lower-case($bg), to-lower-case($ext));
+            $n: $n + 1;
+        }
+        @if $is-img and (str-slice($bg, 1, 4) != "url(") {
+            $bg: url(#{unquote($bg)});
+            $image: set-nth($image, $i, $bg);
+        }
     }
 
     // first
@@ -355,7 +370,7 @@ $side: null;
     $x: map-get($first, x);
     $y: map-get($first, y);
     @media screen and (min-width: #{$x}px), screen and (min-height: #{$y}px) {
-        background-image: url(#{$image});
+        background-image: $image;
     }
 
     // array values
@@ -369,7 +384,7 @@ $side: null;
         @media screen and (max-width: #{$x}px) and (max-height: #{$y}px) and (min-width: #{$nx}px),
           screen and (max-width: #{$x}px) and (max-height: #{$y}px) and (min-height: #{$ny}px) {
             $suffix: "-#{$x}x#{$y}";
-            background-image: url(file-suffix($image, $suffix));
+            background-image: file-suffix($image, $suffix, $file-types);
         }
     }
 
@@ -379,7 +394,7 @@ $side: null;
     $y: map-get($last, y);
     @media screen and (max-width: #{$x}px) and (max-height: #{$y}px) {
         $suffix: "-#{$x}x#{$y}";
-        background-image: url(file-suffix($image, $suffix));
+        background-image: file-suffix($image, $suffix, $file-types);
     }
 }
 
