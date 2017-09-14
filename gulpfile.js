@@ -118,7 +118,8 @@ gulp.task("bg-images", ["image-min"], function () {
                     height: bp.y,
                     cover: true,
                     upscale: false,
-                    filter: "Catrom"
+                    filter: "Catrom",
+                    interlace: true
                 })
             )
             .pipe(rename({ suffix: "-" + bp.x + "x" + bp.y }))
