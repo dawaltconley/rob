@@ -56,7 +56,15 @@ gulp.task("clean-js", ["js"], function (cb) {
     ], cb);
 });
 
-gulp.task("project-images", ["build"], function () {
+gulp.task("image-min", ["build"], function (cb) {
+    pump([
+        gulp.src("./_site/media/**/*"),
+        imageMin(),
+        gulp.dest("./_site/media")
+    ], cb);
+});
+
+gulp.task("project-images", ["image-min"], function () {
     var src = "./_site/media/project-images/*";
     var dest = "./_site/media/project-images";
     var thumbnails = gulp.src(src)
@@ -70,7 +78,6 @@ gulp.task("project-images", ["build"], function () {
             })
         )
         .pipe(rename({ suffix: "-thumb" }))
-        .pipe(imageMin())
         .pipe(gulp.dest(dest));
     var displays = gulp.src(src)
         .pipe(
@@ -83,7 +90,6 @@ gulp.task("project-images", ["build"], function () {
             })
         )
         .pipe(rename({ suffix: "-display" }))
-        .pipe(imageMin())
         .pipe(gulp.dest(dest));
     return merge(thumbnails, displays);
 });
@@ -99,7 +105,7 @@ gulp.task("clean-project-images", ["project-images"], function (cb) {
     ], cb);
 });
 
-gulp.task("bg-images", ["build"], function () {
+gulp.task("bg-images", ["image-min"], function () {
     var imageBreakpoints = YAML.safeLoad(fs.readFileSync("_config.yml", "utf8"))["image_bp"];
     var src = "./_site/media/backgrounds/*";
     var dest = "./_site/media/backgrounds";
@@ -116,7 +122,6 @@ gulp.task("bg-images", ["build"], function () {
                 })
             )
             .pipe(rename({ suffix: "-" + bp.x + "x" + bp.y }))
-            .pipe(imageMin())
             .pipe(gulp.dest(dest));
         merged.add(stream);
     });
