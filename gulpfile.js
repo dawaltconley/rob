@@ -116,7 +116,7 @@ gulp.task("bg-images", ["image-min"], function () {
                 imageResize({
                     width: bp.x,
                     height: bp.y,
-                    cover: true,
+                    crop: true,
                     upscale: false,
                     filter: "Catrom",
                     interlace: true
