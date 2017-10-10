@@ -110,7 +110,8 @@ gulp.task("clean-project-images", ["project-images"], function (cb) {
         gulp.src([
             "./_site/media/project-images/*",
             "!./_site/media/project-images/*-thumb*",
-            "!./_site/media/project-images/*-display*"
+            "!./_site/media/project-images/*-display*",
+            "!./_site/media/project-images/*-og*"
         ], { read: false }),
         clean()
     ], cb);
