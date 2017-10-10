@@ -30,6 +30,8 @@
   <meta property="og:title" content="{{ title }}">
   <meta property="og:description" content="{{ description }}">
   <meta property="og:image" content="{{ og_image | prepend: site_url | strip_newlines }}">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="1200">
   {% if fb_page_id %}<meta property="fb:app_id" content"{{ fb_page_id }}">{% endif %}
 
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway:200,400,400i,700,700i|Oswald">
