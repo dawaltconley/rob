@@ -91,7 +91,18 @@ gulp.task("project-images", ["image-min"], function () {
         )
         .pipe(rename({ suffix: "-display" }))
         .pipe(gulp.dest(dest));
-    return merge(thumbnails, displays);
+    var og = gulp.src(src)
+        .pipe(
+            imageResize({
+                width: 1200,
+                height: 1200,
+                crop: true,
+                upscale: true
+            })
+        )
+        .pipe(rename({ suffix: "-og" }))
+        .pipe(gulp.dest(dest));
+    return merge(thumbnails, displays, og);
 });
 
 gulp.task("clean-project-images", ["project-images"], function (cb) {
