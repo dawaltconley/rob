@@ -367,8 +367,8 @@ $side: null;
 
         // first
         $first: nth($breakpoints, 1);
-        $x: map-get($first, x);
-        $y: map-get($first, y);
+        $x: map-get($first, x) + 1;
+        $y: map-get($first, y) + 1;
         @media screen and (min-width: #{$x}px), screen and (min-height: #{$y}px) {
             background-image: $image;
         }
@@ -379,8 +379,8 @@ $side: null;
             $x: map-get($current, x);
             $y: map-get($current, y);
             $next: nth($breakpoints, $i + 1);
-            $nx: map-get($next, x);
-            $ny: map-get($next, y);
+            $nx: map-get($next, x) + 1;
+            $ny: map-get($next, y) + 1;
             @media screen and (max-width: #{$x}px) and (max-height: #{$y}px) and (min-width: #{$nx}px),
               screen and (max-width: #{$x}px) and (max-height: #{$y}px) and (min-height: #{$ny}px) {
                 $suffix: "-#{$x}x#{$y}";
