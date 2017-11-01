@@ -585,9 +585,7 @@
 
     if (fullscreenElements.length > 0) {
         addOrientationChangeListener();
-        window.onload = function () {
-            forceFullscreenAll();
-        };
+        forceFullscreenAll();
     }
 
     if (elementsToHideOnScroll.length > 0) {
