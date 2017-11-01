@@ -583,7 +583,7 @@
         addSmoothScrollListeners();
     }
 
-    if (fullscreenElements.lenth > 0) {
+    if (fullscreenElements.length > 0) {
         addOrientationChangeListener();
         window.onload = function () {
             forceFullscreenAll();
