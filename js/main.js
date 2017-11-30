@@ -78,23 +78,26 @@
     };
 
     function getParentBySelector(element, selector) {
+        var maxDepth = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] ; -1;
         var ancestor = element;
-        while (ancestor != document.body) {
+        while (ancestor != document.documentElement && maxDepth !== 0) {
             ancestor = ancestor.parentElement;
             if (Sizzle.matchesSelector(ancestor, selector)) {
                 return ancestor;
             }
+            maxDepth -= 1;
         }
         return null;
     };
 
     function getChildBySelector(element, selector) {
+        var maxDepth = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 0;
         for (var i = 0; i < element.children.length; i++) {
             var child = element.children[i];
             if (Sizzle.matchesSelector(child, selector)) {
                 return child;
-            } else if (child.children.length) {
-                var childMatch = getChildBySelector(child, selector);
+            } else if (child.children.length && maxDepth !== 1) {
+                var childMatch = getChildBySelector(child, selector, maxDepth - 1);
                 if (childMatch) {
                     return childMatch;
                 }
@@ -104,14 +107,15 @@
     };
 
     function getChildrenBySelector(element, selector) {
+        var maxDepth = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 0;
         var matches = [];
         for (var i = 0; i < element.children.length; i++) {
             var child = element.children[i];
             if (Sizzle.matchesSelector(child, selector)) {
                 matches.push(child);
             }
-            if (child.children.length) {
-                var childMatch = getChildrenBySelector(child, selector);
+            if (child.children.length && maxDepth !== 1) {
+                var childMatch = getChildrenBySelector(child, selector, maxDepth - 1);
                 if (childMatch) {
                     childMatch.forEach(function (match) {
                         matches.push(match);
