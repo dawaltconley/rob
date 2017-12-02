@@ -78,7 +78,7 @@
     };
 
     function getParentBySelector(element, selector) {
-        var maxDepth = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] ; -1;
+        var maxDepth = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : undefined;
         var ancestor = element;
         while (ancestor != document.documentElement && maxDepth !== 0) {
             ancestor = ancestor.parentElement;
@@ -91,7 +91,7 @@
     };
 
     function getChildBySelector(element, selector) {
-        var maxDepth = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 0;
+        var maxDepth = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : undefined;
         for (var i = 0; i < element.children.length; i++) {
             var child = element.children[i];
             if (Sizzle.matchesSelector(child, selector)) {
@@ -107,7 +107,7 @@
     };
 
     function getChildrenBySelector(element, selector) {
-        var maxDepth = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 0;
+        var maxDepth = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : undefined;
         var matches = [];
         for (var i = 0; i < element.children.length; i++) {
             var child = element.children[i];
