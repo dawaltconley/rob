@@ -217,8 +217,13 @@
     @include background-image;
 }
 
-.img-cover {
-    object-fit: cover;
+.object-fit-cover {
+    @extend .relative, .bg-img;
+
+    & > img {
+        @extend .fill-parent;
+        object-fit: cover;
+    }
 }
 
 .splash-img {
