@@ -1,7 +1,7 @@
 ---
 date: '2018-04-24 03:14 -0400'
 media: soundcloud
-published: false
+published: true
 title: Same Outfit
 link: >-
   https://soundcloud.com/kid_mango/mesopotamia-lav?in=kid_mango/sets/same-outfit-1
