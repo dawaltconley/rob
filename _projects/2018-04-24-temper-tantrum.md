@@ -1,7 +1,7 @@
 ---
 date: '2018-04-24 03:18 -0400'
 media: bandcamp
-published: false
+published: true
 title: Temper Tantrum
 tralbum_id: '2864104467'
 link: 'https://moretongues.bandcamp.com/track/keep-it-in'
