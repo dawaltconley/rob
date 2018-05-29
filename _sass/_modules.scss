@@ -55,7 +55,7 @@
     font-weight: 400;
 }
 
-@media screen and (max-width: $bp-mobile) {
+@media screen and (max-width: map-get($bp, "mobile")) {
     $title-font-size: 14.45vmin;
 
     .title {
@@ -262,7 +262,7 @@
     padding: 4px;
 }
 
-// @media screen and (max-height: $bp-mobile) and (min-width: 450px) {
+// @media screen and (max-height: map-get($bp, "mobile")) and (min-width: 450px) {
 //     .scroll-arrow {
 //         position: absolute;
 //         bottom: $spacing-unit;

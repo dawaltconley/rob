@@ -357,11 +357,11 @@ body, .light {
         @include inline-columns(5, 10px);
     }
 
-    @media screen and (max-width: map-get($bp, large)) and (min-width: $bp-laptop) {
+    @media screen and (max-width: map-get($bp, large)) and (min-width: map-get($bp, "laptop")) {
         @include inline-columns(4, 10px);
     }
 
-    @media screen and (max-width: $bp-laptop) and (min-width: 460px) {
+    @media screen and (max-width: map-get($bp, "laptop")) and (min-width: 460px) {
         @include inline-columns(3, 10px);
     }
 
@@ -421,7 +421,7 @@ body, .light {
  */
 
 .footer {
-    @media screen and (max-width: $bp-laptop) {
+    @media screen and (max-width: map-get($bp, "laptop")) {
         .table {
             display: block;
         }
@@ -433,7 +433,7 @@ body, .light {
         }
     }
 
-    @media screen and (max-width: $bp-mobile) {
+    @media screen and (max-width: map-get($bp, "mobile")) {
         font-size: 1.2em;
     }
 }
