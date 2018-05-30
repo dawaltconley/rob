@@ -5,6 +5,7 @@ description: "Producer. Mixer. Musician."
 baseurl: ""
 url: "http://www.robertgdon.com"
 permalink: /:title/
+timezone: America/New_York
 google_analytics: "UA-101960905-2"
 
 project_transition_time: 1s
