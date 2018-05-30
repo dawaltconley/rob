@@ -88,6 +88,26 @@
     position: absolute;
 }
 
+.fixed {
+    position: fixed;
+}
+
+.top {
+    top: 0;
+}
+
+.left {
+    left: 0;
+}
+
+.right {
+    right: 0;
+}
+
+.bottom {
+    bottom: 0;
+}
+
 .top-left {
     @extend .absolute;
     top: 0; left: 0;
@@ -108,11 +128,27 @@
     bottom: 0; right: 0;
 }
 
-@for $i from 0 through 9 {
-    .z-#{$i} {
+.left-quarter {
+    left: 25%;
+}
+
+@for $i from -9 through 9 {
+    $class-name: z-#{$i};
+    @if ($i < 0) {
+        $class-name: z-neg-#{($i * -1)};
+    }
+    .#{$class-name} {
         @extend .relative;
         z-index: $i;
     }
+}
+
+.max-width-none {
+    max-width: none;
+}
+
+.max-height-none {
+    max-height: none;
 }
 
 .float-left {
@@ -125,6 +161,10 @@
 
 .v-rhythm > * {
     @extend %vertical-rhythm;
+
+    &:last-child {
+        margin-bottom: 0;
+    }
 }
 
 .hidden {
@@ -177,6 +217,12 @@
     overflow: hidden;
 }
 
+.fill-window {
+    @extend .full-size !optional;
+    position: fixed;
+    top: 0; left: 0;
+}
+
 .fill-parent {
     @extend .full-size !optional;
     position: absolute;
@@ -207,6 +253,8 @@
 .contains-3d {
     -webkit-perspective: $perspective;
     perspective: $perspective;
+    -webkit-transform-style: preserve-3d;
+    transform-style: preserve-3d;
 
     &-deep * {
         @extend .contains-3d;
