@@ -58,7 +58,10 @@ gulp.task("clean-js", ["js"], function (cb) {
 
 gulp.task("image-min", ["build"], function (cb) {
     pump([
-        gulp.src("./_site/media/**/*"),
+        gulp.src([
+            "./_site/media/**/*",
+            "!./_site/media/test/*"
+        ]),
         imageMin(),
         gulp.dest("./_site/media")
     ], cb);
