@@ -213,8 +213,11 @@
  */
 
     var pageScrollBehavior = window.getComputedStyle(page).getPropertyValue("scroll-behavior");
-    var smoothLinks = toArray(document.querySelectorAll("[data-smooth-scroll]"));
-    // make objects
+    var smoothLinks = [];
+
+    toArray(document.querySelectorAll("[data-smooth-scroll]")).forEach(function (element) {
+        smoothLinks.push(new SmoothLink(element));
+    });
 
     var pageScroller = zenscroll.createScroller(page, 1000, 0);
 
@@ -231,29 +234,26 @@
         }
     };
 
-    function receivesSmoothScroll(element) {
-        smoothLinks.forEach(function (link) {
-            var linkTarget = document.querySelector(link.hash);
-            if (element === linkTarget) {
-                return true;
-            }
-        });
-        return false;
-    }
+    function SmoothLink(link) {
+        this.element = link;
+        this.target = document.querySelector(link.hash);
+    };
 
-    function smoothScrollTo(element) {
+    SmoothLink.prototype.scroll = function () {
         var dur = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : null;
         var offset = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : null;
-
-        pageScroller.toY(pagePos(element).top, dur, offset);
+        pageScroller.to(this.target, dur, offset);
     };
 
-    function smoothScrollToHref(link) {
-        var hash = link.hash;
-        var target = document.querySelector(hash);
-        pushState(hash);
-        smoothScrollTo(target);
-    };
+    function receivesSmoothScroll(element) {
+        for (var i=0; i < smoothLinks.length; i++) {
+            var link = smoothLinks[i];
+            if (element === link.target) {
+                return true;
+            }
+        };
+        return false;
+    }
 
 /*
  * Fullscreen
@@ -567,16 +567,16 @@
 
     function addSmoothScrollListeners() {
         smoothLinks.forEach(function (link) {
-            link.addEventListener("click", function (event) {
+            link.element.addEventListener("click", function (event) {
                 event.preventDefault();
-                smoothScrollToHref(link);
+                link.scroll();
             });
         });
         window.addEventListener("popstate", function (event) {
             if (event.state) {
                 var target = document.querySelector(event.state.hasFocus);
                 if (receivesSmoothScroll(target)) {
-                    smoothScrollTo(target);
+                    pageScroller.to(target);
                 }
             } else {
                 pageScroller.toY(0);
