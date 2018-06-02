@@ -314,12 +314,10 @@
  * Object Fit Fallback
  */
 
-    var objectFitElements = toArray(document.querySelectorAll('[class*="object-fit"]'));
-    var objectFitObjects = [];
+    var objectFitElements = [];
 
-    objectFitElements.forEach(function (element) {
-        var newObjectFit = new ObjectFit(element);
-        objectFitObjects.push(newObjectFit);
+    toArray(document.querySelectorAll('[class*="object-fit"]')).forEach(function (element) {
+        objectFitElements.push(new ObjectFit(element));
     });
 
     function ObjectFit(element) {
@@ -335,7 +333,7 @@
     }
 
     function objectFitFallback() {
-        objectFitObjects.forEach(function (object) {
+        objectFitElements.forEach(function (object) {
             object.fallback();
         });
     }
@@ -658,7 +656,7 @@
         forceFullscreenAll();
     }
 
-    if (objectFitObjects.length > 0 && !CSS.supports("object-fit", "cover")) {
+    if (objectFitElements.length > 0 && !CSS.supports("object-fit", "cover")) {
         objectFitFallback();
     }
 
