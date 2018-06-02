@@ -64,15 +64,23 @@
 
 body, .light {
     @include theme-styles(
-        $text-color: #171717,
-        $background-color: white
+        $text-color: #272727,
+        $background-color: whitesmoke,
+        $brand-color: $brand-color,
     );
 }
 
 .dark {
     @include theme-styles(
         $text-color: white,
-        $background-color: #171717
+        $background-color: #151515,
+    );
+}
+
+.overlay {
+    @include theme-styles(
+        $text-color: white,
+        $background-color: rgba(black, 0.75),
     );
 }
 
