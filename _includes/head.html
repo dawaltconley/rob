@@ -41,6 +41,8 @@
 
   {% include favicon.html %}
 
+  <script src="{{ site.baseurl }}/js/picturefill.min.js" async></script>
+
   {% if site.google_analytics and jekyll.environment == 'netlify' %}
     {% include analytics.html %}
   {% endif %}
