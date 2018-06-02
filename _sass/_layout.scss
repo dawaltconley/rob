@@ -63,7 +63,7 @@
  */
 
 body, .light {
-    @include theme-styles(
+    @include theme(
         $text-color: #272727,
         $background-color: whitesmoke,
         $brand-color: $brand-color,
@@ -71,14 +71,14 @@ body, .light {
 }
 
 .dark {
-    @include theme-styles(
+    @include theme(
         $text-color: white,
         $background-color: #151515,
     );
 }
 
 .overlay {
-    @include theme-styles(
+    @include theme(
         $text-color: white,
         $background-color: rgba(black, 0.75),
     );
