@@ -24,6 +24,36 @@
         return Array.prototype.slice.call(collection);
     };
 
+    function getScrollableParent(element) {
+        var maxDepth = arguments.length > 2 && arguments[1] !== undefined ? arguments[1] : undefined;
+        var ancestor = element;
+        while (ancestor != document.documentElement && maxDepth !== 0) {
+            ancestor = ancestor.parentElement;
+            if (ancestor.scrollHeight > ancestor.clientHeight) {
+                return ancestor;
+            }
+            maxDepth -= 1;
+        }
+        return null;
+    };
+
+    function getScrollableChild(element) {
+        var maxDepth = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 2;
+        var currentDepth = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 0;
+
+        if (element.scrollHeight > element.clientHeight) {
+            return element;
+        }
+        for (var i = 0; i < element.children.length && maxDepth > currentDepth; i++) {
+            var child = element.children[i];
+            var childMatch = getScrollableChild(child, maxDepth, currentDepth += currentDepth);
+            if (childMatch) {
+                return childMatch;
+            }
+        }
+        return null;
+    };
+
     function getTransitionTime(element) {
         var dur = 0;
         var transition = window.getComputedStyle(element).getPropertyValue("transition").split(", ");
