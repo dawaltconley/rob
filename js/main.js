@@ -251,19 +251,6 @@
 
     var pageScroller = zenscroll.createScroller(page, 1000, 0);
 
-    function getHash(element) {
-        //should remove, not using
-        var elementClass = Object.prototype.toString.call(element);
-        if (elementClass == "[object SVGAElement]") {
-            var link = element.href.baseVal;
-            return link.slice(link.search("#"));
-        } else if (elementClass == "[object HTMLAnchorElement]") {
-            return element.hash;
-        } else {
-            return null;
-        }
-    };
-
     function SmoothLink(link) {
         this.element = link;
         this.target = document.querySelector(link.hash);
