@@ -14,7 +14,7 @@ layout: default
       <p class="subtitle caps">{{ site.description }}</p>
     </a>
 
-    <a href="#projects" class="fa fa-chevron-down subtle-icon scroll-arrow no-select" data-smooth-scroll data-hide-on-scroll></a>
+    <a href="#projects" class="fa fa-chevron-down subtle-icon scroll-arrow no-select" data-smooth-scroll data-hide-on-scroll data-analytics-category="Navigation" data-analytics-action="click" data-analytics-label="Clicked on scroll arrow"></a>
 
   </div>
 
@@ -50,7 +50,7 @@ layout: default
           {% if jekyll.environment == 'production' or jekyll.environment == 'gulp' %}
             {% capture image %}{% include file-suffix.liquid file_name=image suffix='-thumb' %}{% endcapture %}
           {% endif %}
-          <a href="#{{ project.slug }}" class="subtle-icon inline-col-1 hover t-button-flip" data-project-button>
+          <a href="#{{ project.slug }}" class="subtle-icon inline-col-1 hover t-button-flip" data-project-button data-analytics-category="Navigation" data-analytics-action="click" data-analytics-label="Opened {{ project_title_2 }} project">
             <div class="square" data-project-button-content>
               <div class="overflow-h object-fit-cover no-backface">
                 <img class="hover-blur overflow-h" src="{{ image }}" alt="{{ project.title }}">
@@ -88,7 +88,9 @@ layout: default
 
     <i class="fa fa-chevron-down font-size-large margin-m-b no-select"></i>
 
-    <a href="https://docs.google.com/forms/d/e/1FAIpQLScE325v5jJaix12pW8lGQldHVvDxkpp4urSVSKHqlFuU-hPLg/viewform" class="button caps t-default hover hover-scale" target="_blank">Get in touch</a>
+    <a href="https://docs.google.com/forms/d/e/1FAIpQLScE325v5jJaix12pW8lGQldHVvDxkpp4urSVSKHqlFuU-hPLg/viewform" class="button caps t-default hover hover-scale" target="_blank" data-analytics-category="Contact Link" data-analytics-action="click" data-analytics-label="Opened up contact form">
+      Get in touch
+    </a>
 
   </div>
 
