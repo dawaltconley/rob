@@ -8,7 +8,7 @@
 {% assign description = include.project.content %}
 {% capture image_thumb %}{{ site.baseurl }}/{{ site.prose.media }}/{{ include.project.image }}{% endcapture %}
 {% assign image_display = image_thumb %}
-{% if jekyll.environment == 'netlify' %}
+{% if jekyll.environment == 'production' or jekyll.environment == 'gulp' %}
   {% capture image_thumb %}{% include file-suffix.liquid file_name=image_thumb suffix='-thumb' %}{% endcapture %}
   {% capture image_display %}{% include file-suffix.liquid file_name=image_display suffix='-display' %}{% endcapture %}
 {% endif %}

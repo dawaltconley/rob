@@ -41,11 +41,12 @@ $project-images:        ({% for project in site.projects %}
                             {{ project.slug }}: url({{ site.baseurl }}/{{ site.prose.media}}/{{ project.image }}),{% endfor %}
                         );
 
-$image-bp:              ({% if jekyll.environment == 'netlify' %}
-                            {% for size in site.image_bp %}
-                                ({% for dimension in size %}
-                                    {{ dimension[0] }}: {{ dimension[1] }},
-                                {% endfor %}),
+$image-bp:              ({% if jekyll.environment == 'production' or jekyll.environment == 'gulp' %}
+                            {% for bp in site.image_bp %}
+                                (
+                                    x: {{ bp | map: 'x' }},
+                                    y: {{ bp | map: 'y' }}
+                                ),
                             {% endfor %}
                         {% endif %});
 

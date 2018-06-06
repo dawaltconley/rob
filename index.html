@@ -47,7 +47,7 @@ layout: default
         {% assign project_title_2 = project.title | replace: '&nbsp;', ' ' %}
         {% if project_title_1 == project_title_2 %}
           {% capture image %}{{ site.baseurl }}/{{ site.prose.media }}/{{ project.image }}{% endcapture %}
-          {% if jekyll.environment == 'netlify' %}
+          {% if jekyll.environment == 'production' or jekyll.environment == 'gulp' %}
             {% capture image %}{% include file-suffix.liquid file_name=image suffix='-thumb' %}{% endcapture %}
           {% endif %}
           <a href="#{{ project.slug }}" class="subtle-icon inline-col-1 hover t-button-flip" data-project-button>
