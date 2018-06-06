@@ -7,6 +7,7 @@ url: "http://www.robertgdon.com"
 permalink: /:title/
 timezone: America/New_York
 google_analytics: "UA-101960905-2"
+auto_scroll: false # enables smooth scrolling for all same-page links using zenscroll
 bg_testing: false # turn on to enable the bg-testing.html include
 
 project_transition_time: 1s
