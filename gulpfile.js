@@ -21,12 +21,12 @@ if (process.env.CONTEXT == "production") {
 
 function jekyllBuild(env = "development") {
     var cmd = "JEKYLL_ENV=" + env + " jekyll build";
-    child.execSync(cmd, { stdio: "inherit" });
+    return child.exec(cmd, { stdio: "inherit" });
 }
 
 gulp.task("build", jekyllBuild.bind(null, jekyllEnv));
 
-gulp.task("css", ["build"], function (cb) {
+gulp.task("css", function (cb) {
     pump([
         gulp.src("./_site/css/main.css"),
         postcss([
@@ -36,10 +36,9 @@ gulp.task("css", ["build"], function (cb) {
     ], cb);
 });
 
-gulp.task("js", ["build"], function (cb) {
+gulp.task("js-concat", function (cb) {
     pump([
         gulp.src([
-            "./_site/js/polyfills/rAF.js", // needed for another polyfill
             "./_site/js/polyfills/*.js",
             "./_site/js/lib/*.js",
             "./_site/js/main.js",
@@ -47,12 +46,11 @@ gulp.task("js", ["build"], function (cb) {
             "!./_site/**/*.map"
         ]),
         concat("all.js"),
-        uglify(),
         gulp.dest("./_site/js")
     ], cb);
 });
 
-gulp.task("clean-js", ["js"], function (cb) {
+gulp.task("js-clean", function (cb) {
     pump([
         gulp.src([
             "./_site/js/polyfills",
@@ -63,7 +61,21 @@ gulp.task("clean-js", ["js"], function (cb) {
     ], cb);
 });
 
-gulp.task("image-min", ["build"], function (cb) {
+gulp.task("js-uglify", function (cb) {
+    pump([
+        gulp.src([
+            "./_site/js/**/*.js",
+            "!./_site/**/*.min.js",
+            "!./_site/**/*.map"
+        ]),
+        uglify(),
+        gulp.dest("./_site/js")
+    ], cb);
+});
+
+gulp.task("js", gulp.series("js-concat", "js-clean", "js-uglify"));
+
+gulp.task("image-min", function (cb) {
     pump([
         gulp.src([
             "./_site/media/**/*",
@@ -74,7 +86,7 @@ gulp.task("image-min", ["build"], function (cb) {
     ], cb);
 });
 
-gulp.task("project-images", ["image-min"], function () {
+gulp.task("project-images", function () {
     var src = "./_site/media/project-images/*";
     var dest = "./_site/media/project-images";
     var thumbnails = gulp.src(src)
@@ -115,7 +127,7 @@ gulp.task("project-images", ["image-min"], function () {
     return merge(thumbnails, displays, og);
 });
 
-gulp.task("clean-project-images", ["project-images"], function (cb) {
+gulp.task("clean-project-images", function (cb) {
     pump([
         gulp.src([
             "./_site/media/project-images/*",
@@ -127,7 +139,7 @@ gulp.task("clean-project-images", ["project-images"], function (cb) {
     ], cb);
 });
 
-gulp.task("bg-images", ["image-min"], function () {
+gulp.task("bg-images", function () {
     var imageBreakpoints = YAML.safeLoad(fs.readFileSync("_config.yml", "utf8"))["image_bp"];
     var src = "./_site/media/backgrounds/*";
     var dest = "./_site/media/backgrounds";
@@ -151,4 +163,16 @@ gulp.task("bg-images", ["image-min"], function () {
     return merged.isEmpty() ? null : merged;
 });
 
-gulp.task("default", ["build", "css", "js", "clean-js", "bg-images", "project-images", "clean-project-images"]);
+gulp.task("images", gulp.series(
+    "image-min",
+    gulp.parallel(
+        "bg-images",
+        gulp.series(
+            "project-images",
+            "clean-project-images"))
+));
+
+gulp.task("default", gulp.series(
+    "build",
+    gulp.parallel("css", "js", "images")
+));
