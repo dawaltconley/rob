@@ -593,3 +593,43 @@ ul.media-icon-basic, ul.media-icon-button, ul.media-icon-circle {
         display: inherit;
     }
 }
+
+/*
+ * Media Queries
+ */
+
+.footer {
+    @media screen and (max-width: map-get($bp, "laptop")) {
+        .table {
+            display: block;
+        }
+
+        .cell {
+            display: block;
+            padding: 0;
+            border: 0;
+        }
+    }
+
+    @media screen and (max-width: map-get($bp, "mobile")) {
+        font-size: 1.2em;
+    }
+}
+
+.bio {
+    @media screen and (max-width: map-get($bp, laptop)) {
+        display: block;
+    }
+}
+
+.headshot {
+    flex: 1 0.4 70%;
+
+    @media screen and (max-width: map-get($bp, laptop)) {
+        margin-left: 0;
+
+        > img {
+            position: static;
+        }
+    }
+}
