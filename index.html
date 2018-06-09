@@ -72,10 +72,16 @@ layout: default
     {% endfor %}
   </div>
 
-  <div class="text-wrapper">
-    <h2 class="caps padding-xs-b border-basic-b">About Me</h2>
+  <div class="bio flex-row">
+    <div class="text-wrapper margin-m-b">
+      <h2 class="caps padding-xs-b border-basic-b">About Me</h2>
 
-    {{ bio | markdownify }}
+      {{ bio | markdownify }}
+    </div>
+
+    <div class="headshot margin-m-l object-fit-cover">
+      <img class="object-pos-rob" src="{{ site.baseurl }}/media/headshot.jpg" alt="headshot photo">
+    </div>
   </div>
 
 </div>

@@ -433,3 +433,21 @@ body, .light {
         font-size: 1.2em;
     }
 }
+
+.bio {
+    @media screen and (max-width: map-get($bp, laptop)) {
+        display: block;
+    }
+}
+
+.headshot {
+    flex: 1 0.4 70%;
+
+    @media screen and (max-width: map-get($bp, laptop)) {
+        margin-left: 0;
+
+        > img {
+            position: static;
+        }
+    }
+}

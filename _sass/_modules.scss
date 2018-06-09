@@ -238,6 +238,10 @@
     }
 }
 
+.object-pos-rob {
+    object-position: 70% 0%;
+}
+
 .splash-img {
     @include background-image($splash-image, $darken: .4, $responsive: true);
 }
