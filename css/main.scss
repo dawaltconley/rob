@@ -263,6 +263,32 @@ $side: null;
 
 }
 
+@mixin mq-all($bp-list: $bp) {
+    @content;
+
+    @each $name, $value in $bp-list {
+        @if not($value) and map-has-key($bp, $name) {
+            $value: map-get($bp, $value); // allow lists of breakpoint names
+        } @else if not($value) {
+            $value: $name; // allow lists of values
+        }
+        @each $direction in (min, max) {
+            @each $dimension in (width, height) {
+                $rule: #{$direction}-#{$dimension};
+                $class-name: #{$direction}-#{str-slice($dimension, 1, 1)}-#{$name};
+                $query-value: $value;
+                @if $direction == "min" { $query-value: $value + 1; }
+
+                &--#{$class-name} {
+                    @media screen and (#{$rule}: $query-value) {
+                        @content;
+                    }
+                }
+            }
+        }
+    }
+}
+
 @mixin wrapper ($breakpoints, $min-margins: $spacing-unit) {
     $bp-first: nth($breakpoints, 1);
     $bp-last: nth($breakpoints, length($breakpoints));
