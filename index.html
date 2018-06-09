@@ -52,8 +52,8 @@ layout: default
           {% endif %}
           <a href="#{{ project.slug }}" class="subtle-icon inline-col-1 hover t-button-flip" data-project-button data-analytics-category="Navigation" data-analytics-action="click" data-analytics-label="Opened {{ project_title_2 }} project">
             <div class="square" data-project-button-content>
-              <div class="overflow-h object-fit-cover no-backface">
-                <img class="hover-blur overflow-h" src="{{ image }}" alt="{{ project.title }}">
+              <div class="overflow-h no-backface">
+                <img class="full-size object-fit-cover hover-blur overflow-h" src="{{ image }}" alt="{{ project.title }}">
               </div>
               <div class="overlay flex-col padding-xs text-center hover-fade-in no-backface">
                 <span class="margin-auto">
@@ -79,8 +79,8 @@ layout: default
       {{ bio | markdownify }}
     </div>
 
-    <div class="headshot margin-m-l object-fit-cover object-pos-rob">
-      <img src="{{ site.baseurl }}/media/headshot.jpg" alt="headshot photo">
+    <div class="headshot-container margin-m-l expand-children">
+      <img class="object-fit-rob" src="{{ site.baseurl }}/media/headshot.jpg" alt="headshot photo">
     </div>
   </div>
 

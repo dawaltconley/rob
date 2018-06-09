@@ -229,22 +229,16 @@
     @include background-image;
 }
 
-.object-fit-cover {
-    @extend .relative, .bg-img;
-
-    & > img {
-        @extend .fill-parent;
-        object-fit: cover;
-    }
+img.object-fit-cover {
+    object-fit: cover;
+    font-family: 'object-fit: cover;'
 }
 
-.object-pos-rob {
+img.object-fit-rob {
     $pos: 70% 0%;
-    background-position: $pos;
-
-    & > img {
-        object-position: $pos;
-    }
+    object-fit: cover;
+    object-position: $pos;
+    font-family: 'object-fit: cover; object-position: #{$pos};'
 }
 
 .splash-img {
@@ -621,19 +615,15 @@ ul.media-icon-basic, ul.media-icon-button, ul.media-icon-circle {
     }
 }
 
-.bio {
-    @media screen and (max-width: map-get($bp, laptop)) {
+@media screen and (max-width: map-get($bp, laptop)) {
+    .bio {
         display: block;
     }
-}
 
-.headshot {
-    flex: 1 0.4 70%;
-
-    @media screen and (max-width: map-get($bp, laptop)) {
+    .headshot-container {
         margin-left: 0;
 
-        > img {
+        & > img {
             position: static;
         }
     }
