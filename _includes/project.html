@@ -31,7 +31,7 @@
               {% include loading.html %}
               {% assign link_array = link | split: '/' %}
               <iframe class="full-width" src="https://bandcamp.com/EmbeddedPlayer/{{ link_array[3] }}={{ include.project.tralbum_id }}/size=large/bgcol=ffffff/linkcol=0687f5/minimal=true/transparent=true/" seamless
-                                         data-analytics-category="Audio" data-analytics-action="click" data-analytics-label="Listened to {{ title | markdownify }}">
+                                         data-analytics-category="Audio" data-analytics-action="click" data-analytics-label="Listened to {{ title }}">
                 <a href="{{ link }}">{{ title | markdownify }}</a>
               </iframe>
             </div>
@@ -39,26 +39,26 @@
             <div class="square margin-m-b">
               {% include loading.html %}
               <iframe class="full-width" src="https://w.soundcloud.com/player/?url={{ link }}&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false&amp;visual=true" seamless
-                                         data-analytics-category="Audio" data-analytics-action="click" data-analytics-label="Listened to {{ title | markdownify }}">
+                                         data-analytics-category="Audio" data-analytics-action="click" data-analytics-label="Listened to {{ title }}">
               </iframe>
             </div>
           {% when 'youtube' %}
             {% assign link = link | replace: '/watch?v=', '/embed/' %}
             <div class="aspect-16-9 margin-m-b">
               {% include loading.html %}
-              <iframe class="full-width" src="{{ link }}" allowfullscreen seamless data-analytics-category="Video" data-analytics-action="click" data-analytics-label="Watched {{ title | markdownify }}"></iframe>
+              <iframe class="full-width" src="{{ link }}" allowfullscreen seamless data-analytics-category="Video" data-analytics-action="click" data-analytics-label="Watched {{ title }}"></iframe>
             </div>
           {% when 'vimeo' %}
             {% assign link = link | remove: 'https://vimeo.com/' %}
             <div class="aspect-16-9 margin-m-b">
               {% include loading.html %}
               <iframe class="full-width" src="https://player.vimeo.com/video/{{ link }}?title=0&byline=0&portrait=0" allowfullscreen seamless
-                                         data-analytics-category="Video" data-analytics-action="click" data-analytics-label="Watched {{ title | markdownify }}">
+                                         data-analytics-category="Video" data-analytics-action="click" data-analytics-label="Watched {{ title }}">
               </iframe>
             </div>
           {% when 'page' %}
-            <a class="block relative overflow-h margin-m-b hover" href="{{ link }}" target="_blank" data-analytics-category="Outbound Link" data-analytics-action="click" data-analytics-label="Followed link to {{ title | markdownify }}">
-              <img class="hover-blur" src="{{ image_display }}" alt="{{ title | markdownify }}">
+            <a class="block relative overflow-h margin-m-b hover" href="{{ link }}" target="_blank" data-analytics-category="Outbound Link" data-analytics-action="click" data-analytics-label="Followed link to {{ title }}">
+              <img class="hover-blur" src="{{ image_display }}" alt="{{ title }}">
               <div class="overlay fill-parent flex-col padding-m text-center hover-fade-in">
                 <span class="margin-auto">
                   Visit Site
