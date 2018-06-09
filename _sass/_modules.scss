@@ -239,7 +239,12 @@
 }
 
 .object-pos-rob {
-    object-position: 70% 0%;
+    $pos: 70% 0%;
+    background-position: $pos;
+
+    & > img {
+        object-position: $pos;
+    }
 }
 
 .splash-img {
