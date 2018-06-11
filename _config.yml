@@ -134,3 +134,10 @@ prose:
           label: "Image"
           help: >
             The name and extenson of the image that will appear as the link to the project. You do not need to enter its filepath. You can upload the image while editing this file using the images icon in the toolbar. This will automatically insert a markdown link to the image in the text of your project description. In order for the image to format propperly, you should delete this link and enter the filename here.
+      - name: "published"
+        field:
+          element: "checkbox"
+          label: "Force Publish"
+          help: >
+            Check this if you want to publish the project immediately.
+          value: false
