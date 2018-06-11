@@ -13,6 +13,10 @@ var child = require("child_process");
 var YAML = require("js-yaml");
 var fs = require("fs");
 
+/*
+ * Jekyll
+ */
+
 let jekyllEnv = "gulp";
 
 if (process.env.CONTEXT == "production") {
@@ -26,6 +30,10 @@ function jekyllBuild(env = "development") {
 
 gulp.task("build", jekyllBuild.bind(null, jekyllEnv));
 
+/*
+ * CSS
+ */
+
 gulp.task("css", function (cb) {
     pump([
         gulp.src("./_site/css/main.css"),
@@ -35,6 +43,10 @@ gulp.task("css", function (cb) {
         gulp.dest("./_site/css")
     ], cb);
 });
+
+/*
+ * Javascript
+ */
 
 gulp.task("js-concat", function (cb) {
     pump([
@@ -74,6 +86,10 @@ gulp.task("js-uglify", function (cb) {
 });
 
 gulp.task("js", gulp.series("js-concat", "js-clean", "js-uglify"));
+
+/*
+ * Images
+ */
 
 gulp.task("image-min", function (cb) {
     pump([
@@ -169,6 +185,10 @@ gulp.task("images", gulp.series(
             "project-images",
             "clean-project-images"))
 ));
+
+/*
+ * Build
+ */
 
 gulp.task("default", gulp.series(
     "build",
