@@ -1,6 +1,6 @@
 ---
 date: '2017-03-24 17:19 -0400'
-published: false
+published: true
 title: The Once and Future Nerd Book&nbsp;2
 link: 'http://onceandfuturenerd.com/'
 media: page

@@ -1,6 +1,6 @@
 ---
 date: '2015-05-24 16:58 -0400'
-published: false
+published: true
 title: Voice Memos
 link: 'https://allcapsladd.bandcamp.com/track/good-thinking'
 tralbum_id: '4041833123'

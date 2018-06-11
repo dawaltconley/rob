@@ -1,6 +1,6 @@
 ---
 date: '2015-10-24 17:09 -0400'
-published: false
+published: true
 title: Shaving Cream
 link: 'https://www.youtube.com/watch?v=WB70BBtTB88'
 media: youtube

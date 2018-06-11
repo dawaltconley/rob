@@ -1,6 +1,6 @@
 ---
 date: '2012-07-24 16:42 -0400'
-published: false
+published: true
 title: Honestly Honesty
 link: 'https://robertdon.bandcamp.com/album/honestly-honesty'
 tralbum_id: '931181500'

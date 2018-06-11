@@ -1,6 +1,6 @@
 ---
 date: '2015-04-24 16:51 -0400'
-published: false
+published: true
 title: Humble Soundtrack
 link: 'https://robertdon.bandcamp.com/track/the-garden'
 tralbum_id: '3087889850'

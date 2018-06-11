@@ -1,6 +1,6 @@
 ---
 date: '2015-05-24 16:47 -0400'
-published: false
+published: true
 title: We Really Ought to Get Jobs
 link: 'https://robertdon.bandcamp.com/album/we-really-ought-to-get-jobs'
 tralbum_id: '2651118237'
