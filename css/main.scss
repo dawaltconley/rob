@@ -46,7 +46,7 @@ $project-images:        ({% for project in site.projects %}
                             {% if jekyll.environment == 'production' or jekyll.environment == 'gulp' %}
                                 {% capture project_image %}{% include file-suffix.liquid file_name=project_image suffix='-thumb' %}{% endcapture %}
                             {% endif %}
-                            {{ project.slug }}: url({{ site.baseurl }}/{{ site.prose.media}}/{{ project_image }}),{% endfor %}
+                            {{ project.slug }}: url({{ site.baseurl }}/{{ site.prose.media}}/{{ project_image | strip_newlines }}),{% endfor %}
                         );
 
 $image-bp:              ({% if jekyll.environment == 'production' or jekyll.environment == 'gulp' %}
