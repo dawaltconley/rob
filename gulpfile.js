@@ -127,16 +127,14 @@ gulp.task("project-images", function () {
     return merge(thumbnails, displays, og);
 });
 
-gulp.task("clean-project-images", function (cb) {
-    pump([
-        gulp.src([
+gulp.task("clean-project-images", function () {
+    return gulp.src([
             "./_site/media/project-images/*",
             "!./_site/media/project-images/*-thumb*",
             "!./_site/media/project-images/*-display*",
             "!./_site/media/project-images/*-og*"
-        ], { read: false }),
-        clean()
-    ], cb);
+        ], { read: false })
+    .pipe(clean())
 });
 
 gulp.task("bg-images", function () {
