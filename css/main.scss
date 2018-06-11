@@ -42,7 +42,11 @@ $splash-image:          url({{ site.baseurl | append: '/media/backgrounds/mixing
 $cta-image:             url({{ site.baseurl | append: '/media/backgrounds/mixing-board-straight.jpg' }});
 
 $project-images:        ({% for project in site.projects %}
-                            {{ project.slug }}: url({{ site.baseurl }}/{{ site.prose.media}}/{{ project.image }}),{% endfor %}
+                            {% assign project_image = project.image %}
+                            {% if jekyll.environment == 'production' or jekyll.environment == 'gulp' %}
+                                {% capture project_image %}{% include file-suffix.liquid file_name=project_image suffix='-thumb' %}{% endcapture %}
+                            {% endif %}
+                            {{ project.slug }}: url({{ site.baseurl }}/{{ site.prose.media}}/{{ project_image }}),{% endfor %}
                         );
 
 $image-bp:              ({% if jekyll.environment == 'production' or jekyll.environment == 'gulp' %}
