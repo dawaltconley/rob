@@ -242,7 +242,7 @@
     };
 
     function distToBottom(element) {
-        return Math.floor(element.getBoundingClientRect().bottom - page.clientHeight);
+        return Math.floor(element.getBoundingClientRect().bottom - window.innerHeight);
     };
 
 /*
