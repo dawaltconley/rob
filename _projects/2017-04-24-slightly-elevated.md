@@ -7,4 +7,4 @@ tralbum_id: '1834014450'
 media: bandcamp
 image: slightlyelevated.jpg
 ---
-Songwriter, producer, and guitarist/vocalist for sophomore release by St. Louis based band Since 1902. Released in January of 2013. 
+Songwriter, producer, and guitarist/vocalist for sophomore release by St. Louis based band Since 1902.
