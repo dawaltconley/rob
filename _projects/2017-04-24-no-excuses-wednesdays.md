@@ -7,4 +7,4 @@ tralbum_id: '587439492'
 media: bandcamp
 image: noexcuseswednesdays.jpg
 ---
-Songwriter, producer, and guitarist/vocalist for debut full-length release by St. Louis based band Since 1902. Released in August of 2011.
+Songwriter, producer, and guitarist/vocalist for debut full-length release by St. Louis based band Since 1902.
