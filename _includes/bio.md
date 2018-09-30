@@ -1,1 +1,1 @@
-I am a producer and engineer based out of Brooklyn, New York, specializing in composition and post-production. I offer full-service audio creation and pride myself on working closely with clients to achieve the best sound possible.
+I am producer and engineer based out of Brooklyn, New York who specializes in music composition and audio post-production. I have worked on projects ranging from Disney Channel theme songs to albums by independent artists and am always striving to achieve the best sound possible. I look forward to hearing about your project! 
