@@ -489,6 +489,7 @@
         this.category = element.getAttribute("data-analytics-category");
         this.action = element.getAttribute("data-analytics-action");
         this.label = element.getAttribute("data-analytics-label");
+        this.new_tab = element.getAttribute("target") == "_blank";
     };
 
     if (jekyllEnv == 'production') {
@@ -520,7 +521,7 @@
     };
 
     function linkClickEventListener(eventObj, event) {
-        if (document.origin == eventObj.element.origin) {
+        if (window.origin == eventObj.element.origin || eventObj.new_tab) {
             eventObj.send();
         } else {
             event.preventDefault();
