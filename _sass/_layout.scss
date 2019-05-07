@@ -352,15 +352,15 @@ body, .light {
 }
 
 .inline-col-1 {
-    @media screen and (min-width: map-get($bp, large)) {
+    @media screen and (min-width: map-get($bp, large) + 1) {
         @include inline-columns(5, 10px);
     }
 
-    @media screen and (max-width: map-get($bp, large)) and (min-width: map-get($bp, "laptop")) {
+    @media screen and (max-width: map-get($bp, large)) and (min-width: map-get($bp, "laptop") + 1) {
         @include inline-columns(4, 10px);
     }
 
-    @media screen and (max-width: map-get($bp, "laptop")) and (min-width: 460px) {
+    @media screen and (max-width: map-get($bp, "laptop")) and (min-width: 461px) {
         @include inline-columns(3, 10px);
     }
 
