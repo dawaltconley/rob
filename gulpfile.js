@@ -4,7 +4,6 @@ var uglify = require("gulp-uglify");
 var rename = require("gulp-rename");
 var clean = require("gulp-clean");
 var imageResize = require("gulp-image-resize");
-var imageMin = require("gulp-imagemin");
 var postcss = require("gulp-postcss");
 var autoprefixer = require("autoprefixer");
 var pump = require("pump");
@@ -17,18 +16,17 @@ var fs = require("fs");
  * Jekyll
  */
 
-let jekyllEnv = "gulp";
+let JEKYLL_ENV = "gulp";
 
 if (process.env.CONTEXT == "production") {
-    jekyllEnv = "production";
+    JEKYLL_ENV = "production";
 }
 
-function jekyllBuild(env = "development") {
-    var cmd = "JEKYLL_ENV=" + env + " jekyll build";
-    return child.exec(cmd, { stdio: "inherit" });
-}
-
-gulp.task("build", jekyllBuild.bind(null, jekyllEnv));
+gulp.task("build", function (cb) {
+    var cmd = "bundle exec jekyll build";
+    var env = { JEKYLL_ENV, PATH: process.env.PATH };
+    return child.exec(cmd, { stdio: "inherit", env }, cb);
+});
 
 /*
  * CSS
@@ -90,17 +88,6 @@ gulp.task("js", gulp.series("js-concat", "js-clean", "js-uglify"));
 /*
  * Images
  */
-
-gulp.task("image-min", function (cb) {
-    pump([
-        gulp.src([
-            "./_site/media/**/*",
-            "!./_site/media/test/*"
-        ]),
-        imageMin(),
-        gulp.dest("./_site/media")
-    ], cb);
-});
 
 gulp.task("project-images", function () {
     var src = "./_site/media/project-images/*";
@@ -177,14 +164,12 @@ gulp.task("bg-images", function () {
     return merged.isEmpty() ? null : merged;
 });
 
-gulp.task("images", gulp.series(
-    "image-min",
-    gulp.parallel(
-        "bg-images",
-        gulp.series(
-            "project-images",
-            "clean-project-images"))
-));
+gulp.task("images", gulp.parallel(
+    "bg-images",
+    gulp.series(
+        "project-images",
+        "clean-project-images"))
+);
 
 /*
  * Build
