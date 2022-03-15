@@ -23,9 +23,12 @@ if (process.env.CONTEXT == "production") {
 }
 
 gulp.task("build", function (cb) {
-    var cmd = "bundle exec jekyll build";
-    var env = { JEKYLL_ENV, PATH: process.env.PATH };
-    return child.exec(cmd, { stdio: "inherit", env }, cb);
+    const eachLine = (buffer, callback) => buffer.toString().split('\n').filter(s => s).forEach(callback);
+    const childEnv = { ...process.env, JEKYLL_ENV };
+    const build = child.spawn('bundle', ['exec', 'jekyll', 'build'], { env: childEnv });
+    build.on('close', cb);
+    build.stdout.on('data', data => eachLine(data, l => console.log(l)));
+    build.stderr.on('data', data => eachLine(data, l => console.error(l)));
 });
 
 /*
