@@ -1,6 +1,6 @@
 # This file controls the order in which the project buttons will appear. The elements of the projects will be displayed on the projects.yml array are case-sensitve and spelling does matter; a misspelled name will not display on the site. The spelling of each name in the array (including spaces) must match the spelling of their name in the title of their project, located in the _projects folder. Removing a name from this array will also remove the corresponding project from the site.
 
-- "Push It Back"
+#- "Push It Back"
 - "Coppertone Tennis"
 - "Coppertone Pool"
 - "Queen of the Night"
