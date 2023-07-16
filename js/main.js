@@ -283,24 +283,24 @@
  * Fullscreen
  */
 
-    var fullscreenElements = toArray(document.querySelectorAll("[data-force-fullscreen]"));
+    var lockHeightElements = toArray(document.querySelectorAll("[data-force-fullscreen]"));
 
-    function forceFullscreen(element) {
-        var viewHeight = window.innerHeight;
-        if (element.clientHeight != viewHeight) {
+    function lockHeight(element) {
+        var height = element.clientHeight;
+        if (element.clientHeight != height) {
             if (element.getAttribute("data-force-fullscreen") === "min") {
-                element.style.minHeight = viewHeight.toString() + "px";
+                element.style.minHeight = height.toString() + "px";
             } else if (element.getAttribute("data-force-fullscreen") === "max") {
-                element.style.maxHeight = viewHeight.toString() + "px";
+                element.style.maxHeight = height.toString() + "px";
             } else {
-                element.style.height = viewHeight.toString() + "px";
+                element.style.height = height.toString() + "px";
             }
         }
     };
 
-    function forceFullscreenAll() {
-        fullscreenElements.forEach(function (element) {
-            forceFullscreen(element);
+    function lockHeightAll() {
+        lockHeightElements.forEach(function (element) {
+            lockHeight(element);
         });
     };
 
@@ -663,11 +663,11 @@
 
     function addOrientationChangeListener() {
         var initOrientation = window.innerHeight > window.innerWidth;
-        if (fullscreenElements.length > 0) {
+        if (lockHeightElements.length > 0) {
             window.addEventListener("resize", function () {
                 var newOrientation = window.innerHeight > window.innerWidth;
                 if (newOrientation != initOrientation) {
-                    forceFullscreenAll();
+                    lockHeightAll();
                 }
                 initOrientation = newOrientation;
             }, passive);
@@ -702,7 +702,7 @@
         addSmoothScrollListeners();
     }
 
-    if (fullscreenElements.length > 0) {
+    if (lockHeightElements.length > 0) {
         addOrientationChangeListener();
         forceFullscreenAll();
     }
