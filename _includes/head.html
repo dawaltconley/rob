@@ -42,8 +42,5 @@
   {% include favicon.html %}
 
   <script src="{{ site.baseurl }}/js/picturefill.min.js" async></script>
-
-  {% if site.google_analytics and jekyll.environment == 'production' %}
-    {% include analytics.html %}
-  {% endif %}
+  <script defer data-domain="robertgdon.com" src="https://plausible.io/js/script.js"></script>
 </head>
