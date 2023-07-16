@@ -4,6 +4,7 @@
   "description": "An artist site for my artist friend.",
   "main": "index.js",
   "scripts": {
+    "dev": "bundle exec jekyll serve -l",
     "build": "gulp"
   },
   "repository": {
