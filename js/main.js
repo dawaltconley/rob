@@ -704,7 +704,7 @@
 
     if (lockHeightElements.length > 0) {
         addOrientationChangeListener();
-        forceFullscreenAll();
+        lockHeightAll();
     }
 
     if (elementsToHideOnScroll.length > 0) {
