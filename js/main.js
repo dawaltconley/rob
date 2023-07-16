@@ -256,7 +256,7 @@
         smoothLinks.push(new SmoothLink(element));
     });
 
-    var pageScroller = zenscroll.createScroller(page, 1000, 9);
+    var pageScroller = zenscroll.createScroller(page, 1000, 0);
 
     function SmoothLink(link) {
         this.element = link;
