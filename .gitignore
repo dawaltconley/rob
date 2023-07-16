@@ -9,3 +9,6 @@ media/test/
 *.swp
 *.swo
 sh.exe.stackdump
+
+# Local Netlify folder
+.netlify
