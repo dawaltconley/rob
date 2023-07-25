@@ -1,7 +1,7 @@
 ---
 date: '2023-07-25 17:15 -0400'
 media: youtube
-published: false
+published: true
 title: Duke Lemur Center
 link: 'https://www.youtube.com/watch?v=_Sc1y-A4Xqw'
 ---
