@@ -1,7 +1,7 @@
 ---
 date: '2023-07-25 16:06 -0400'
 media: page
-published: false
+published: true
 title: Google Belonging
 link: 'https://about.google/belonging/'
 ---
