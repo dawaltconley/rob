@@ -5,4 +5,4 @@ published: false
 title: Living Popups
 link: 'https://www.livingpopups.com/'
 ---
-Sound designer and foley artist for Living Popups, an augmented reality phone app that brings tourist destinations to life. 
+Sound designer and foley artist for Living Popups, an augmented reality phone app that brings tourist destinations to life.
