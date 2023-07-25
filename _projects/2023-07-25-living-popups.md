@@ -1,7 +1,7 @@
 ---
 date: '2023-07-25 16:00 -0400'
 media: page
-published: false
+published: true
 title: Living Popups
 link: 'https://www.livingpopups.com/'
 image: LivingPopups.jpg
