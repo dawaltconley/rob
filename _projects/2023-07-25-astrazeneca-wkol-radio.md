@@ -1,7 +1,7 @@
 ---
 date: '2023-07-25 15:23 -0400'
 media: page
-published: false
+published: true
 title: AstraZeneca WKOL Radio
 image: AstraZeneca.png
 ---
