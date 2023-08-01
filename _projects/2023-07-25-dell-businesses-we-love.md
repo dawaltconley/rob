@@ -6,4 +6,5 @@ title: Dell
 link: 'https://www.youtube.com/watch?v=5kUw24b_pcA'
 image: Dell.png
 ---
+![Dell.jpg]({{site.baseurl}}/media/project-images/Dell.jpg)
 Sound designer and mixer for a series of Dell advertisements.
